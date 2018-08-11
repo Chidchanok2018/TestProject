@@ -72,6 +72,9 @@ k = G.subgraph(cycles[000])
 #Start_Cycles = cycles[1]
 Another_cluster = []
 Result_Cluster = []
+Cluster1 = []
+Cluster2 = []
+Cluster3 = []
 Sort_cycles_Nbegin = sorted(cycles)
 #Sort_cyles_Nlast = sorted(cycles, key=lambda i: i[-1])
 
@@ -79,12 +82,12 @@ for h in sorted(Sort_cycles_Nbegin):
     count = len(cycles)-1
     for i in range(count):
         print '-------------------------------------------------'
-        Result_Cluster.append()
+
         print 'Len i', i
         Start_Scycle = set(h)
         if Start_Scycle not in Another_cluster:
             if Start_Scycle not in Result_Cluster:
-                Result_Cluster[i].append(Start_Scycle)
+                Result_Cluster.append(Start_Scycle)
             if len(Result_Cluster) >= 2:
                 Start_Scycle = Start_Scycle | Merge_Sub
                 #print 'Start_Scycles_Re =', Start_Scycle

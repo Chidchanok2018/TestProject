@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="" />
+    <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/testFile.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +15,7 @@
     <SUITE FILE_PATH="coverage/TestProject$Real_06062561.coverage" NAME="Real 06062561 Coverage Results" MODIFIED="1529816765354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$From_SnapFile.coverage" NAME="From_SnapFile Coverage Results" MODIFIED="1529816881997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$B.coverage" NAME="B Coverage Results" MODIFIED="1528302884174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1533978003297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1533986525502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$VeryReal_06062561.coverage" NAME="VeryReal 06062561 Coverage Results" MODIFIED="1529564909654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1533910936703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -37,12 +40,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6581" />
+          <entry key="py" value="6637" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6581" />
+          <entry key="Python" value="6637" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -78,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+            <state relative-caret-position="107">
+              <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
                 <element signature="e#439#468#0" />
@@ -88,8 +91,8 @@
                 <element signature="e#1977#2007#0" />
                 <element signature="e#2094#2154#0" />
                 <element signature="e#6698#6745#0" />
-                <marker date="1533978185842" expanded="true" signature="2626:2627" ph="..." />
-                <marker date="1533978185842" expanded="true" signature="8176:8177" ph="..." />
+                <marker date="1533986525469" expanded="true" signature="2626:2627" ph="..." />
+                <marker date="1533986525469" expanded="true" signature="8184:8185" ph="..." />
               </folding>
             </state>
           </provider>
@@ -488,7 +491,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/testFile.py</url>
-          <line>102</line>
+          <line>105</line>
           <option name="timeStamp" value="283" />
         </line-breakpoint>
       </breakpoints>
@@ -790,8 +793,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        <state relative-caret-position="107">
+          <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
             <element signature="e#439#468#0" />
@@ -800,8 +803,8 @@
             <element signature="e#1977#2007#0" />
             <element signature="e#2094#2154#0" />
             <element signature="e#6698#6745#0" />
-            <marker date="1533978185842" expanded="true" signature="2626:2627" ph="..." />
-            <marker date="1533978185842" expanded="true" signature="8176:8177" ph="..." />
+            <marker date="1533986525469" expanded="true" signature="2626:2627" ph="..." />
+            <marker date="1533986525469" expanded="true" signature="8184:8185" ph="..." />
           </folding>
         </state>
       </provider>

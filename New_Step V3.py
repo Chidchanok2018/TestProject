@@ -33,23 +33,36 @@ Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]
 print'Len of Sub3', len(Sub3), 'Cycles'
 Sub4 = [c for c in nx.cycle_basis(G) if len(c) == 4]
 print'Len of Sub4', len(Sub4), 'Cycles'
-Sub_cycle3_MaDeg = sorted(Sub3)
+Sub_cycle3_sort = sorted(Sub3)
+#print'Sub_cycle3_MaDeg', Sub_cycle3_sort
 Sub_cycle4_MaDeg = sorted(Sub4)
 #------Definition Function-------------#
-def Next_Scycle(A_Subcycle):
+def Next_Scycle(A_Subcycle,AN_Subcycle):
+    Scycle_same2 = []
     for h in A_Subcycle:
-        count = len(A_Subcycle)
+        count = len(A_Subcycle) - 1
         for i in range(count):
             print '------------------------------'
             print 'Len i', i
             Start_Scycle = set(h)
-            Next_Scycle = set(h[i + 1])
+            Next_Scycle = set(AN_Subcycle[i + 1])
+            print'Len NextScycle', Next_Scycle
             a = Start_Scycle & Next_Scycle
+            b = Start_Scycle - Next_Scycle
             if len(a) >= 2.0:
-                Scycle_same2 = []
                 Merge_Sub = Start_Scycle | Next_Scycle
                 Scycle_same2.append(Merge_Sub)
-            return Scycle_same2
+            if Start_Scycle == Next_Scycle:
+                print'=='
+            if a == set([]):
+                print'[]'
+
+        return Scycle_same2
 
 #--------------Main Program----------------
-print Next_Scycle(Sub_cycle3_MaDeg)
+S3 = Next_Scycle(Sub3,Sub_cycle3_sort)
+S4 = Next_Scycle(Sub4,Sub_cycle4_MaDeg)
+print'Len S3', len(S3)
+print'S3', S3
+print'Len S4', len(S4)
+print'S4', S4

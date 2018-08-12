@@ -37,32 +37,132 @@ Sub_cycle3_sort = sorted(Sub3)
 #print'Sub_cycle3_MaDeg', Sub_cycle3_sort
 Sub_cycle4_MaDeg = sorted(Sub4)
 #------Definition Function-------------#
-def Next_Scycle(A_Subcycle,AN_Subcycle):
+def Next_Scycle_S2(A_Subcycle,AN_Subcycle):
     Scycle_same2 = []
     for h in A_Subcycle:
         count = len(A_Subcycle) - 1
         for i in range(count):
-            print '------------------------------'
+            #print '------------------------------'
             print 'Len i', i
             Start_Scycle = set(h)
             Next_Scycle = set(AN_Subcycle[i + 1])
-            print'Len NextScycle', Next_Scycle
+            #print'NextScycle', Next_Scycle
             a = Start_Scycle & Next_Scycle
             b = Start_Scycle - Next_Scycle
             if len(a) >= 2.0:
                 Merge_Sub = Start_Scycle | Next_Scycle
-                Scycle_same2.append(Merge_Sub)
+                Scycle_same2.append(Next_Scycle)
             if Start_Scycle == Next_Scycle:
                 print'=='
             if a == set([]):
                 print'[]'
-
         return Scycle_same2
 
+def interintra(A_Sub_N2,AN_Sub_N2):
+    for o in A_Sub_N2:
+        Cluster = []
+        Keep = []
+        count = len(A_Sub_N2) - 1
+        for o1 in range(count):
+            Start_Scycle = set(o)
+            if len(Cluster) > 3:
+                Start_Scycle = Cluster
+            Next_Scycle = set(AN_Sub_N2[o1 + 1])
+            a = Start_Scycle | Next_Scycle
+            F = list(a)
+            G.subgraph(F)
+
+            if len(a) >= 2:
+                Dif_Den_N2 = 0.00
+                Dif_Den_N1 = 0.00
+                Re_inter4 = 0.00
+                Re_inter5 = 0.00
+                Re_intra5 = 0.00
+                Re_intra4 = 0.00
+                Number_of_Edges_Out = 0.00
+                Source = o1 + 1.00
+                Number_of_Edes_All = float(len(a)) + Source
+                N = float(len(a))
+                N_C = float(len(a))
+                if (N_C*(N-N_C)) <= 0.00:
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)
+                print 'inter4', " %+2.2f" % Re_inter4
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1) / 2)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                print 'Re_intra4', " %+2.2f" % Re_intra4
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                print 'Difference Density =',  " %+2.2f" % Dif_Den_N2
+
+            if len(a) < 2:
+                Dif_Den_N2 = 0.00
+                Dif_Den_N1 = 0.00
+                Re_inter4 = 0.00
+                Re_inter5 = 0.00
+                Re_intra5 = 0.00
+                Re_intra4 = 0.00
+                Number_of_Edges_Out1 = float(len(G.edges(F))) - 2.00
+                Number_of_Edes_All1 = float(len(G.edges(F))) - 1.00
+                N1 = float(len((G.nodes(F))))
+                N_C1 = float(len((G.nodes(F)))) - 1.00
+                if (N_C1 * (N1 - N_C1)) == 0.00:
+                    inter5 = 0.00
+                    Re_inter5 = inter5
+                elif Number_of_Edges_Out1 <= 0.00:
+                    inter5 = 0.00
+                    Re_inter5 = inter5
+                else:
+                    inter_1X = ((N_C1 * (N1 - N_C1)))
+                    inter_2X = (Number_of_Edges_Out1) / inter_1X
+                    Re_inter5 = round(inter_2X, 2)
+                print 'Re_inter', Re_inter5
+                if (N_C1 * (N1 - 1) / 2) <= 0.00:
+                    intra5 = 0.00
+                    Re_intra5 = intra5
+                elif Number_of_Edes_All1 <= 0.00:
+                    intra5 = 0.00
+                    Re_intra5 = intra5
+                else:
+                    intra_1X = (N_C1 * (N1 - 1) / 2)
+                    intra_2X = (Number_of_Edes_All1) / (N_C1 * (N_C1 - 1) / 2)
+                    Re_intra5 = round(intra_2X, 2)
+                print 'Re_intra', " %+2.2f" % Re_intra5
+
+                Dif_Den_N1 = Re_intra5 - Re_inter5
+                print 'Difference Density =', " %+2.2f" % Dif_Den_N1
+
+            Dif_Den = Dif_Den_N2+Dif_Den_N1
+            if Dif_Den >= 0.15:
+                Cluster = Next_Scycle | a
+            else:
+                Keep.append(Next_Scycle)
+        return Cluster
+
 #--------------Main Program----------------
-S3 = Next_Scycle(Sub3,Sub_cycle3_sort)
-S4 = Next_Scycle(Sub4,Sub_cycle4_MaDeg)
-print'Len S3', len(S3)
-print'S3', S3
-print'Len S4', len(S4)
-print'S4', S4
+S3_S2 = Next_Scycle_S2(Sub3, Sub_cycle3_sort)
+S3_S2_Sorted = sorted(S3_S2)
+S3_S2_interintra = interintra(S3_S2, S3_S2_Sorted)
+print'S3_S2', S3_S2
+print'Len S3_S2', len(S3_S2)
+print'Dif_Den_S3_S2', S3_S2_interintra
+# for o in S3_S2:
+#     print'o', o
+# print'S3_S2', S3_S2
+#S4_S2 = Next_Scycle_S2(Sub4,Sub_cycle4_MaDeg)
+#print'Len S4', len(S4_S2)
+#print'S4', S4_S2

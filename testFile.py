@@ -82,7 +82,6 @@ for h in sorted(Sort_cycles_Nbegin):
     count = len(cycles)-1
     for i in range(count):
         print '-------------------------------------------------'
-
         print 'Len i', i
         Start_Scycle = set(h)
         if Start_Scycle not in Another_cluster:

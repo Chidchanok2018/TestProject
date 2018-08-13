@@ -128,34 +128,6 @@ def interintra(A_Sub_N2, AN_Sub_N2):
                 Keep.append(Next_Scycle)
         return Cluster
 
-
-def S3N2interCut(Re_S3N2_interintra, Compare_Sub):
-    for o in Re_S3N2_interintra:
-        Scycle_same2 = []
-        count = len(Compare_Sub) - 1
-        for o1 in range(count):
-            print'--------Cut_Scycle-------------'
-            Start_Scycle = set(o)
-            print'StartScycle', Start_Scycle
-            Next_Scycle = set(Compare_Sub[o1 + 1])
-            print'NextScycle', Next_Scycle
-            a = Start_Scycle & Next_Scycle  # เอาที่เหมือน
-            print'StartAndNext', a
-            if len(a) >= 1.0:
-                if Next_Scycle not in Re_S3N2_interintra:
-                    Merge_Sub = Start_Scycle | Next_Scycle
-                    Scycle_same2.append(Next_Scycle)
-            if a == set([]):
-                print'[]'
-        return Scycle_same2
-
-# def interintra2(Re_S3N2_interintra, Compare_S3N2_Cut):
-#     for o in Compare_S3N2_Cut:
-#         count = len(Compare_S3N2_Cut) - 1
-#         for o1 in range(count + 1):
-#             print'--------Re interintra All Sub-------------'
-#             Start_Scycle = Re_S3N2_interintra
-
 def MeargeSub(Start, Compare):
     for o in Start:
         Mearge = []
@@ -172,6 +144,32 @@ def MeargeSub(Start, Compare):
             print'StartAndNext', Mearge
         return Mearge
 
+def S3N2interCut(Re_S3N2_interintra, Compare_Sub, Compare2):
+    for o in Re_S3N2_interintra:
+        Scycle_same2 = []
+        count = len(Compare_Sub) - 1
+        for o1 in range(count):
+            print'--------Cut_Scycle-------------'
+            Start_Scycle = Re_S3N2_interintra
+            print'StartScycle', Start_Scycle
+            Next_Scycle = set(Compare_Sub[o1 + 1])
+            print'NextScycle', Next_Scycle
+            a = Start_Scycle & Next_Scycle  # เอาที่เหมือน
+            print'StartAndNext', a
+            if len(a) >= 1.0:
+                if Next_Scycle not in Compare2:
+                    Merge_Sub = Start_Scycle | Next_Scycle
+                    Scycle_same2.append(Next_Scycle)
+            if a == set([]):
+                print'[]'
+        return Scycle_same2
+
+# def interintra2(Re_S3N2_interintra, Compare_S3N2_Cut):
+#     for o in Compare_S3N2_Cut:
+#         count = len(Compare_S3N2_Cut) - 1
+#         for o1 in range(count + 1):
+#             print'--------Re interintra All Sub-------------'
+#             Start_Scycle = Re_S3N2_interintra
 
 # --------------Main Program----------------
 S3N2 = Next_Scycle_N2(Sub3, Sub_cycle3_sort)  # เอาเฉพาะที่เหมือนกัน 2 โหนด
@@ -179,7 +177,8 @@ S3N2_Sorted = sorted(S3N2)  # จัดเรียง cycles ที่เหม
 S3N2_interR1 = interintra(S3N2, S3N2_Sorted)  # คำนวน interintra รอบที่ cycles เหมือนกัน 2 โหนด
 S3N2_interR1_Sorted = sorted(S3N2_interR1)  # Sorted เพื่อนำไปเปรียบเทียบก่อนตัด
 S3N2_interR1_MeargeL = MeargeSub(S3N2_interR1, S3N2_interR1_Sorted)
-S3N2_interR1_Cut = S3N2interCut(S3N2_interR1, Sub3)  # ตัดที่ใช้แล้วออกจาก Sub 3
+
+S3N2_interR1_Cut = S3N2interCut(S3N2_interR1_MeargeL, Sub3, S3N2_interR1)  # ตัดที่ใช้แล้วออกจาก Sub 3
 
 
 # --------------Print Result----------------
@@ -187,6 +186,7 @@ print'S3N2', S3N2
 print'Len S3N2 =', len(S3N2)
 print'S3N2_interR1 =', S3N2_interR1
 print'Len S3N2_interR1 =', len(S3N2_interR1)
+print'S3N2_interR1_MeargeL =', S3N2_interR1_MeargeL
 print'S3N2_interR1_Cut =', S3N2_interR1_Cut
 print'Len S3N2_interR1_Cut =', len(S3N2_interR1_Cut)
 

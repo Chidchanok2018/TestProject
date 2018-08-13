@@ -149,73 +149,36 @@ def S3N2interCut(Re_S3N2_interintra, Compare_Sub):
                 print'[]'
         return Scycle_same2
 
+# def interintra2(Re_S3N2_interintra, Compare_S3N2_Cut):
+#     for o in Compare_S3N2_Cut:
+#         count = len(Compare_S3N2_Cut) - 1
+#         for o1 in range(count + 1):
+#             print'--------Re interintra All Sub-------------'
+#             Start_Scycle = Re_S3N2_interintra
 
-def ReinterintraAllSub(Re_S3N2_interintra, Compare_S3N2_Cut):
-    for o in Compare_S3N2_Cut:
-        Cluster = []
-        Keep = []
-        count = len(Compare_S3N2_Cut) - 1
-        for o1 in range(count + 1):
-            print'--------Re interintra All Sub-------------'
-            Start_Scycle = Re_S3N2_interintra
-            if len(Cluster) > 3:
-                Start_Scycle = Cluster
+def MeargeSub(Start, Compare):
+    for o in Start:
+        Mearge = []
+        count = len(Compare) - 1
+        for o1 in range(count):
+            print'--------Cut_Scycle-------------'
+            Start_Scycle = set(o)
+            if len(Mearge) >= 2:
+                Start_Scycle = Start_Scycle | Mearge
             print'StartScycle', Start_Scycle
-            if o1 == count :  # 1
-                Next_Scycle = set(Compare_S3N2_Cut[0])
-            if o1 < count - 1:
-                Next_Scycle = set(Compare_S3N2_Cut[o1 + 1])
+            Next_Scycle = set(Compare[o1 + 1])
             print'NextScycle', Next_Scycle
-            a = Start_Scycle | Next_Scycle
-            F = list(a)
-            G.subgraph(F)
-            if len(a) >= 2:
-                Dif_Den_N2 = 0.00
-                Dif_Den_N1 = 0.00
-                Re_inter4 = 0.00
-                Re_inter5 = 0.00
-                Re_intra5 = 0.00
-                Re_intra4 = 0.00
-                Number_of_Edges_Out = 0.00
-                Source = o1 + 1.00
-                Number_of_Edes_All = float(len(a)) + Source
-                N = float(len(a))
-                N_C = float(len(a))
-                if (N_C * (N - N_C)) <= 0.00:
-                    interN4 = 0.00
-                    Re_inter4 = interN4
-                elif Number_of_Edges_Out <= 0.00:
-                    interN4 = 0.00
-                    Re_inter4 = interN4
-                else:
-                    inter_1 = ((N_C * (N - N_C)))
-                    inter_2 = (Number_of_Edges_Out) / inter_1
-                    Re_inter4 = round(inter_2, 2)
-                print 'inter4', " %+2.2f" % Re_inter4
-                if (N_C * (N - 1) / 2) <= 0.00:
-                    intra4 = 0.00
-                    Re_intra4 = intra4
-                elif Number_of_Edes_All <= 0.00:
-                    intra4 = 0.00
-                    Re_intra4 = intra4
-                else:
-                    intra_1 = (N_C * (N - 1) / 2)
-                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
-                    Re_intra4 = round(intra_2, 2)
-                print 'Re_intra4', " %+2.2f" % Re_intra4
-                Dif_Den_N2 = Re_intra4 - Re_inter4
-                print 'Difference Density =', " %+2.2f" % Dif_Den_N2
-            if Dif_Den_N2 >= 0.15:
-                Cluster = Next_Scycle | a
-            else:
-                Keep.append(Next_Scycle)
-        return Start_Scycle
+            Mearge = Start_Scycle | Next_Scycle  # เอาที่เหมือน
+            print'StartAndNext', Mearge
+        return Mearge
 
 
 # --------------Main Program----------------
 S3N2 = Next_Scycle_N2(Sub3, Sub_cycle3_sort)  # เอาเฉพาะที่เหมือนกัน 2 โหนด
 S3N2_Sorted = sorted(S3N2)  # จัดเรียง cycles ที่เหมือนกัน 2 โหนดใหม่
 S3N2_interR1 = interintra(S3N2, S3N2_Sorted)  # คำนวน interintra รอบที่ cycles เหมือนกัน 2 โหนด
+S3N2_interR1_Sorted = sorted(S3N2_interR1)  # Sorted เพื่อนำไปเปรียบเทียบก่อนตัด
+S3N2_interR1_MeargeL = MeargeSub(S3N2_interR1, S3N2_interR1_Sorted)
 S3N2_interR1_Cut = S3N2interCut(S3N2_interR1, Sub3)  # ตัดที่ใช้แล้วออกจาก Sub 3
 
 

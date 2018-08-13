@@ -129,10 +129,10 @@ def interintra(A_Sub_N2, AN_Sub_N2):
         return Cluster
 
 
-def S3N2interintraCut(Re_S3N2_interintra, Compare_Sub, Compare_S3_N2):
+def S3N2interCut(Re_S3N2_interintra, Compare_Sub):
     for o in Re_S3N2_interintra:
         Scycle_same2 = []
-        count = len(Re_S3N2_interintra) - 1
+        count = len(Compare_Sub) - 1
         for o1 in range(count):
             print'--------Cut_Scycle-------------'
             Start_Scycle = set(o)
@@ -141,8 +141,8 @@ def S3N2interintraCut(Re_S3N2_interintra, Compare_Sub, Compare_S3_N2):
             print'NextScycle', Next_Scycle
             a = Start_Scycle & Next_Scycle  # เอาที่เหมือน
             print'StartAndNext', a
-            if len(a) >= 2.0:
-                if Next_Scycle not in Compare_S3_N2:
+            if len(a) >= 1.0:
+                if Next_Scycle not in Re_S3N2_interintra:
                     Merge_Sub = Start_Scycle | Next_Scycle
                     Scycle_same2.append(Next_Scycle)
             if a == set([]):
@@ -216,8 +216,8 @@ def ReinterintraAllSub(Re_S3N2_interintra, Compare_S3N2_Cut):
 S3N2 = Next_Scycle_N2(Sub3, Sub_cycle3_sort)  # เอาเฉพาะที่เหมือนกัน 2 โหนด
 S3N2_Sorted = sorted(S3N2)  # จัดเรียง cycles ที่เหมือนกัน 2 โหนดใหม่
 S3N2_interR1 = interintra(S3N2, S3N2_Sorted)  # คำนวน interintra รอบที่ cycles เหมือนกัน 2 โหนด
-S3N2_interR1_Cut = S3N2interintraCut(S3N2_interR1, Sub3, S3N2)  # ตัดที่ใช้แล้วออกจาก Sub 3
-S3N2_interR2 = ReinterintraAllSub(S3N2_interR1, S3N2_interR1_Cut)  #  คำนวน inter จากที่ตัดออกมา
+S3N2_interR1_Cut = S3N2interCut(S3N2_interR1, Sub3)  # ตัดที่ใช้แล้วออกจาก Sub 3
+
 
 # --------------Print Result----------------
 print'S3N2', S3N2
@@ -226,5 +226,4 @@ print'S3N2_interR1 =', S3N2_interR1
 print'Len S3N2_interR1 =', len(S3N2_interR1)
 print'S3N2_interR1_Cut =', S3N2_interR1_Cut
 print'Len S3N2_interR1_Cut =', len(S3N2_interR1_Cut)
-print'S3N2_interR2 =', S3N2_interR2
-#print'Len_S3N2_interR2 =', len(S3N2_interR2)
+

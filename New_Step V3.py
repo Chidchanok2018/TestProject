@@ -10,6 +10,7 @@ import pandas as pd
 G = nx.Graph()
 fh = open("C:\Users\Kmutt_Wan\PycharmProjects\simulated_blockmodel_graph_500_nodes_snowball_2.txt", "rb")
 G = read_adjlist(fh)
+
 #-------Original Graph--------#
 Number_of_nodes = len(G.nodes)
 Number_of_Edges = len(G.edges)
@@ -22,12 +23,14 @@ print 'Max Degree of Node', Max_Degree_Show
 Min_Degree = int(min(Node_Degree[1]))
 Min_Degree_Show = int(min(Node_Degree[1]))+1
 print 'Min Degree of Node', Min_Degree_Show
+
 #----Check Highly Connection----------#
 print 'Highly Solution 1 = edge in graph > n / 2'
 if Number_of_Edges >= (Number_of_nodes/2):
     print '= Yes ,', (Number_of_nodes/2)
 else:
     print '= NOT'
+
 #--------เตรียม Sub cycles เ---------------#
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]
 print'Len of Sub3', len(Sub3), 'Cycles'
@@ -36,19 +39,23 @@ print'Len of Sub4', len(Sub4), 'Cycles'
 Sub_cycle3_sort = sorted(Sub3)
 #print'Sub_cycle3_MaDeg', Sub_cycle3_sort
 Sub_cycle4_MaDeg = sorted(Sub4)
+
 #------Definition Function-------------#
-def Next_Scycle_S2(A_Subcycle,AN_Subcycle):
+def Next_Scycle_N2(A_Subcycle,AN_Subcycle):
     Scycle_same2 = []
     for h in A_Subcycle:
         count = len(A_Subcycle) - 1
         for i in range(count):
-            #print '------------------------------'
+            print '------------------------------'
             print 'Len i', i
             Start_Scycle = set(h)
+            print'StartScycle', Start_Scycle
             Next_Scycle = set(AN_Subcycle[i + 1])
-            #print'NextScycle', Next_Scycle
-            a = Start_Scycle & Next_Scycle
-            b = Start_Scycle - Next_Scycle
+            print'NextScycle', Next_Scycle
+            a = Start_Scycle & Next_Scycle #เอาที่เหมือน
+            print'StartAndNext', a
+            #b = Start_Scycle - Next_Scycle #เอาที่ไม่เหมือน
+            #print'StartOrNext', b
             if len(a) >= 2.0:
                 Merge_Sub = Start_Scycle | Next_Scycle
                 Scycle_same2.append(Next_Scycle)
@@ -153,16 +160,35 @@ def interintra(A_Sub_N2,AN_Sub_N2):
                 Keep.append(Next_Scycle)
         return Cluster
 
+def S3N2interintra2(Re_S3N2_interintra,Compare_Sub,Compare_S3_N2):
+    for o in Compare_Sub:
+        Scycle_same2 = []
+        count = len(Compare_Sub) - 1
+        for o1 in range(count):
+            Start_Scycle = Re_S3N2_interintra
+            print'StartScycle', Start_Scycle
+            Next_Scycle = set(Compare_Sub[o1 + 1])
+            print'NextScycle', Next_Scycle
+            a = Start_Scycle & Next_Scycle  # เอาที่เหมือน
+            print'StartAndNext', a
+            if len(a) >= 2.0:
+                if Next_Scycle not in Compare_S3_N2:
+                    Merge_Sub = Start_Scycle | Next_Scycle
+                    Scycle_same2.append(Next_Scycle)
+            if a == set([]):
+                print'[]'
+        return Scycle_same2
 #--------------Main Program----------------
-S3_S2 = Next_Scycle_S2(Sub3, Sub_cycle3_sort)
-S3_S2_Sorted = sorted(S3_S2)
-S3_S2_interintra = interintra(S3_S2, S3_S2_Sorted)
-print'S3_S2', S3_S2
-print'Len S3_S2', len(S3_S2)
-print'Dif_Den_S3_S2', S3_S2_interintra
-# for o in S3_S2:
-#     print'o', o
-# print'S3_S2', S3_S2
-#S4_S2 = Next_Scycle_S2(Sub4,Sub_cycle4_MaDeg)
-#print'Len S4', len(S4_S2)
-#print'S4', S4_S2
+S3_N2 = Next_Scycle_N2(Sub3, Sub_cycle3_sort)
+S3_N2_Sorted = sorted(S3_N2)
+S3_S2_interintra = interintra(S3_N2, S3_N2_Sorted)
+S3N2_inter = S3N2interintra2(S3_S2_interintra,Sub3,S3_N2)
+
+
+
+#--------------Print Result----------------
+print'S3_N2', S3_N2
+print'Len S3_N2 =', len(S3_N2)
+print'S3_N2_interintra =', S3_S2_interintra
+print'S3N2_inter =', S3N2_inter
+print'Len S3N2_inter =', len(S3N2_inter)

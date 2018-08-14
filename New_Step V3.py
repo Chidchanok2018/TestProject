@@ -187,8 +187,9 @@ def interintra2(Start, Compare):
             print'Next_Scycle =', Next_Scycle
             a = Start_Scycle & Next_Scycle
             b = Start_Scycle | Next_Scycle
-            F = list(a)
-            G.subgraph(F)
+            G = nx.Graph()
+            F2 = list(Start_Scycle) + list(Next_Scycle)
+            G.add_cycle(F2)
             if len(a) >= 2:
                 Dif_Den_N2 = 0.00
                 Dif_Den_N1 = 0.00
@@ -199,9 +200,9 @@ def interintra2(Start, Compare):
                 Dif_Den = 0.00
                 Number_of_Edges_Out = 0.00
                 Source = o1 + 6.00
-                Number_of_Edes_All = float(len(b)) + Source
-                N = float(len(b))
-                N_C = float(len(b))
+                Number_of_Edes_All = float(G.edges(F2))
+                N = float(G.nodes(F2))
+                N_C = float(G.nodes(F2))
                 if (N_C * (N - N_C)) <= 0.00:
                     interN4 = 0.00
                     Re_inter4 = interN4
@@ -237,9 +238,9 @@ def interintra2(Start, Compare):
                 Dif_Den = 0.00
                 Number_of_Edges_Out1 = 2.00
                 Source = (o1 * 2) + 4.00
-                Number_of_Edes_All1 = float(len(b)) + Source
-                N1 = float(len(b))
-                N_C1 = float(len(b))
+                Number_of_Edes_All1 = float(len(G.edges(F2)))
+                N1 = float(len(G.nodes(F2)))
+                N_C1 = float(len(G.nodes(F2)))
                 if (N_C1 * (N1 - N_C1)) == 0.0:
                     inter5 = 0.0
                     Re_inter5 = inter5

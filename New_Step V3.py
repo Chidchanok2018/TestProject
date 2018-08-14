@@ -197,7 +197,7 @@ def interintra2(Start, Compare):
                 Re_intra4 = 0.00
                 Dif_Den = 0.00
                 Number_of_Edges_Out = 0.00
-                Source = o1 + 1.00
+                Source = o1 + 6.00
                 Number_of_Edes_All = float(len(b)) + Source
                 N = float(len(b))
                 N_C = float(len(b))
@@ -235,10 +235,11 @@ def interintra2(Start, Compare):
                 Re_intra4 = 0.0
                 Dif_Den = 0.00
                 Number_of_Edges_Out1 = 2.00
-                Number_of_Edes_All1 = float(len(b))
+                Source = (o1 * 2) + 4.00
+                Number_of_Edes_All1 = float(len(b)) + Source
                 N1 = float(len(b))
                 N_C1 = float(len(b))
-                if (N_C1*(N1-N_C1)) == 0.0:
+                if (N_C1 * (N1 - N_C1)) == 0.0:
                     inter5 = 0.0
                     Re_inter5 = inter5
                 elif Number_of_Edges_Out1 <= 0.0:

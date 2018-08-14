@@ -123,7 +123,7 @@ def interintra(Start, Compare):  # หาค่า interintra แบบเหม
                 Dif_Den_N2 = Re_intra4 - Re_inter4
                 print 'Difference Density =', " %+2.2f" % Dif_Den_N2
 
-            if Dif_Den_N2 >= 0.70:
+            if Dif_Den_N2 >= 0.70:  # กำหนดคุณภาพของ Dif
                 Cluster = a
         return Cluster
 
@@ -244,7 +244,7 @@ def interintra2(Start, Compare):  # หาค่า interintra แบบเห�
                 Dif_Den_N1 = Re_intra5 - Re_inter5
                 print 'Difference Density =', " %+2.2f" % Dif_Den_N1
             Dif_Den = Dif_Den_N2 + Dif_Den_N1
-            if Dif_Den >= 0.70:
+            if Dif_Den >= 0.70:  # กำหนดคุณภาพของ Dif
                 Cluster = a
         return Cluster
 
@@ -258,18 +258,27 @@ S3N2_inter_R1 = interintra(S3N2, S3N2_Sorted)  # หาโหนดที่ม�
 # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
 S3N2_R1 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
 # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_Sorted_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+# Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
+S3N2_R2 = Next_SubN2N1(S3N2_inter_R2, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(2) list[set([],[])]
+# interintra2 ต้องการ (list[.,.,.], list[set([],[])])
+S3N2_inter_R3 = interintra2(S3N2_inter_R2, S3N2_R2)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 
 print'--------------Print Detail----------------'
 print'Sub_AroundN2_R1 =', S3N2
-print'Len_Sub_AroundN2_R1 =', len(S3N2)
 print'S3N2_Sorted_inter_R1 =', S3N2_inter_R1
 print'Sub_AroundN2_R2 =', S3N2_R1
-print'Len_Sub_AroundN2_R2 =', len(S3N2_R1)
-print'S3N2_Sorted_inter_R2 =', S3N2_Sorted_inter_R2
+print'S3N2_Sorted_inter_R2 =', S3N2_inter_R2
+print'S3N2_R2 =', S3N2_R2
+print'S3N2_inter_R3 =', S3N2_inter_R3
 
+print'L_Sub_AroundN2_R1 =', len(S3N2)
+print'L_S3N2_Sorted_inter_R1 =', len(S3N2_inter_R1)
+print'L_Sub_AroundN2_R2 =', len(S3N2_R1)
+print'L_S3N2_Sorted_inter_R2 =', len(S3N2_inter_R2)
+print'L_S3N2_R2 =', len(S3N2_R2)
 # --------------Draw Graph-----------------
 G = nx.Graph()
-G.add_cycle(S3N2_Sorted_inter_R2)
+G.add_cycle(S3N2_inter_R3)
 nx.draw(G, with_labels=True)
 plt.show()

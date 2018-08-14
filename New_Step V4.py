@@ -57,7 +57,7 @@ def Next_SubN2(Start, Compare):  # Function หา Sub รอบๆ sub แร�
             print'StartAndNext', a
             # b = Start_Scycle - Next_Scycle #เอาที่ไม่เหมือน
             # print'StartOrNext', b
-            if len(a) >= 2.0:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2
+            if len(a) == 2.0:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2
                 Merge_Sub = Start_Scycle | Next_Scycle  # ให้ Mearge_Sub เท่ากับ Start U Next
                 Scycle_same2.append(Next_Scycle)  # ให้ เพิ่ม Next ใน Scycle_same2
             if Start_Scycle == Next_Scycle:  # ถ้า Start = next
@@ -142,7 +142,7 @@ def Next_SubN2N1(Start, Compare): # หา Sub รอบที่ 2 ที่โ
             Next_Sub = set(Compare[i + 1])  # ให้ Next คือลำดับที่ 1 ของ Compare(set)
             print'NextScycle', Next_Sub
             a = Start_Sub & Next_Sub  # บอกจำนวนที่แตกต่างของ Start,Next
-            if len(a) == 2:
+            if len(a) == 2:  # กำหนดจำนวนโหนดของ Sub ที่จะเอามาต่อ
                 b = Start_Sub | Next_Sub
                 Merge.append(Next_Sub)
             else:
@@ -247,12 +247,17 @@ def interintra2(Start, Compare):  # หาค่า interintra แบบเห�
             if Dif_Den >= 0.70:
                 Cluster = a
         return Cluster
+
+
 # --------------Main Program----------------
 S3N2 = Next_SubN2(Sub3, Sub_cycle3_sort) # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
 S3N2_Sorted = sorted(S3N2)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
-S3N2_inter_R1 = interintra(S3N2, S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
-S3N2_R1 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
 
+# interintra ต้องการ (list[set([],[])], list[set([],[])])
+S3N2_inter_R1 = interintra(S3N2, S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+# Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
+S3N2_R1 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
+# interintra2 ต้องการ (list[.,.,.], list[set([],[])])
 S3N2_Sorted_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 
 print'--------------Print Detail----------------'
@@ -261,6 +266,7 @@ print'Len_Sub_AroundN2_R1 =', len(S3N2)
 print'S3N2_Sorted_inter_R1 =', S3N2_inter_R1
 print'Sub_AroundN2_R2 =', S3N2_R1
 print'Len_Sub_AroundN2_R2 =', len(S3N2_R1)
+print'S3N2_Sorted_inter_R2 =', S3N2_Sorted_inter_R2
 
 # --------------Draw Graph-----------------
 G = nx.Graph()

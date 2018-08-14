@@ -81,8 +81,9 @@ def interintra(A_Sub_N2, AN_Sub_N2):
             Next_Scycle = set(AN_Sub_N2[o1 + 1])
             print'Next_Scycle =', Next_Scycle
             a = Start_Scycle | Next_Scycle
-            F = list(a)
-            G.subgraph(F)
+            G = nx.Graph()
+            F1 = list(Start_Scycle) + list(Next_Scycle)
+            G.add_cycle(F1)
             if len(a) >= 2:
                 Dif_Den_N2 = 0.00
                 Dif_Den_N1 = 0.00
@@ -92,9 +93,9 @@ def interintra(A_Sub_N2, AN_Sub_N2):
                 Re_intra4 = 0.00
                 Number_of_Edges_Out = 0.00
                 Source = o1 + 1.00
-                Number_of_Edes_All = float(len(a)) + Source
-                N = float(len(a))
-                N_C = float(len(a))
+                Number_of_Edes_All = float(len(G.edges(F1)))
+                N = float(len(G.nodes(F1)))
+                N_C = float(len(G.nodes(F1)))
                 if (N_C * (N - N_C)) <= 0.00:
                     interN4 = 0.00
                     Re_inter4 = interN4
@@ -273,15 +274,17 @@ def interintra2(Start, Compare):
             else:
                 Keep.append(Next_Scycle)
         return Cluster
+
+
 # --------------Main Program----------------
 S3N2 = Next_Scycle_N2(Sub3, Sub_cycle3_sort)  # เอาเฉพาะที่เหมือนกัน 2 โหนด
 S3N2_Sorted = sorted(S3N2)  # จัดเรียง cycles ที่เหมือนกัน 2 โหนดใหม่
 S3N2_interR1 = interintra(S3N2, S3N2_Sorted)  # คำนวน interintra รอบที่ cycles เหมือนกัน 2 โหนด
 S3N2_interR1_Sorted = sorted(S3N2_interR1)  # Sorted เพื่อนำไปเปรียบเทียบก่อนตัด
-S3N2_interR1_MeargeL = MeargeSub(S3N2_interR1, S3N2_interR1_Sorted)
-S3N2_interR1_Cut = S3N2interCut(S3N2_interR1_MeargeL, Sub3, S3N2_interR1)  # ตัดที่ใช้แล้วออกจาก Sub 3
+S3N2_interR1_MergeL = MeargeSub(S3N2_interR1, S3N2_interR1_Sorted)
+S3N2_interR1_Cut = S3N2interCut(S3N2_interR1_MergeL, Sub3, S3N2_interR1)  # ตัดที่ใช้แล้วออกจาก Sub 3
 
-S3N2_interR2 = interintra2(S3N2_interR1_MeargeL, S3N2_interR1_Cut)
+S3N2_interR2 = interintra2(S3N2_interR1_MergeL, S3N2_interR1_Cut)
 
 # --------------Print Result----------------
 print'----Result------------------------'
@@ -289,7 +292,7 @@ print'S3N2', S3N2
 print'Len S3N2 =', len(S3N2)
 print'S3N2_interR1 =', S3N2_interR1
 print'Len S3N2_interR1 =', len(S3N2_interR1)
-print'S3N2_interR1_MeargeL =', S3N2_interR1_MeargeL
+print'S3N2_interR1_MeargeL =', S3N2_interR1_MergeL
 print'S3N2_interR1_Cut =', S3N2_interR1_Cut
 print'Len S3N2_interR1_Cut =', len(S3N2_interR1_Cut)
 print'S3N2_interR2 =', S3N2_interR2

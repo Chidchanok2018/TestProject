@@ -274,12 +274,17 @@ def CutSub(Start, Compare):  # เอา Start ลบออกจาก Compare
                 Keep.append(Next_Sub)
         return Scycle_same2
 
-def FindNodesBetweenCluster(ClusterS, ClusterC, All_Sub):
+def FindNodesBetweenCluster(ClusterS, ClusterC, ClusterC1):
     G = nx.Graph()
-    ClusterA = ClusterS + ClusterC
-    G.add_cycle(ClusterA)
-    draw_networkx(G)
-    plt.savefig('V4_GC1C2_3')
+    ClusterA = ClusterS + ClusterC + ClusterC1  # กราฟรวมมีกิ่งเชื่อม
+    #G.add_cycle(ClusterS)  # กราฟแยก ClusterS
+    #G.add_cycle(ClusterC)  # กราฟแยก ClusterC
+    #G.add_cycle(ClusterC1)  # กราฟแยก ClusterC1
+    G.add_cycle(ClusterA)  # กราฟรวมกันมีกิ่งเชื่อมกัน
+    #a = G.edges(ClusterS)
+    #b = G.edges(ClusterC)
+    draw_networkx(G, edge_color='b')
+    plt.savefig('V4_GC1C2C3_A2')
     plt.figure(1)
     plt.show()
     return ClusterA
@@ -359,14 +364,32 @@ if len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub รอบๆแ�
     if len(Rest_S3N2_R2) == 0:
         Cluster2 = Rest_S3N2_inter_R1
         #print'Cluster2 =', Cluster2
-#--------------Measure of Cluster--------------
-print'---Coverage Matric---'
 
+        Merge_Cluster = Cluster1 + Cluster2
+
+        Rest1_S3N2_R0 = CutSub(Merge_Cluster, Sub3)  # ผลลัพท์ cycle ที่เหลือ, list[set([],[])]
+        #print'Rest_S3N2 =', Rest1_S3N2_R0
+        print'LRest1_S3N2_R0 =', len(Rest1_S3N2_R0)
+        # ------------Round 0----------------------------------------------
+        Rest1_S3N2_Sorted = sorted(Rest1_S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
+        Rest1_S3N2_inter_R0 = interintra(Rest1_S3N2_R0, Rest1_S3N2_Sorted)
+
+        # ------------Round 1----------------------------------------------
+        Rest1_S3N2_R1 = Next_SubN2N1(Rest1_S3N2_inter_R0, Rest1_S3N2_Sorted)  # หาโหนดรอบๆใน sub ที่เหลือ
+        Rest1_S3N2_inter_R1 = interintra2(Rest1_S3N2_inter_R0, Rest1_S3N2_R1)
+        print'LRest1_S3N2_R1 =', len(Rest1_S3N2_R1)
+        if len(Rest1_S3N2_R1) == 0:
+            Cluster3 = Rest1_S3N2_inter_R0
+
+
+#--------------Measure of Cluster--------------
+# print'---Coverage Matric---'
 Cluster1_M = Cluster1
-print'Cluster1_M =', Cluster1_M
+# print'Cluster1_M =', Cluster1_M
 Cluster2_M = Cluster2
-print'Cluster2_M =', Cluster2_M
-Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M, Sub3)
+# print'Cluster2_M =', Cluster2_M
+Cluster3_M = Cluster3
+Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M, Cluster3_M)
 # --------------Draw Graph-----------------
 G = nx.Graph()
 #G.add_cycle(Cluster1)

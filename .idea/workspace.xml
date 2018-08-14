@@ -24,7 +24,7 @@
     <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1534049832021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1534249909574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4.coverage" NAME="New_Step V4 Coverage Results" MODIFIED="1534276166248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4.coverage" NAME="New_Step V4 Coverage Results" MODIFIED="1534281297962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="107775073">
@@ -41,12 +41,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="16664" />
+          <entry key="py" value="17449" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="16664" />
+          <entry key="Python" value="17449" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="160" column="42" selection-start-line="160" selection-start-column="31" selection-end-line="160" selection-end-column="42" />
+            <state relative-caret-position="228">
+              <caret line="226" selection-start-line="226" selection-end-line="226" selection-end-column="58" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <marker date="1533987549510" expanded="true" signature="2626:2627" ph="..." />
@@ -96,10 +96,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/New_Step V4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="346" column="1" selection-start-line="346" selection-start-column="1" selection-end-line="346" selection-end-column="1" />
+            <state relative-caret-position="5430">
+              <caret line="281" column="15" selection-start-line="281" selection-start-column="15" selection-end-line="281" selection-end-column="15" />
               <folding>
-                <marker date="1534276166195" expanded="true" signature="11811:12584" ph="..." />
+                <marker date="1534282021379" expanded="true" signature="12632:12770" ph="..." />
               </folding>
             </state>
           </provider>
@@ -108,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="-40">
               <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
@@ -372,8 +372,8 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49122807" weight="0.19213313" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.32142857" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.38605443" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.32142857" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.38605443" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3282313" />
@@ -510,23 +510,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/New_Step V4.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="439" />
+          <line>276</line>
+          <option name="timeStamp" value="452" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/New_Step V4.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="440" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/New_Step V4.py</url>
-          <line>278</line>
-          <option name="timeStamp" value="441" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/New_Step V4.py</url>
-          <line>281</line>
-          <option name="timeStamp" value="442" />
+          <line>283</line>
+          <option name="timeStamp" value="454" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -545,16 +535,6 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="a" language="Python" />
-        <watch expression="Start_Scycle" language="Python" />
-        <watch expression="Next_Sub" language="Python" />
-        <watch expression="Keep" language="Python" />
-        <watch expression="Sub_cycle3_sort" language="Python" />
-        <watch expression="Sub3" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -566,42 +546,22 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>Sub3</expression-string>
+        <expression-string>Scycle_same2</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Sub_cycle3_sort</expression-string>
+        <expression-string>Start_Sub</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>S3N2_inter_R1</expression-string>
+        <expression-string>S3N2_inter_R2</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Keep</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Next_Sub</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Start_Scycle</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>a</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>S3N2_Sorted</expression-string>
+        <expression-string>Rest_S3N2_R0</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -611,7 +571,22 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Start_Sub</expression-string>
+        <expression-string>A_S3N2</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Sub3</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Rest_S3N2</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Sub_cycle3_sort</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -781,34 +756,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testFile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="160" column="42" selection-start-line="160" selection-start-column="31" selection-end-line="160" selection-end-column="42" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-            <marker date="1533987549510" expanded="true" signature="2626:2627" ph="..." />
-            <marker date="1533987549510" expanded="true" signature="8183:8184" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Rewrite_21062561.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -837,12 +790,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testFile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="226" selection-start-line="226" selection-end-line="226" selection-end-column="58" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <marker date="1533987549510" expanded="true" signature="2626:2627" ph="..." />
+            <marker date="1533987549510" expanded="true" signature="8183:8184" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/New_Step V4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="346" column="1" selection-start-line="346" selection-start-column="1" selection-end-line="346" selection-end-column="1" />
+        <state relative-caret-position="5430">
+          <caret line="281" column="15" selection-start-line="281" selection-start-column="15" selection-end-line="281" selection-end-column="15" />
           <folding>
-            <marker date="1534276166195" expanded="true" signature="11811:12584" ph="..." />
+            <marker date="1534282021379" expanded="true" signature="12632:12770" ph="..." />
           </folding>
         </state>
       </provider>

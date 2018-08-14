@@ -274,75 +274,101 @@ def CutSub(Start, Compare):  # เอา Start ลบออกจาก Compare
                 Keep.append(Next_Sub)
         return Scycle_same2
 
+def FindNodesBetweenCluster(ClusterS, ClusterC):
+    ClusterS = set(ClusterS)
+    ClusterC = set(ClusterC)
+    a = ClusterS & ClusterC
+    if len(a) == 1:
+        print a
+
+    return a
+
 # --------------Result Function----------------
 # -------------- รอบที่ 1 -----------------------
-S3N2 = Next_SubN2(Sub3, Sub_cycle3_sort) # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
-S3N2_Sorted = sorted(S3N2)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
+S3N2_R0 = Next_SubN2(Sub3, Sub_cycle3_sort) # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
+S3N2_Sorted = sorted(S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
 # interintra ต้องการ (list[set([],[])], list[set([],[])])
-S3N2_inter_R1 = interintra(S3N2, S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_inter_R0 = interintra(S3N2_R0, S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 # -------------- รอบที่ 2 -----------------------
 # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_R1 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
+S3N2_R1 = Next_SubN2N1(S3N2_inter_R0, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
 # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_inter_R1 = interintra2(S3N2_inter_R0, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 # -------------- รอบที่ 3 -----------------------
 # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_R2 = Next_SubN2N1(S3N2_inter_R2, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(2) list[set([],[])]
+S3N2_R2 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(2) list[set([],[])]
 # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_inter_R3 = interintra2(S3N2_inter_R2, S3N2_R2)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R2)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 # -------------- รอบที่ 4 -----------------------
 # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_R3 = Next_SubN2N1(S3N2_inter_R3, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(3) list[set([],[])]
+S3N2_R3 = Next_SubN2N1(S3N2_inter_R2, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(3) list[set([],[])]
 # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-S3N2_inter_R4 = interintra2(S3N2_inter_R3, S3N2_R3)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_inter_R3 = interintra2(S3N2_inter_R2, S3N2_R3)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 
 print'--------------Cluster 1----------------'
-# print'Sub_AroundN2_R1 =', S3N2
-# print'S3N2_inter_R1 =', S3N2_inter_R1
-# print'Sub_AroundN2_R2 =', S3N2_R1
-# print'S3N2_inter_R2 =', S3N2_inter_R2
-# print'S3N2_R2 =', S3N2_R2
-# print'S3N2_inter_R3 =', S3N2_inter_R3
-# print'S3N2_R3 =', S3N2_R3
-# print'S3N2_inter_R3 =', S3N2_inter_R4
-print'--------------นับจำนวน--------------------'
+print'Sub_S3N2_R0 =', S3N2_R0
+print'S3N2_inter_R0 =', S3N2_inter_R0
+print'Sub_S3N2_R1 =', S3N2_R1
+print'S3N2_inter_R1 =', S3N2_inter_R1
+print'S3N2_S3N2_R2 =', S3N2_R2
+print'S3N2_inter_R2 =', S3N2_inter_R2
+print'S3N2_S3N2_R3 =', S3N2_R3  # Snow2 []
+print'S3N2_inter_R3 =', S3N2_inter_R3  # Snow 2 None
+
 print'Len of Sub3', len(Sub3), 'Cycles'
-print'L_Sub_AroundN2_R1 =', len(S3N2)
-print'L_S3N2_inter_R1 =', len(S3N2_inter_R1)
-print'L_Sub_AroundN2_R2 =', len(S3N2_R1)
-print'L_S3N2_inter_R2 =', len(S3N2_inter_R2)
+print'L_S3N2_R0 =', len(S3N2_R0)
+#print'L_S3N2_inter_R0 =', len(S3N2_inter_R0)
+print'L_S3N2_R1 =', len(S3N2_R1)
+#print'L_S3N2_inter_R1 =', len(S3N2_inter_R1)
 print'L_S3N2_R2 =', len(S3N2_R2)
-print'L_S3N2_inter_R3 =', len(S3N2_inter_R3)
-print'L_S3N3_R2 =', len(S3N2_R3)
-#print'L_S3N3_inter_R3 =', len(S3N2_inter_R4)
+#print'L_S3N2_inter_R2 =', len(S3N2_inter_R2)
+print'L_S3N3_R3 =', len(S3N2_R3)
+#print'L_S3N3_inter_R3 =', len(S3N2_inter_R3)
 
 #--------------Main Program--------------------
 print'------------------New Cluster------------------------'
-if S3N2_inter_R4 == []:  # เมื่อคำนวน inter รอบ 3 แล้ว ไม่มี cycle เหลือรอดจากการคำนวน แปลว่าตัวที่เลือกออกมา S3N2_R3 ไม่มี
-    # ต้องเลือก S3N2_R3 ใหม่ ต้องเอา (S3N2_inter_R3 - Sub3), (list[.,.,.] - list[set([],[])])
-    # ถ้ารอบ 4 หาย ต้องเอารอบ 3 มาคำนวนใหม่
-    Rest_S3N2 = CutSub(S3N2_inter_R3, Sub3)  # ผลลัพท์ cycle ที่เหลือ, list[set([],[])]
-    print'Rest_S3N2 =', len(Rest_S3N2)
+if len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
+    Cluster1 = S3N2_inter_R2  # list[.,.,.] ไว้สร้างกราฟ
+    #print'Cluster1 =', Cluster1
+
+    Rest_S3N2_R0 = CutSub(S3N2_inter_R2, Sub3)  # ผลลัพท์ cycle ที่เหลือ, list[set([],[])]
+    #print'Rest_S3N2 =', Rest_S3N2
+    #print'LRest_S3N2_R0 =', len(Rest_S3N2_R0)
     # ได้ที่เหลือแล้ว เอาไปคำนวนหาโหนดเหมือนกัน 2 โหนดต่อ
-    A_S3N2 = Next_SubN2(Sub3, Rest_S3N2) # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
-    print'A_S3N2 =', len(A_S3N2)
-    A_S3N2_Sorted = sorted(A_S3N2)
-    # ได้โหนดรอบๆ เหมือนกัน 2 โหนดแล้ว เอาไปคำนวน interintra
-    A_S3N2_inter_R1 = interintra(A_S3N2, A_S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
-    print'A_S3N2_inter_R1 =', len(A_S3N2_inter_R1)
-    # คำนวน interintra แล้ว เอาไปหาโหนดรอบๆต่อ เหมือนแค่ 2 โหนด
+    Rest_S3N2_Sorted = sorted(Rest_S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
+    # interintra ต้องการ (list[set([],[])], list[set([],[])])
+    Rest_S3N2_inter_R0 = interintra(Rest_S3N2_R0, Rest_S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+    #print'Rest_S3N2_inter_R0 =', Rest_S3N2_inter_R0
+    #print'LRest_S3N2_inter_R0 =', len(Rest_S3N2_inter_R0)
+
+    #------------Round 1----------------------------------------------
     # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-    A_S3N2_R2 = Next_SubN2N1(A_S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
-    print'A_S3N2_inter_R2 =', len(A_S3N2_R2)
-    # ได้โหนดใกล้เคียงแล้ว เอาไปคำนวน interintra
+    Rest_S3N2_R1 = Next_SubN2N1(Rest_S3N2_inter_R0, Rest_S3N2_Sorted)  # หาโหนดรอบๆใน sub ที่เหลือ
+    #print'Rest_S3N2_R1 =', Rest_S3N2_R1
+    #print'LRest_S3N2_R1 =', len(Rest_S3N2_R1)
     # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-    A_S3N2_inter_R2 = interintra2(A_S3N2_inter_R1, A_S3N2_R2)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
-    print'A_S3N2_inter_R2 =', len(A_S3N2_inter_R2)
+    Rest_S3N2_inter_R1 = interintra2(Rest_S3N2_inter_R0, Rest_S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+    #print'Rest_S3N2_inter_R1 =', Rest_S3N2_inter_R1
 
+    # ------------Round 2----------------------------------------------
+    # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
+    Rest_S3N2_R2 = Next_SubN2N1(Rest_S3N2_inter_R1, Rest_S3N2_R1)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(2) list[set([],[])]
+    #print'Rest_S3N2_R2 =', Rest_S3N2_R2
+    #print'LRest_S3N2_R2 =', len(Rest_S3N2_R2)
+    if len(Rest_S3N2_R2) == 0:
+        Cluster2 = Rest_S3N2_inter_R1
+        #print'Cluster2 =', Cluster2
 #--------------Measure of Cluster--------------
-
-# --------------Draw Graph-----------------
+print'---Coverage Matric---'
 G = nx.Graph()
-#G.add_cycle(S3N2_inter_R4)
+Cluster1_M = Cluster1
+print'Cluster1_M =', Cluster1_M
+Cluster2_M = Cluster2
+print'Cluster2_M =', Cluster2_M
+Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M)
+# --------------Draw Graph-----------------
+
+#G.add_cycle(Cluster1)
 #nx.draw(G, with_labels=True)
+# draw_networkx(G)  #When open will happen multiple graph#
 plt.show()

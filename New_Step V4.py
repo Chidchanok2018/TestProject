@@ -274,14 +274,15 @@ def CutSub(Start, Compare):  # เอา Start ลบออกจาก Compare
                 Keep.append(Next_Sub)
         return Scycle_same2
 
-def FindNodesBetweenCluster(ClusterS, ClusterC):
-    ClusterS = set(ClusterS)
-    ClusterC = set(ClusterC)
-    a = ClusterS & ClusterC
-    if len(a) == 1:
-        print a
-
-    return a
+def FindNodesBetweenCluster(ClusterS, ClusterC, All_Sub):
+    G = nx.Graph()
+    ClusterA = ClusterS + ClusterC
+    G.add_cycle(ClusterA)
+    draw_networkx(G)
+    plt.savefig('V4_GC1C2_3')
+    plt.figure(1)
+    plt.show()
+    return ClusterA
 
 # --------------Result Function----------------
 # -------------- รอบที่ 1 -----------------------
@@ -360,14 +361,14 @@ if len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub รอบๆแ�
         #print'Cluster2 =', Cluster2
 #--------------Measure of Cluster--------------
 print'---Coverage Matric---'
-G = nx.Graph()
+
 Cluster1_M = Cluster1
 print'Cluster1_M =', Cluster1_M
 Cluster2_M = Cluster2
 print'Cluster2_M =', Cluster2_M
-Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M)
+Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M, Sub3)
 # --------------Draw Graph-----------------
-
+G = nx.Graph()
 #G.add_cycle(Cluster1)
 #nx.draw(G, with_labels=True)
 # draw_networkx(G)  #When open will happen multiple graph#

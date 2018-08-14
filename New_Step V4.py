@@ -35,11 +35,11 @@ else:
 # --------เตรียม Sub cycles เ---------------#
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]  # หา Sub = 3 โหนดในกราฟ List
 print'Len of Sub3', len(Sub3), 'Cycles'  # พิมพ์จำนวน cycle3 ในกราฟ
-Sub4 = [c for c in nx.cycle_basis(G) if len(c) == 4]  # หา Sub = 4 โหนดในกราฟ List
-print'Len of Sub4', len(Sub4), 'Cycles'  # พิมพ์จำนวน cycle4 ในกราฟ
+#Sub4 = [c for c in nx.cycle_basis(G) if len(c) == 4]  # หา Sub = 4 โหนดในกราฟ List
+#print'Len of Sub4', len(Sub4), 'Cycles'  # พิมพ์จำนวน cycle4 ในกราฟ
 Sub_cycle3_sort = sorted(Sub3)  #  เรียง Sub3 ใหม่จากน้อยไปมาก
-# print'Sub_cycle3_MaDeg', Sub_cycle3_sort  # พิมพ์ Sub3
-Sub_cycle4_MaDeg = sorted(Sub4)  # เรียง Sub4 ใหม่จากน้อยไปมาก
+print'Sub_cycle3_MaDeg', Sub_cycle3_sort  # พิมพ์ Sub3
+#Sub_cycle4_MaDeg = sorted(Sub4)  # เรียง Sub4 ใหม่จากน้อยไปมาก
 
 # ------Definition Function-------------#
 def Next_SubN2(Start, Compare):  # Function หา Sub รอบๆ sub แรกที่เหมือนกัน 2 โหนด
@@ -66,18 +66,22 @@ def Next_SubN2(Start, Compare):  # Function หา Sub รอบๆ sub แร�
                 print'[]'  # ให้พิมพ์ []
         return Scycle_same2  # ส่งค่า Scycle_same2 [set([],[],...)]
 
-def interintra(Start, Compare):  # Function หาค่า interintra ของ Sub ที่เอามาต่อแบบ 2 โหนดเท่านั้น
+def interintra(Start, Compare):  # หาค่า interintra แบบเหมือนกัน 2 โหนด
+    # Start ใส่ list[set([],[])], Next ใส่ list[set([],[])]
     for o in Start:  # แต่ละตัวใน Start (ตัวตั้งต้น)
         Cluster = []  # กำหนด type ให้ Cluster [list]
-        Keep = []  # กำหนด type ให้ Keep [list]
         count = len(Start) - 1  # นับจำนวนแต่ละตัวใน Start
-        for o1 in range(count):  # แต่ละตัวใน Start จำนวนรอบเท่ากับ count
+        for o1 in range(count + 1):  # แต่ละตัวใน Start จำนวนรอบเท่ากับ count
             print'-----------inter-intra----------------'
+            print'Round =', o1
             G = nx.Graph()
-            Start_Sub = list(o)  # Start ให้เป็น list
-            if len(Cluster) >= 3:
-                Start_Sub = a
-            Next_Sub = list(Compare[o1 + 1])
+            Start_Sub = list(o)  # เปลี่ยน Start ให้เป็น list
+            if len(Cluster) >= 3:  # ถ้า Start_sub มากกว่าเท่ากับ 3 โหนด
+                Start_Sub = a  # ให้ Start_Sub = ผลลัพท์ที่รวมแล้ว
+            if o1 == count:
+                Next_Sub = list(Compare[0])
+            if o1 < count:
+                Next_Sub = list(Compare[o1 + 1])  # เปลี่ยน Next ให้เป็น list
             a = Start_Sub + Next_Sub
             G.add_cycle(a)
             p = len(G.degree(a))
@@ -118,22 +122,148 @@ def interintra(Start, Compare):  # Function หาค่า interintra ของ
                 print 'Re_intra4', " %+2.2f" % Re_intra4
                 Dif_Den_N2 = Re_intra4 - Re_inter4
                 print 'Difference Density =', " %+2.2f" % Dif_Den_N2
-            if Dif_Den_N2 >= 0.50:
+
+            if Dif_Den_N2 >= 0.70:
                 Cluster = a
         return Cluster
 
-# --------------Main Program----------------
-S3N2 = Next_SubN2(Sub3, Sub_cycle3_sort) # [set([u'11', u'65', u'79'])
-S3N2_Sorted = sorted(S3N2)
-S3N2_Sorted_inter = interintra(S3N2, S3N2_Sorted)
+def Next_SubN2N1(Start, Compare): # หา Sub รอบที่ 2 ที่โหนดเหมือน 2
+    # Start ใส่ list[.,.,.], Compare ใส่ list[set([],[])]
+    Merge = []  # กำหนด type ให้ตัว Return
+    for h in Compare:  # แต่ละตัวใน Compare เพราะเป็นก้อนๆ
+        count = len(Compare) - 1  # จำนวน Start-1
+        for i in range(count):  # จำนวนรอบใน count
+            print '-------Next_Scycle---------------'
+            print 'Len Round =', i
+            Start_Sub = set(Start)  # ให้ Start เป็น set
+            print'StartScycle', Start_Sub
+            if len(Merge) >= 1:
+                Start_Sub = Start_Sub | b  # รวมไม่เอาที่ซ้ำ (set)
+            Next_Sub = set(Compare[i + 1])  # ให้ Next คือลำดับที่ 1 ของ Compare(set)
+            print'NextScycle', Next_Sub
+            a = Start_Sub & Next_Sub  # บอกจำนวนที่แตกต่างของ Start,Next
+            if len(a) == 2:
+                b = Start_Sub | Next_Sub
+                Merge.append(Next_Sub)
+            else:
+                print'No Sub'
+        return Merge
 
-# --------------Print Detail----------------
-print'Sub_AroundN2 =', S3N2
-print'Len_Sub_AroundN2 =', len(S3N2)
-print'S3N2_Sorted_inter =', S3N2_Sorted_inter
+def interintra2(Start, Compare):  # หาค่า interintra แบบเหมือนกัน 2 โหนด
+    # Start ใส่ list[.,.,.], Next ใส่ list[set([],[])]
+    for o in Compare:  # แต่ละตัวใน Compare (ตัวตั้งต้น)
+        Cluster = []  # กำหนด type ให้ Cluster [list]
+        count = len(Compare) - 1  # นับจำนวนแต่ละตัวใน Compare
+        for o1 in range(count + 1):  # หมนุนรอบ Compare
+            print'-----------inter-intra----------------'
+            print'Round =', o1
+            G = nx.Graph()
+            Start_Sub = Start  # list[.,.,.] ตั้งต้น
+            if len(Cluster) >= 3:  # ถ้า Start_sub มากกว่าเท่ากับ 3 โหนด
+                Start_Sub = a  # ให้ Start_Sub = ผลลัพท์ที่รวมแล้ว
+            if o1 == count:
+                Next_Sub = list(Compare[0])
+            if o1 < count:
+                Next_Sub = list(Compare[o1 + 1])  # เปลี่ยน Next ให้เป็น list
+            a = Start_Sub + Next_Sub
+            G.add_cycle(a)
+            p = len(G.degree(a))
+            b = set(Start_Sub) & set(Next_Sub)
+            if len(b) >= 2:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2
+                Dif_Den_N2 = 0.00  # ให้หมดนี่เท่ากับ 0.00
+                Dif_Den_N1 = 0.00
+                Re_inter4 = 0.00
+                Re_inter5 = 0.00
+                Re_intra5 = 0.00
+                Re_intra4 = 0.00
+                Number_of_Edges_Out = 0.00
+                Source = o1 + 1.00  # จำนวนรอบหมุนเพิ่ม 1
+                Number_of_Edes_All = float(len(G.edges(a)))  # จำนวนกิ่งทั้งหมดของ F1
+                N = float(len(G.nodes(a)))
+                N_C = float(len(G.nodes(a)))
+                if (N_C * (N - N_C)) <= 0.00:
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)
+                print 'inter4', " %+2.2f" % Re_inter4
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1) / 2)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                print 'Re_intra4', " %+2.2f" % Re_intra4
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                print 'Difference Density =', " %+2.2f" % Dif_Den_N2
+
+            if len(b) < 2:
+                Dif_Den_N2 = 0.0
+                Dif_Den_N1 = 0.0
+                Re_inter4 = 0.0
+                Re_inter5 = 0.0
+                Re_intra5 = 0.0
+                Re_intra4 = 0.0
+                Dif_Den = 0.00
+                Number_of_Edges_Out1 = 2.00
+                Source = (o1 * 2) + 4.00
+                Number_of_Edes_All1 = float(len(G.edges(a)))
+                N1 = float(len(G.nodes(a)))
+                N_C1 = float(len(G.nodes(a)))
+                if (N_C1 * (N1 - N_C1)) == 0.0:
+                    inter5 = 0.0
+                    Re_inter5 = inter5
+                elif Number_of_Edges_Out1 <= 0.0:
+                    inter5 = 0.0
+                    Re_inter5 = inter5
+                else:
+                    inter_1X = ((N_C1*(N1-N_C1)))
+                    inter_2X = (Number_of_Edges_Out1) / inter_1X
+                    Re_inter5 = round(inter_2X, 2)
+                print 'Re_inter', Re_inter5
+                if (N_C1 * (N1 - 1) / 2) <= 0.0:
+                    intra5 = 0.0
+                    Re_intra5 = intra5
+                elif Number_of_Edes_All1 <= 0.0:
+                    intra5 = 0.0
+                    Re_intra5 = intra5
+                else:
+                    intra_1X = (N_C1 * (N1 - 1) / 2)
+                    intra_2X = (Number_of_Edes_All1) / (N_C1 * (N_C1 - 1) / 2)
+                    Re_intra5 = round(intra_2X, 2)
+                print 'Re_intra', " %+2.2f" % Re_intra5
+                Dif_Den_N1 = Re_intra5 - Re_inter5
+                print 'Difference Density =', " %+2.2f" % Dif_Den_N1
+            Dif_Den = Dif_Den_N2 + Dif_Den_N1
+            if Dif_Den >= 0.70:
+                Cluster = a
+        return Cluster
+# --------------Main Program----------------
+S3N2 = Next_SubN2(Sub3, Sub_cycle3_sort) # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
+S3N2_Sorted = sorted(S3N2)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
+S3N2_inter_R1 = interintra(S3N2, S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+S3N2_R1 = Next_SubN2N1(S3N2_inter_R1, Sub3)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set([],[])]
+
+S3N2_Sorted_inter_R2 = interintra2(S3N2_inter_R1, S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
+
+print'--------------Print Detail----------------'
+print'Sub_AroundN2_R1 =', S3N2
+print'Len_Sub_AroundN2_R1 =', len(S3N2)
+print'S3N2_Sorted_inter_R1 =', S3N2_inter_R1
+print'Sub_AroundN2_R2 =', S3N2_R1
+print'Len_Sub_AroundN2_R2 =', len(S3N2_R1)
 
 # --------------Draw Graph-----------------
 G = nx.Graph()
-G.add_cycle(S3N2_Sorted_inter)
+G.add_cycle(S3N2_Sorted_inter_R2)
 nx.draw(G, with_labels=True)
 plt.show()

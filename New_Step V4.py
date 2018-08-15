@@ -274,9 +274,9 @@ def CutSub(Start, Compare):  # เอา Start ลบออกจาก Compare
                 Keep.append(Next_Sub)
         return Scycle_same2
 
-def FindNodesBetweenCluster(ClusterS, ClusterC, ClusterC1):
+def FindNodesBetweenCluster(ClusterS, ClusterC, ClusterC1, ClusterC2):
     G = nx.Graph()
-    ClusterA = ClusterS + ClusterC + ClusterC1  # กราฟรวมมีกิ่งเชื่อม
+    ClusterA = ClusterS + ClusterC + ClusterC1 + ClusterC2 # กราฟรวมมีกิ่งเชื่อม
     #G.add_cycle(ClusterS)  # กราฟแยก ClusterS
     #G.add_cycle(ClusterC)  # กราฟแยก ClusterC
     #G.add_cycle(ClusterC1)  # กราฟแยก ClusterC1
@@ -284,7 +284,7 @@ def FindNodesBetweenCluster(ClusterS, ClusterC, ClusterC1):
     #a = G.edges(ClusterS)
     #b = G.edges(ClusterC)
     draw_networkx(G, edge_color='b')
-    plt.savefig('V4_GC1C2C3_A2')
+    plt.savefig('Test')
     plt.figure(1)
     plt.show()
     return ClusterA
@@ -311,76 +311,104 @@ S3N2_R3 = Next_SubN2N1(S3N2_inter_R2, Sub3)  # หาโหนดใกล้เ
 # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
 S3N2_inter_R3 = interintra2(S3N2_inter_R2, S3N2_R3)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
 
-print'--------------Cluster 1----------------'
-print'Sub_S3N2_R0 =', S3N2_R0
-print'S3N2_inter_R0 =', S3N2_inter_R0
-print'Sub_S3N2_R1 =', S3N2_R1
-print'S3N2_inter_R1 =', S3N2_inter_R1
-print'S3N2_S3N2_R2 =', S3N2_R2
-print'S3N2_inter_R2 =', S3N2_inter_R2
-print'S3N2_S3N2_R3 =', S3N2_R3  # Snow2 []
-print'S3N2_inter_R3 =', S3N2_inter_R3  # Snow 2 None
+print'--------------Result----------------'
+#print'Sub_S3N2_R0 =', S3N2_R0
+#print'S3N2_inter_R0 =', S3N2_inter_R0
+# print'Sub_S3N2_R1 =', S3N2_R1
+# print'S3N2_inter_R1 =', S3N2_inter_R1
+# print'S3N2_S3N2_R2 =', S3N2_R2
+# print'S3N2_inter_R2 =', S3N2_inter_R2
+# print'S3N2_S3N2_R3 =', S3N2_R3  # Snow2 []
+# print'S3N2_inter_R3 =', S3N2_inter_R3  # Snow 2 None
 
-print'Len of Sub3', len(Sub3), 'Cycles'
-print'L_S3N2_R0 =', len(S3N2_R0)
+#print'Len of Sub3', len(Sub3), 'Cycles'
+#print'L_S3N2_R0 =', len(S3N2_R0)  #
 #print'L_S3N2_inter_R0 =', len(S3N2_inter_R0)
-print'L_S3N2_R1 =', len(S3N2_R1)
+#print'L_S3N2_R1 =', len(S3N2_R1)
 #print'L_S3N2_inter_R1 =', len(S3N2_inter_R1)
-print'L_S3N2_R2 =', len(S3N2_R2)
+#print'L_S3N2_R2 =', len(S3N2_R2)
 #print'L_S3N2_inter_R2 =', len(S3N2_inter_R2)
-print'L_S3N3_R3 =', len(S3N2_R3)
+#print'L_S3N3_R3 =', len(S3N2_R3)
 #print'L_S3N3_inter_R3 =', len(S3N2_inter_R3)
-
+#print'L_S3N3_R4 =', len(S3N2_R4)
 #--------------Main Program--------------------
 print'------------------New Cluster------------------------'
-if len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
-    Cluster1 = S3N2_inter_R2  # list[.,.,.] ไว้สร้างกราฟ
-    #print'Cluster1 =', Cluster1
 
-    Rest_S3N2_R0 = CutSub(S3N2_inter_R2, Sub3)  # ผลลัพท์ cycle ที่เหลือ, list[set([],[])]
-    #print'Rest_S3N2 =', Rest_S3N2
-    #print'LRest_S3N2_R0 =', len(Rest_S3N2_R0)
-    # ได้ที่เหลือแล้ว เอาไปคำนวนหาโหนดเหมือนกัน 2 โหนดต่อ
-    Rest_S3N2_Sorted = sorted(Rest_S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
-    # interintra ต้องการ (list[set([],[])], list[set([],[])])
-    Rest_S3N2_inter_R0 = interintra(Rest_S3N2_R0, Rest_S3N2_Sorted)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
-    #print'Rest_S3N2_inter_R0 =', Rest_S3N2_inter_R0
-    #print'LRest_S3N2_inter_R0 =', len(Rest_S3N2_inter_R0)
+if len(S3N2_R2) or len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
+    print'-----Cluster1'
+    Cluster1 = S3N2_inter_R2  # list[.,.,.] นับไม่ได้ ไว้สร้างกราฟ
+    print'Cluster1 =', Cluster1
 
-    #------------Round 1----------------------------------------------
-    # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-    Rest_S3N2_R1 = Next_SubN2N1(Rest_S3N2_inter_R0, Rest_S3N2_Sorted)  # หาโหนดรอบๆใน sub ที่เหลือ
-    #print'Rest_S3N2_R1 =', Rest_S3N2_R1
-    #print'LRest_S3N2_R1 =', len(Rest_S3N2_R1)
-    # interintra2 ต้องการ (list[.,.,.], list[set([],[])])
-    Rest_S3N2_inter_R1 = interintra2(Rest_S3N2_inter_R0, Rest_S3N2_R1)  # หาโหนดที่มี DifDen มากกว่าเท่ากับ 0.70 list[.,.,.]
-    #print'Rest_S3N2_inter_R1 =', Rest_S3N2_inter_R1
+    print'----Start Cluster2---------------------------------'
+    # -------------- รอบที่ 1 -----------------------
+    Rest_S3N2_R0 = CutSub(S3N2_inter_R2, Sub3)  # หา Sub ที่เหลือจาก Cluster1
+    print'Sub ที่เหลือจาก Cluster1 =', len(Rest_S3N2_R0), 'Cycles'
+    Rest_S3N2_Sorted = sorted(Rest_S3N2_R0)  # จัดเรียงซับที่เหลือจาก Cluster1
+    Rest_S3N2_inter_R0 = interintra(Rest_S3N2_R0, Rest_S3N2_Sorted)  # เอาซับที่เหลือหา interintra
+    # -------------- รอบที่ 2 -----------------------
+    Rest_S3N2_R1 = Next_SubN2N1(Rest_S3N2_inter_R0, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 2
+    print'Sub ข้างเคียงจากรอบที่ 2 =', len(Rest_S3N2_R1)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 2
+    Rest_S3N2_inter_R1 = interintra2(Rest_S3N2_inter_R0, Rest_S3N2_R1)  # คำนวน รnterintra รอบที่ 2
+    # -------------- รอบที่ 3 -----------------------
+    Rest_S3N2_R2 = Next_SubN2N1(Rest_S3N2_inter_R1, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 3
+    print'Sub ข้างเคียงจากรอบที่ 3 =', len(Rest_S3N2_R2)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 3
+    Rest_S3N2_inter_R2 = interintra2(Rest_S3N2_inter_R1, Rest_S3N2_R2)  # คำนวน รnterintra รอบที่ 3
+    # -------------- รอบที่ 4 -----------------------
+    Rest_S3N2_R3 = Next_SubN2N1(Rest_S3N2_inter_R2, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 4
+    print'Sub ข้างเคียงจากรอบที่ 4 =', len(Rest_S3N2_R3)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 4
+    Rest_S3N2_inter_R3 = interintra2(Rest_S3N2_inter_R2, Rest_S3N2_R3)  # คำนวน รnterintra รอบที่ 4
+    # -------------- รอบที่ 5 -----------------------
+    Rest_S3N2_R4 = Next_SubN2N1(Rest_S3N2_inter_R3, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 5
+    print'Sub ข้างเคียงจากรอบที่ 5 =', len(Rest_S3N2_R4)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 5
+    Rest_S3N2_inter_R4 = interintra2(Rest_S3N2_inter_R3, Rest_S3N2_R4)  # คำนวน รnterintra รอบที่ 5
+    # -------------- รอบที่ 6 -----------------------
+    Rest_S3N2_R5 = Next_SubN2N1(Rest_S3N2_inter_R4, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 6
+    print'Sub ข้างเคียงจากรอบที่ 6 =', len(Rest_S3N2_R5)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 6
+    Rest_S3N2_inter_R5 = interintra2(Rest_S3N2_inter_R4, Rest_S3N2_R5)  # คำนวน รnterintra รอบที่ 6
 
-    # ------------Round 2----------------------------------------------
-    # Next_SubN2N1 ต้องการ (list[.,.,.], list[set([],[])])
-    Rest_S3N2_R2 = Next_SubN2N1(Rest_S3N2_inter_R1, Rest_S3N2_R1)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด(2) list[set([],[])]
-    #print'Rest_S3N2_R2 =', Rest_S3N2_R2
-    #print'LRest_S3N2_R2 =', len(Rest_S3N2_R2)
-    if len(Rest_S3N2_R2) == 0:
-        Cluster2 = Rest_S3N2_inter_R1
-        #print'Cluster2 =', Cluster2
+    if len(Rest_S3N2_R1) or len(Rest_S3N2_R2) or len(Rest_S3N2_R3) or len(Rest_S3N2_R4) or len(Rest_S3N2_R5) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
+        print'-----Cluster2'
+        Cluster2 = Rest_S3N2_inter_R3  # list[.,.,.] นับไม่ได้ ไว้สร้างกราฟ
+        print'Cluster2 =', Cluster2
+    print'----Start Cluster3---------------------------------'
+    # -------------- รอบที่ 1 -----------------------
+    Rest_S3N2_inter_R3 = Cluster1 + Cluster2
+    Rest1_S3N2_R0 = CutSub(Rest_S3N2_inter_R3, Sub3)  # หา Sub ที่เหลือจาก Cluster1
+    print'Sub ที่เหลือจาก Cluster1 =', len(Rest1_S3N2_R0), 'Cycles'
+    Rest1_S3N2_Sorted = sorted(Rest1_S3N2_R0)  # จัดเรียงซับที่เหลือจาก Cluster1
+    Rest1_S3N2_inter_R0 = interintra(Rest1_S3N2_R0, Rest1_S3N2_Sorted)  # เอาซับที่เหลือหา interintra
+    # -------------- รอบที่ 2 -----------------------
+    Rest1_S3N2_R1 = Next_SubN2N1(Rest1_S3N2_inter_R0, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 2
+    print'Sub ข้างเคียงจากรอบที่ 2 =', len(Rest1_S3N2_R1)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 2
+    Rest1_S3N2_inter_R1 = interintra2(Rest1_S3N2_inter_R0, Rest1_S3N2_R1)  # คำนวน รnterintra รอบที่ 2
+    # -------------- รอบที่ 3 -----------------------
+    Rest1_S3N2_R2 = Next_SubN2N1(Rest1_S3N2_inter_R1, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 3
+    print'Sub ข้างเคียงจากรอบที่ 3 =', len(Rest1_S3N2_R2)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 3
+    Rest1_S3N21_inter_R2 = interintra2(Rest1_S3N2_inter_R1, Rest1_S3N2_R2)  # คำนวน รnterintra รอบที่ 3
 
-        Merge_Cluster = Cluster1 + Cluster2
+    if len(Rest1_S3N2_R1) or len(Rest1_S3N2_R2) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
+        print'-----Cluster3'
+        Cluster3 = Rest1_S3N2_inter_R1  # list[.,.,.] นับไม่ได้ ไว้สร้างกราฟ
+        print'Cluster3 =', Cluster3
+    print'----Start Cluster4---------------------------------'
+    Rest1_S3N2_inter_R1 = Cluster1 + Cluster2 + Cluster3
+    Rest2_S3N2_R0 = CutSub(Rest1_S3N2_inter_R1, Sub3)  # หา Sub ที่เหลือจาก Cluster1
+    print'Sub ที่เหลือจาก Cluster1 =', len(Rest2_S3N2_R0), 'Cycles'
+    Rest2_S3N2_Sorted = sorted(Rest2_S3N2_R0)  # จัดเรียงซับที่เหลือจาก Cluster1
+    Rest2_S3N2_inter_R0 = interintra(Rest2_S3N2_R0, Rest2_S3N2_Sorted)  # เอาซับที่เหลือหา interintra
+    # -------------- รอบที่ 2 -----------------------
+    Rest2_S3N2_R1 = Next_SubN2N1(Rest2_S3N2_inter_R0, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 2
+    print'Sub ข้างเคียงจากรอบที่ 2 =', len(Rest2_S3N2_R1)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 2
+    Rest2_S3N2_inter_R1 = interintra2(Rest2_S3N2_inter_R0, Rest2_S3N2_R1)  # คำนวน รnterintra รอบที่ 2
+    # -------------- รอบที่ 3 -----------------------
+    Rest2_S3N2_R2 = Next_SubN2N1(Rest2_S3N2_inter_R1, Sub3)  # หา Sub ข้างเคียงใหม่อีกครั้ง รอบที่ 3
+    print'Sub ข้างเคียงจากรอบที่ 3 =', len(Rest2_S3N2_R2)  # พิมพ์จำนวน sub ข้างเคียงรอบที่ 3
+    Rest2_S3N21_inter_R2 = interintra2(Rest2_S3N2_inter_R1, Rest2_S3N2_R2)  # คำนวน รnterintra รอบที่ 3
 
-        Rest1_S3N2_R0 = CutSub(Merge_Cluster, Sub3)  # ผลลัพท์ cycle ที่เหลือ, list[set([],[])]
-        #print'Rest_S3N2 =', Rest1_S3N2_R0
-        print'LRest1_S3N2_R0 =', len(Rest1_S3N2_R0)
-        # ------------Round 0----------------------------------------------
-        Rest1_S3N2_Sorted = sorted(Rest1_S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[set([],[])]
-        Rest1_S3N2_inter_R0 = interintra(Rest1_S3N2_R0, Rest1_S3N2_Sorted)
-
-        # ------------Round 1----------------------------------------------
-        Rest1_S3N2_R1 = Next_SubN2N1(Rest1_S3N2_inter_R0, Rest1_S3N2_Sorted)  # หาโหนดรอบๆใน sub ที่เหลือ
-        Rest1_S3N2_inter_R1 = interintra2(Rest1_S3N2_inter_R0, Rest1_S3N2_R1)
-        print'LRest1_S3N2_R1 =', len(Rest1_S3N2_R1)
-        if len(Rest1_S3N2_R1) == 0:
-            Cluster3 = Rest1_S3N2_inter_R0
-
+    if len(Rest2_S3N2_R1) or len(Rest2_S3N2_R2) == 0:  # เมื่อไม่เจอ sub รอบๆแล้ว ให้มาขึ้น Cluster ใหม่
+        print'-----Cluster4'
+        Cluster4 = Rest2_S3N2_inter_R0  # list[.,.,.] นับไม่ได้ ไว้สร้างกราฟ
+        print'Cluster4 =', Cluster4
 
 #--------------Measure of Cluster--------------
 # print'---Coverage Matric---'
@@ -389,7 +417,8 @@ Cluster1_M = Cluster1
 Cluster2_M = Cluster2
 # print'Cluster2_M =', Cluster2_M
 Cluster3_M = Cluster3
-Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M, Cluster3_M)
+Cluster4_M = Cluster4
+Node_BetweenC = FindNodesBetweenCluster(Cluster1_M, Cluster2_M, Cluster3_M, Cluster4_M)
 # --------------Draw Graph-----------------
 G = nx.Graph()
 #G.add_cycle(Cluster1)

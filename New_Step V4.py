@@ -297,7 +297,7 @@ def FindNodesBetweenCluster(ClusterS, ClusterC, ClusterC1, ClusterC2, C2, Float_
     print'= ', '%-10.2f' % Coverage
 
     draw_networkx(G, edge_color='b')
-    plt.savefig('Test1')
+    plt.savefig('Snowball2_Test1')
     plt.figure(1)
     plt.show()
     return ClusterA
@@ -434,7 +434,10 @@ if len(S3N2_R2) or len(S3N2_R3) == 0:  # เมื่อไม่เจอ sub �
                     print'จำนวนโหนดที่เหลืออยู่ในกราฟ', Number_of_nodes - Q3 , 'โหนด'
 
 ClusterA = Cluster1+Cluster2+Cluster3+Cluster4
+S_Cluster = set(ClusterA)
+print'S_Cluster', len(S_Cluster)
 print'----เริ่มการหา Sub ข้างเคียงรอบที่ 1 C2---------------'
+
 # -------------- รอบที่ 1 -----------------------
 Start_Cluster2 = CutSub(ClusterA, Sub3)  # หา Sub ที่เหลือจาก Cluster1
 print'Sub ที่เหลือจากการใช้ครั้ง 2 =', Start_Cluster2

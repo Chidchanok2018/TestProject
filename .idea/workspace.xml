@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/New_Step V4_1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/New_Step V4_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/New_Step V5_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/New_Step V4.py" beforeDir="false" afterPath="$PROJECT_DIR$/New_Step V4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/New_Step V4_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/New_Step V4_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snowball3_Test1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Snowball3_Test1.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,45 +24,48 @@
     <SUITE FILE_PATH="coverage/TestProject$Real18052561.coverage" NAME="Real18052561 Coverage Results" MODIFIED="1528302463916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$OpenFileExcelMilk.coverage" NAME="OpenFileExcelMilk Coverage Results" MODIFIED="1530972499968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test_SubGraph.coverage" NAME="Test_SubGraph Coverage Results" MODIFIED="1531994392283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_2.coverage" NAME="New_Step V4_2 Coverage Results" MODIFIED="1534336955856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$From_SnapFile.coverage" NAME="From_SnapFile Coverage Results" MODIFIED="1529816881997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$B.coverage" NAME="B Coverage Results" MODIFIED="1528302884174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1534049832021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_1.coverage" NAME="New_Step V4_1 Coverage Results" MODIFIED="1534333419117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_1.coverage" NAME="New_Step V4_1 Coverage Results" MODIFIED="1534337705422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1534249909574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4.coverage" NAME="New_Step V4 Coverage Results" MODIFIED="1534333551913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V4.coverage" NAME="New_Step V4 Coverage Results" MODIFIED="1534337447833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="107775073">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.33" value="2" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="21202" />
+          <entry key="py" value="21433" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="21202" />
+          <entry key="Python" value="21433" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="11" />
+          <entry key="py" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="11" />
+          <entry key="Python" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -71,55 +77,44 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testFile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="214" column="31" lean-forward="true" selection-start-line="214" selection-start-column="17" selection-end-line="214" selection-end-column="31" />
-              <folding>
-                <element signature="e#24#46#0" expanded="true" />
-                <marker date="1533987549510" expanded="true" signature="2626:2627" ph="..." />
-                <marker date="1533987549510" expanded="true" signature="8183:8184" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Step V3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3571">
-              <caret line="269" column="31" lean-forward="true" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="31" />
-              <folding>
-                <element signature="e#24#46#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New_Step V4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="13" lean-forward="true" selection-end-line="461" selection-end-column="10" />
+            <state relative-caret-position="8580">
+              <caret line="436" selection-start-line="436" selection-end-line="437" selection-end-column="32" />
               <folding>
-                <element signature="e#12781#12839#0" />
-                <marker date="1534331087353" expanded="true" signature="12583:12584" ph="..." />
-                <marker date="1534331087353" expanded="true" signature="12694:13687" ph="..." />
+                <marker date="1534337447786" expanded="true" signature="12583:12584" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/New_Step V4_1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8820">
+              <caret line="451" column="32" selection-start-line="451" selection-start-column="32" selection-end-line="451" selection-end-column="32" />
+              <folding>
+                <element signature="e#12832#12890#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/New_Step V4_2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9360">
+              <caret line="478" column="95" selection-start-line="478" selection-start-column="95" selection-end-line="478" selection-end-column="95" />
+              <folding>
+                <element signature="e#12832#12890#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/New_Step V4_1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="299" column="32" selection-start-line="299" selection-start-column="32" selection-end-line="299" selection-end-column="32" />
-              <folding>
-                <element signature="e#12832#12890#0" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/New_Step V5_1.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -150,8 +145,10 @@
         <option value="$PROJECT_DIR$/testFile.py" />
         <option value="$PROJECT_DIR$/New_Step V3.py" />
         <option value="$PROJECT_DIR$/Test2.py" />
+        <option value="$PROJECT_DIR$/New_Step V4_2.py" />
         <option value="$PROJECT_DIR$/New_Step V4.py" />
         <option value="$PROJECT_DIR$/New_Step V4_1.py" />
+        <option value="$PROJECT_DIR$/New_Step V5_1.py" />
       </list>
     </option>
   </component>
@@ -161,9 +158,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1372" />
-    <option name="y" value="28" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="26" />
+    <option name="y" value="25" />
     <option name="width" value="1575" />
     <option name="height" value="838" />
   </component>
@@ -220,7 +217,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.New_Step V4">
+  <component name="RunManager" selected="Python.New_Step V4_1">
     <configuration name="New_Step V3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -287,6 +284,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="New_Step V4_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TestProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/New_Step V4_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -309,42 +328,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testFile" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TestProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testFile.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.Test2" />
-      <item itemvalue="Python.testFile" />
       <item itemvalue="Python.New_Step V3" />
       <item itemvalue="Python.New_Step V4" />
       <item itemvalue="Python.New_Step V4_1" />
+      <item itemvalue="Python.New_Step V4_2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.New_Step V4" />
         <item itemvalue="Python.New_Step V4_1" />
+        <item itemvalue="Python.New_Step V4" />
+        <item itemvalue="Python.New_Step V4_2" />
         <item itemvalue="Python.Test2" />
         <item itemvalue="Python.New_Step V3" />
-        <item itemvalue="Python.testFile" />
       </list>
     </recent_temporary>
   </component>
@@ -371,14 +368,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1372" y="28" width="1575" height="838" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5084746" side_tool="true" weight="0.12102874" />
       <window_info id="Favorites" order="1" sideWeight="0.50877196" side_tool="true" weight="0.12102874" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49122807" weight="0.1920792" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49122807" weight="0.1913767" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.35337242" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.32482994" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.39442816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -393,7 +391,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.35247526" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.25642964" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -523,6 +521,21 @@
           <url>file://$PROJECT_DIR$/New_Step V4.py</url>
           <line>302</line>
           <option name="timeStamp" value="480" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V4_2.py</url>
+          <line>337</line>
+          <option name="timeStamp" value="483" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V4_2.py</url>
+          <line>327</line>
+          <option name="timeStamp" value="484" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V4_2.py</url>
+          <line>321</line>
+          <option name="timeStamp" value="485" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -798,16 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Step V3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3571">
-          <caret line="269" column="31" lean-forward="true" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="31" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -820,37 +823,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Step V4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" lean-forward="true" selection-end-line="461" selection-end-column="10" />
-          <folding>
-            <element signature="e#12781#12839#0" />
-            <marker date="1534331087353" expanded="true" signature="12583:12584" ph="..." />
-            <marker date="1534331087353" expanded="true" signature="12694:13687" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
           <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Step V3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5363">
+          <caret line="269" column="31" lean-forward="true" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="31" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#24#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Step V4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8580">
+          <caret line="436" selection-start-line="436" selection-end-line="437" selection-end-column="32" />
+          <folding>
+            <marker date="1534337447786" expanded="true" signature="12583:12584" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/New_Step V4_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="299" column="32" selection-start-line="299" selection-start-column="32" selection-end-line="299" selection-end-column="32" />
+        <state relative-caret-position="8820">
+          <caret line="451" column="32" selection-start-line="451" selection-start-column="32" selection-end-line="451" selection-end-column="32" />
           <folding>
             <element signature="e#12832#12890#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Step V4_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9360">
+          <caret line="478" column="95" selection-start-line="478" selection-start-column="95" selection-end-line="478" selection-end-column="95" />
+          <folding>
+            <element signature="e#12832#12890#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Step V5_1.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

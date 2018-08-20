@@ -294,20 +294,23 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
             if N2_inter_R0 is None:
                 print'None'
             # ได้ผลลัพท์เป็นก้อนยาวๆ
-
             # ------ หมุนๆ
             Count_Node = len(N2_R0)  # นับจำนวนโหนดที่ได้จากครั้งแรก
             r = 0
             while Count_Node > 0:  # หมุนจนกว่าโหนดที่ได้จาก Count จะเป็น 0
                 # หา Sub ที่มีโหนดรอบๆ 2,1 โหนด
+                if N2_inter_R0 <= 0:
+                    Cluster.append(N2_inter_R0)
                 if len(N2_inter_R0) >= 1:  # ถ้าคำนวนinterแล้วมี Sub ออกมา
                     # หา Sub รอบๆอีกครั้ง ที่โหนด 2,1
-                    N2N1_R1 = Next_SubN2N1(N2_inter_R0, Sub)  # เอา Sub มาหา Sub รอบๆอีก
-                    print 'โหนดที่ใช้ไป', len(N2N1_R1)
+                    N2N1_R1 = Next_SubN2N1(N2_inter_R0, Sub)  # เอา Sub มาต่อเข้า
+                    #print 'โหนดที่ใช้ไป', len(N2N1_R1)
+                    if len(N2N1_R1) < 1:  # ไม่มีซับเหลือแล้ว
+                        Cluster.append(N2N1_R1)
                     if len(N2N1_R1) == 1:  # ไม่มีซับเหลือแล้ว
                         Cluster.append(N2N1_R1)
                     # คำนวน interintra กับ Sub ที่หามา
-                    if len(N2_R0) > 1:  # มี Sub ให้เอาไปคำนวนต่อ
+                    if len(N2_R0) >= 1:  # มี Sub ให้เอาไปคำนวนต่อ
                         N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)  # คำนวน interintra
                         # print 'N2_inter_R1', N2_inter_R1
                         if N2_inter_R1 is None:  # Sub ไม่ผ่าน interintra
@@ -328,11 +331,12 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
     return Cluster  # S3N2_inter_R0
 
 
-def FindNodesBetweenCluster(ClusterS, ClusterS1):
+def FindNodesBetweenCluster(ClusterS, ClusterS1, ClusterS2):
     G = nx.Graph()
     ClusterA = ClusterS
     G.add_cycle(ClusterA)  # กราฟรวมกันมีกิ่งเชื่อมกัน
     G.add_cycle(ClusterS1)
+    G.add_cycle(ClusterS2)
 
     draw_networkx(G, edge_color='b')
     plt.savefig('Snowball2_Test1')
@@ -352,9 +356,22 @@ Rest_S3N2_R0 = CutSub(N2_inter_R0, Sub3)  # ตัด cluster 1 ออกจา�
 print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'
 Rest_S3N2_R0_Sorted = sorted(Rest_S3N2_R0)
 N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-print'N2_inter_R1 =', N2_inter_R1
-# --------Graph-------
+#print'N2_inter_R1 =', N2_inter_R1
+# ---------Round 3---------
+# -----ต้องบวกอันที่ 2 เข้ามาด้วยให้เป็นก้อน
+N2_inter_R1 = N2_inter_R0 + N2_inter_R1
+Rest_S3N2_R1 = CutSub(N2_inter_R1, Sub3)  # ตัด cluster 1 ออกจาก sub3
+print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'
+Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
+N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
+print'N2_inter_R2 =', N2_inter_R2
+# ---------Round 4---------
+# -----ต้องบวกอันที่ 3 เข้ามาด้วยให้เป็นก้อน
+# N2_inter_R2 = N2_inter_R1 + N2_inter_R2
+# Rest_S3N2_R2 = CutSub(N2_inter_R2, Sub3)  # ตัด cluster 1 ออกจาก sub3
+# print'Sub ที่เหลือจากการใช้ครั้ง 4 =', len(Rest_S3N2_R2), 'Cycles'
 
-Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0, N2_inter_R1)
+# --------Graph-------
+Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0, N2_inter_R1, N2_inter_R2)
 G = nx.Graph()
 plt.show()

@@ -306,9 +306,9 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
                     N2N1_R1 = Next_SubN2N1(N2_inter_R0, Sub)  # เอา Sub มาต่อเข้า
                     #print 'โหนดที่ใช้ไป', len(N2N1_R1)
                     if len(N2N1_R1) < 1:  # ไม่มีซับเหลือแล้ว
-                        Cluster.append(N2N1_R1)
+                        Cluster = Cluster + N2_inter_R0
                     if len(N2N1_R1) == 1:  # ไม่มีซับเหลือแล้ว
-                        Cluster.append(N2N1_R1)
+                        Cluster = Cluster + N2_inter_R0
                     # คำนวน interintra กับ Sub ที่หามา
                     if len(N2_R0) >= 1:  # มี Sub ให้เอาไปคำนวนต่อ
                         N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)  # คำนวน interintra
@@ -365,9 +365,11 @@ print'Sub ที่เหลือจากการใช้ครั้ง 3 =
 Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
 N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
 print'N2_inter_R2 =', N2_inter_R2
+
 # ---------Round 4---------
 # -----ต้องบวกอันที่ 3 เข้ามาด้วยให้เป็นก้อน
-# N2_inter_R2 = N2_inter_R1 + N2_inter_R2
+N2_inter_R2 = N2_inter_R1 + N2_inter_R2
+
 # Rest_S3N2_R2 = CutSub(N2_inter_R2, Sub3)  # ตัด cluster 1 ออกจาก sub3
 # print'Sub ที่เหลือจากการใช้ครั้ง 4 =', len(Rest_S3N2_R2), 'Cycles'
 

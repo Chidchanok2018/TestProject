@@ -359,19 +359,19 @@ N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # รวม
 #print'N2_inter_R1 =', N2_inter_R1
 # ---------Round 3---------
 # -----ต้องบวกอันที่ 2 เข้ามาด้วยให้เป็นก้อน
-N2_inter_R1 = N2_inter_R0 + N2_inter_R1
-Rest_S3N2_R1 = CutSub(N2_inter_R1, Sub3)  # ตัด cluster 1 ออกจาก sub3
+N2_inter_R1S = N2_inter_R0 + N2_inter_R1
+Rest_S3N2_R1 = CutSub(N2_inter_R1S, Sub3)  # ตัด cluster 1 ออกจาก sub3
 print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'
 Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
 N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-print'N2_inter_R2 =', N2_inter_R2
+#print'N2_inter_R2 =', N2_inter_R2
 
 # ---------Round 4---------
 # -----ต้องบวกอันที่ 3 เข้ามาด้วยให้เป็นก้อน
-N2_inter_R2 = N2_inter_R1 + N2_inter_R2
+N2_inter_R2S = N2_inter_R1 + N2_inter_R2
+Rest_S3N2_R2 = CutSub(N2_inter_R2S, Sub3)  # ตัด cluster 1 ออกจาก sub3
+print'Sub ที่เหลือจากการใช้ครั้ง 4 =', len(Rest_S3N2_R2), 'Cycles'
 
-# Rest_S3N2_R2 = CutSub(N2_inter_R2, Sub3)  # ตัด cluster 1 ออกจาก sub3
-# print'Sub ที่เหลือจากการใช้ครั้ง 4 =', len(Rest_S3N2_R2), 'Cycles'
 
 # --------Graph-------
 Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0, N2_inter_R1, N2_inter_R2)

@@ -258,6 +258,26 @@ def interintra2(Start, Compare):  # หาค่า interintra แบบเห�
         return Cluster
 
 
+def CutSub(Start, Compare):  # เอา Start ที่ต่างกับ Compare
+    # Start ใส่ list[.,.,.], Next ใส่ list[set([],[])]
+    for o in Compare:  # แต่ละตัวใน Compare (ตัวตั้งต้น)
+        Scycle_same2 = []  # เป็น list ว่าง
+        Keep = []  # ใส่ที่เหลือไว้เช็ค
+        count = len(Compare) - 1  # นับจำนวนแต่ละตัวใน Compare
+        for o1 in range(count):  # หมนุนรอบ Compare
+            # print'-----------inter-intra----------------'
+            # print'Round =', o1
+            Start_Sub = set(Start)  # เอา Set
+            Next_Sub = set(Compare[o1 + 1])  # เอา set
+            # ลบออก เหมือนไม่เอา
+            a = Start_Sub & Next_Sub  # มีอะไรต่างกัน
+            if a == set([]):  # เอาที่ต่างกัน
+                Scycle_same2.append(Next_Sub)
+            else:
+                Keep.append(Next_Sub)
+        return Scycle_same2
+
+
 def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหาครัสเตอร์1 โหนด 2
     Cluster = []
     Keep = []
@@ -274,6 +294,7 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
             if N2_inter_R0 is None:
                 print'None'
             # ได้ผลลัพท์เป็นก้อนยาวๆ
+
             # ------ หมุนๆ
             Count_Node = len(N2_R0)  # นับจำนวนโหนดที่ได้จากครั้งแรก
             r = 0
@@ -288,27 +309,30 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
                     # คำนวน interintra กับ Sub ที่หามา
                     if len(N2_R0) > 1:  # มี Sub ให้เอาไปคำนวนต่อ
                         N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)  # คำนวน interintra
-                        #print 'N2_inter_R1', N2_inter_R1
+                        # print 'N2_inter_R1', N2_inter_R1
                         if N2_inter_R1 is None:  # Sub ไม่ผ่าน interintra
                             print 'None'
                         else:
                             Cluster = Cluster + N2_inter_R1  # รวมให้เป็นครัสเตอร์
-                            #print 'Cluster =', Cluster
+                            # print 'Cluster =', Cluster
+
                             # เอารอบมาใช้
                             if r == 0:
                                 Count_Node = len(N2N1_R1)
                             if r > 0:
                                 Count_Node = len(N2N1_R1) - Count_Node
-                                #print 'Count_Node1 =', Count_Node
+                                # print 'Count_Node1 =', Count_Node
+
                             r = r + 1
 
     return Cluster  # S3N2_inter_R0
 
 
-def FindNodesBetweenCluster(ClusterS):
+def FindNodesBetweenCluster(ClusterS, ClusterS1):
     G = nx.Graph()
     ClusterA = ClusterS
     G.add_cycle(ClusterA)  # กราฟรวมกันมีกิ่งเชื่อมกัน
+    G.add_cycle(ClusterS1)
 
     draw_networkx(G, edge_color='b')
     plt.savefig('Snowball2_Test1')
@@ -316,26 +340,21 @@ def FindNodesBetweenCluster(ClusterS):
     plt.show()
     return ClusterA
 
+
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
-N2_inter_R0 = MergeSubToCluster1(Sub3, Sub_cycle3_sort)  #
-print 'N2_inter_R0 =', N2_inter_R0
+N2_inter_R0 = MergeSubToCluster1(Sub3, Sub_cycle3_sort)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
+#print 'N2_inter_R0 =', N2_inter_R0
 
-Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0)
+# ---------Round 2---------
+Rest_S3N2_R0 = CutSub(N2_inter_R0, Sub3)  # ตัด cluster 1 ออกจาก sub3
+print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'
+Rest_S3N2_R0_Sorted = sorted(Rest_S3N2_R0)
+N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
+print'N2_inter_R1 =', N2_inter_R1
+# --------Graph-------
+
+Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0, N2_inter_R1)
 G = nx.Graph()
 plt.show()
-
-
-# --------------------------------------
-# S3N2_R0 = Next_SubN2(Sub3, Sub_cycle3_sort)  # หาโหนดใกล้เคียงเหมือนกัน 2 โหนด list[set(['11','65','79'])
-# print'Sub จากการหาโหนดเหมือนกัน 2 รอบที่ 1 =', len(S3N2_R0), 'Cycles'
-# S3N2_Sorted = sorted(S3N2_R0)  # จัดเรียงโหนดใกล้เคียงรอบแรก list[['11','80','79']]
-# S3N2_inter_R0 = interintra(S3N2_R0, S3N2_Sorted)
-# -------------- รอบที่ 2 -----------------------
-# S3N2_R1 = Next_SubN2N1(S3N2_inter_R0, Sub3)
-# print'Sub จากการหาโหนดเหมือนกัน 2 รอบที่ 3 =', len(S3N2_R1), 'Cycles'
-# S3N2_inter_R1 = interintra2(S3N2_inter_R0, S3N2_R1)
-# -------------- รอบที่ 3 -----------------------
-# S3N2_R2 = Next_SubN2N1(interintra2(S3N2_inter_R0, S3N2_R1), Sub3)
-# print'Sub จากการหาโหนดเหมือนกัน 2 รอบที่ 3 =', len(S3N2_R2), 'Cycles'

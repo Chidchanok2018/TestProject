@@ -274,22 +274,31 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
             if N2_inter_R0 is None:
                 print'None'
             # ได้ผลลัพท์เป็นก้อนยาวๆ
-            Count_Node = len(N2_R0)
-            while Count_Node >= 0:
+            # ------ หมุนๆ
+            Count_Node = len(N2_R0)  # นับจำนวนโหนดที่ได้จากครั้งแรก
+            r = 0
+            while Count_Node > 0:  # หมุนจนกว่าโหนดที่ได้จาก Count จะเป็น 0
                 # หา Sub ที่มีโหนดรอบๆ 2,1 โหนด
-                if len(N2_inter_R0) >= 1:
-                    N2N1_R1 = Next_SubN2N1(N2_inter_R0, Sub)  # Find Sub R.2
+                if len(N2_inter_R0) >= 1:  # ถ้าคำนวนinterแล้วมี Sub ออกมา
+                    # หา Sub รอบๆอีกครั้ง ที่โหนด 2,1
+                    N2N1_R1 = Next_SubN2N1(N2_inter_R0, Sub)  # เอา Sub มาหา Sub รอบๆอีก
                     print len(N2N1_R1)
-                    Count_Node = len(N2N1_R1)
-                    if len(N2N1_R1) == 0:
+                    if len(N2N1_R1) == 0:  # ไม่มีซับเหลือแล้ว
                         Cluster.append(N2N1_R1)
                     # คำนวน interintra กับ Sub ที่หามา
-                    if len(N2_R0) > 0:
-                        N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)
+                    if len(N2_R0) > 0:  # มี Sub ให้เอาไปคำนวนต่อ
+                        N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)  # คำนวน interintra
                         print N2_inter_R1
-                        Cluster.append(N2N1_R1)
-                        Count_Node = Count_Node - len(N2N1_R1)
-
+                        if N2_inter_R1 is None:  # Sub ไม่ผ่าน interintra
+                            print 'None'
+                        else:
+                            Cluster = Cluster + N2_inter_R1  # รวมให้เป็นครัสเตอร์
+                            # เอารอบมาใช้
+                            if r == 0:
+                                Count_Node = len(N2N1_R1)
+                            if r > 0:
+                                Count_Node = len(N2N1_R1) - Count_Node
+                            r = r + 1
     return Cluster  # S3N2_inter_R0
 
 

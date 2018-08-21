@@ -369,6 +369,7 @@ def MakeCluster(Sub, Sub_Sorted):
 
     return ClusterS
 
+
 def EdegsInCluster(Cluster_G):  # กิ่งทั้งหมดในทุกก้อนครัสเตอร์
     M_CV = []
     G = nx.Graph()
@@ -395,17 +396,54 @@ def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุ�
         plt.show()
     return L_C1  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
 
+
+def MeargeCToList(Cluster_A):  # ทำ [[.....],[...]] เป็น [.........]
+    A = []
+    for i in Cluster_A:
+        A += i
+    return A
+
+def TerminalNodes(A,B):  # หากิ่งที่ก้อน
+    Terminal = []
+    keep = []
+    for h in A:  # แต่ละครัสเตอร์
+        Start = set(h)
+        count = len(B) - 1
+        for i in range(count + 1):  # หมุนกิ่งทั้งหมด
+            for j in B:
+                Next = set(j)
+                a = Start & Next  # โหนดที่มีซ้ำกัน
+                if len(a) == 1:  # ถ้ามีเหมือนกัน 1 โหนด
+                    a = list(Next)  # เปลี่ยนเป็น list
+                    b = h + a  # รวมกิ่งที่เพิ่มเข้ามา list
+                    G.add_cycle(h)
+                    p = len(G.edges(h))  # จำนวนกิ่งทั้งหมดในครัสเตอร์
+
+                    Terminal.append(Next)  # ใส่เป็นก้อนไว้ใน Terminal
+
+            else:
+                keep.append(Next)  # นอกนั้นยัดไว้ใน keep
+        return Terminal
+
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
-Node_Graph = [i for i in G.nodes]
+Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
 #print'Node_Graph =', Node_Graph
-Edges_Graph = [i for i in G.edges]
+Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
+#print'Edges_Graph =', Edges_Graph
 
 # ได้เป็นก้อนๆครัสเตอร์
 Cluster_ALL = MakeCluster(Sub3,Sub_cycle3_sort)
-#print'Cluster1 =', Cluster1
+print'Cluster_ALL =', Cluster_ALL
+C_G = MeargeCToList(Cluster_ALL)  # กราฟทุกก้อน [ยาวๆ]
+# เช็ค cycle หลงเหลือจาก Sub3
+T1 = CutSub(C_G, Sub3)  # ได้ก้อนสั้นๆ list[set(['98','63','71'])]
+T2 = MeargeCToList(T1)
 # หาเทอมินอลโหนดมาต่อ
+T = TerminalNodes(Cluster_ALL, Edges_Graph)
+
+
 
 
 Edges_InCluster_All = EdegsInCluster(Cluster_ALL)

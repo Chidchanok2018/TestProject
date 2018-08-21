@@ -330,98 +330,45 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
 
     return Cluster  # S3N2_inter_R0
 
+def MakeCluster(Sub, Sub_Sorted):
+    N2_inter_R0 = MergeSubToCluster1(Sub, Sub_Sorted)  # หา Cluster ก้อนแรก
+    ClusterS = []
+    ClusterS.append(N2_inter_R0)  # เพิ่ม ก้อนแรก ลงใน List
+    # ---------Round 2---------
+    Rest_S3N2_R0 = CutSub(N2_inter_R0, Sub)  # ตัด Cluster ก้อนแรกออกจาก sub3
+    print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'  # จำนวนที่ยังเหลือ
+    Count = len(Rest_S3N2_R0)  # ให้ Count คือจำนวนที่ยังเหลือ
+    Rest_S3N2_R0_Sorted = sorted(Rest_S3N2_R0)  # จัดเรียงใหม่เพื่อนให้ไม่ซ้ำ
+    N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # ได้ก้อน 2
+    ClusterS.append(N2_inter_R1)  # เพิ่ม ก้อน 2 ลงใน List
+    r = 0
+    while Count > 0:  # หมุนจนกว่า
+        if Count >= 1:
+            # ---------Round 3---------
+            if r == 0:
+                N2_inter_R1S = N2_inter_R0 + N2_inter_R1  # บวกก้อน 1 กับก้อน 2
+            if r >= 1:
+                N2_inter_R1S = N2_inter_R1S + N2_inter_R2
+            Rest_S3N2_R1 = CutSub(N2_inter_R1S, Sub)  # ตัด cluster 1 ออกจาก sub3
+            print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'  # นับจำนวน
+            Count = len(Rest_S3N2_R1)  # ให้ Count คือจำนวนที่ยังเหลือ
+            Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
+            N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
+            if N2_inter_R2 == [[]]:
+                Count = 0
+                ClusterS
+            else:
+                ClusterS.append(N2_inter_R2)
+            r = r + 1
+        else:
+            print'หมด'
 
-def FindNodesBetweenCluster(ClusterS, ClusterS1, ClusterS2, ClusterS3, ClusterS4, ClusterS5):
-    G = nx.Graph()
-    ClusterA = ClusterS
-    G.add_cycle(ClusterA)  # กราฟรวมกันมีกิ่งเชื่อมกัน
-    G.add_cycle(ClusterS1)
-    G.add_cycle(ClusterS2)
-    G.add_cycle(ClusterS3)
-    G.add_cycle(ClusterS4)
-    G.add_cycle(ClusterS5)
+    return ClusterS
 
-    draw_networkx(G, edge_color='b')
-    plt.savefig('Snowball2_Test1')
-    plt.figure(1)
-    plt.show()
-    return ClusterA
 
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
-N2_inter_R0 = MergeSubToCluster1(Sub3, Sub_cycle3_sort)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-#print 'N2_inter_R0 =', N2_inter_R0
-
-# ---------Round 2---------
-Rest_S3N2_R0 = CutSub(N2_inter_R0, Sub3)  # ตัด cluster 1 ออกจาก sub3
-print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'
-Rest_S3N2_R0_Sorted = sorted(Rest_S3N2_R0)
-N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-#print'N2_inter_R1 =', N2_inter_R1
-
-# ---------Round 3---------
-# -----ต้องบวกอันที่ 2 เข้ามาด้วยให้เป็นก้อน
-N2_inter_R1S = N2_inter_R0 + N2_inter_R1
-Rest_S3N2_R1 = CutSub(N2_inter_R1S, Sub3)  # ตัด cluster 1 ออกจาก sub3
-print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'
-Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
-N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-#print'N2_inter_R2 =', N2_inter_R2
-
-# ---------Round 4---------
-# -----ต้องบวกอันก้อนหน้าทั้งหมดมาด้วย
-N2_inter_R2S = N2_inter_R0 + N2_inter_R1 + N2_inter_R2
-Rest_S3N2_R2 = CutSub(N2_inter_R2S, Sub3)  # ตัด cluster 1 ออกจาก sub3
-print'Sub ที่เหลือจากการใช้ครั้ง 4 =', len(Rest_S3N2_R2), 'Cycles'
-Rest_S3N2_R2_Sorted = sorted(Rest_S3N2_R2)
-N2_inter_R3 = MergeSubToCluster1(Rest_S3N2_R2, Rest_S3N2_R2_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-#print'N2_inter_R3 =', N2_inter_R3
-
-# ---------Round 4---------
-# -----ต้องบวกอันก้อนหน้าทั้งหมดมาด้วย
-N2_inter_R3S = N2_inter_R0 + N2_inter_R1 + N2_inter_R2 + N2_inter_R3
-# แล้วตัดออกจากก้อน Sub ทั้งหมด
-Rest_S3N2_R3 = CutSub(N2_inter_R3S, Sub3)  # ตัด cluster 1 ออกจาก sub3
-# เหลือเท่าไร
-print'Sub ที่เหลือจากการใช้ครั้ง 5 =', len(Rest_S3N2_R3), 'Cycles'
-# จัดเรียงใหม่ตัวแปรจะได้ไม่ซ้ำ
-Rest_S3N2_R3_Sorted = sorted(Rest_S3N2_R3)
-# เข้ากระบวนการทำให้เป็นครัสเตอร์
-N2_inter_R4 = MergeSubToCluster1(Rest_S3N2_R3, Rest_S3N2_R3_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-# ออกมาเป็นก้อนครัสเตอร์
-# print'N2_inter_R4 =', N2_inter_R4
-
-# ---------Round 5---------
-# -----ต้องบวกอันก้อนหน้าทั้งหมดมาด้วย
-N2_inter_R4S = N2_inter_R0 + N2_inter_R1 + N2_inter_R2 + N2_inter_R3 + N2_inter_R4
-# print'Count', len(set(N2_inter_R4S))
-# แล้วตัดออกจากก้อน Sub ทั้งหมด
-Rest_S3N2_R4 = CutSub(N2_inter_R4S, Sub3)  # ตัด cluster 1 ออกจาก sub3
-# เหลือเท่าไร
-print'Sub ที่เหลือจากการใช้ครั้ง 6 =', len(Rest_S3N2_R4), 'Cycles'
-# จัดเรียงใหม่ตัวแปรจะได้ไม่ซ้ำ
-Rest_S3N2_R4_Sorted = sorted(Rest_S3N2_R4)
-# เข้ากระบวนการทำให้เป็นครัสเตอร์
-N2_inter_R5 = MergeSubToCluster1(Rest_S3N2_R4, Rest_S3N2_R4_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-#print'N2_inter_R5 =', N2_inter_R5
-
-# ---------Round 6---------
-# -----ต้องบวกอันก้อนหน้าทั้งหมดมาด้วย
-N2_inter_R5S = N2_inter_R0 + N2_inter_R1 + N2_inter_R2 + N2_inter_R3 + N2_inter_R4 + N2_inter_R5
-# print'Count', len(set(N2_inter_R5S))
-# แล้วตัดออกจากก้อน Sub ทั้งหมด
-Rest_S3N2_R5 = CutSub(N2_inter_R5S, Sub3)  # ตัด cluster 1 ออกจาก sub3
-# เหลือเท่าไร
-print'Sub ที่เหลือจากการใช้ครั้ง 7 =', len(Rest_S3N2_R5), 'Cycles'
-# จัดเรียงใหม่ตัวแปรจะได้ไม่ซ้ำ
-Rest_S3N2_R5_Sorted = sorted(Rest_S3N2_R5)
-# เข้ากระบวนการทำให้เป็นครัสเตอร์
-N2_inter_R6 = MergeSubToCluster1(Rest_S3N2_R5, Rest_S3N2_R5_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
-print'N2_inter_R6 =', N2_inter_R6  # พบ [[]]
-
-# --------Graph-------
-# Node_BetweenC = FindNodesBetweenCluster(N2_inter_R0, N2_inter_R1, N2_inter_R2, N2_inter_R3, N2_inter_R4, N2_inter_R5)
-G = nx.Graph()
-plt.show()
+Cluster1 = MakeCluster(Sub3,Sub_cycle3_sort)
+print'Cluster1 =', Cluster1

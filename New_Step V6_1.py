@@ -336,7 +336,7 @@ def MakeCluster(Sub, Sub_Sorted):
     ClusterS.append(N2_inter_R0)  # เพิ่ม ก้อนแรก ลงใน List
     # ---------Round 2---------
     Rest_S3N2_R0 = CutSub(N2_inter_R0, Sub)  # ตัด Cluster ก้อนแรกออกจาก sub3
-    print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'  # จำนวนที่ยังเหลือ
+    #print'Sub ที่เหลือจากการใช้ครั้ง 2 =', len(Rest_S3N2_R0), 'Cycles'  # จำนวนที่ยังเหลือ
     Count = len(Rest_S3N2_R0)  # ให้ Count คือจำนวนที่ยังเหลือ
     Rest_S3N2_R0_Sorted = sorted(Rest_S3N2_R0)  # จัดเรียงใหม่เพื่อนให้ไม่ซ้ำ
     N2_inter_R1 = MergeSubToCluster1(Rest_S3N2_R0, Rest_S3N2_R0_Sorted)  # ได้ก้อน 2
@@ -350,7 +350,7 @@ def MakeCluster(Sub, Sub_Sorted):
             if r >= 1:
                 N2_inter_R1S = N2_inter_R1S + N2_inter_R2
             Rest_S3N2_R1 = CutSub(N2_inter_R1S, Sub)  # ตัด cluster 1 ออกจาก sub3
-            print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'  # นับจำนวน
+            #print'Sub ที่เหลือจากการใช้ครั้ง 3 =', len(Rest_S3N2_R1), 'Cycles'  # นับจำนวน
             Count = len(Rest_S3N2_R1)  # ให้ Count คือจำนวนที่ยังเหลือ
             Rest_S3N2_R1_Sorted = sorted(Rest_S3N2_R1)
             N2_inter_R2 = MergeSubToCluster1(Rest_S3N2_R1, Rest_S3N2_R1_Sorted)  # รวมขั้นตอนเป็น 1 Cluster ยาวๆ
@@ -360,15 +360,41 @@ def MakeCluster(Sub, Sub_Sorted):
             else:
                 ClusterS.append(N2_inter_R2)
             r = r + 1
+            print'จำนวนครัสเตอร์ในกราฟ =', r
         else:
             print'หมด'
 
     return ClusterS
 
-
+def EdegsInCluster(Cluster_G, All_node):  # กิ่ง / โหนดทั้งหมด
+    M_CV = []
+    G = nx.Graph()
+    for j in Cluster_G:  # แต่ละก้อนครัสเตอร์
+        G.add_cycle(j)  # ทำให้ก้อนแรกเป็นกราฟ
+        L_C1 = float(len(G.edges))  # จำนวนกิ่งในกราฟ
+        #print'กิ่งในแต่ละก้อนครัสเตอร์ =', L_C1
+        draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+        # plt.savefig('Snowball2_Test1')
+        plt.figure(1)
+        plt.show()
+    return L_C1  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
 Cluster1 = MakeCluster(Sub3,Sub_cycle3_sort)
-print'Cluster1 =', Cluster1
+#print'Cluster1 =', Cluster1
+Node_Graph = [i for i in G.nodes]
+#print'Node_Graph =', Node_Graph
+Edges_InCluster_All = EdegsInCluster(Cluster1, Node_Graph)
+print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster_All
+
+Coverage_Matric = Edges_InCluster_All / len(Node_Graph)
+print'Coverage_Matric =', Coverage_Matric
+
+# for a in Cluster1:
+#     G = nx.Graph()
+#     G.add_cycle(a)
+#     draw_networkx(G, edge_color='b')
+#     plt.figure(1)
+#     plt.show()

@@ -63,7 +63,7 @@ def Next_SubN2(Start, Compare):  # เอาเหมือนรอบๆ 2 โ
         return Scycle_same2  # ส่งค่า Scycle_same2 [set([],[],...)]
 
 
-def interintra(Start, Compare):  # Interintra Start & Compare
+def interintra(Start, Compare):  # Interintra 2 Sub เหมือนกันมากกว่า 2 โหนด
     # Start ใส่ list[set(['11','65','79']), Next ใส่ list[['11','80','79']]
     for o in Start:  # แต่ละตัวใน Start (ตัวตั้งต้น)
         Cluster = []
@@ -121,7 +121,7 @@ def interintra(Start, Compare):  # Interintra Start & Compare
                 Dif_Den_N2 = Re_intra4 - Re_inter4
                 # print 'Difference Density =', " %+2.2f" % Dif_Den_N2
 
-            if Dif_Den_N2 >= 0.80:  # กำหนดคุณภาพของ Dif
+            if Dif_Den_N2 >= 0.80:  # กำหนดคุณภาพของ Dif เท่าเดิมแหละ
                 Cluster = a
             else:
                 Keep = a
@@ -155,7 +155,7 @@ def Next_SubN2N1(Start, Compare):  # หา Sub รอบที่ 2 ที่�
         return Merge
 
 
-def interintra2(Start, Compare):  # หาค่า interintra แบบเหมือนกัน 2 โหนด
+def interintra2(Start, Compare):  # หาค่า interintra แบบเหมือนกัน 1,2,3 โหนด
     # Start ใส่ list[.,.,.], Next ใส่ list[set([],[])]
     for o in Compare:  # แต่ละตัวใน Compare (ตัวตั้งต้น)
         Cluster = []  # กำหนด type ให้ Cluster [list]
@@ -176,7 +176,8 @@ def interintra2(Start, Compare):  # หาค่า interintra แบบเห�
             G.add_cycle(a)
             p = len(G.degree(a))
             b = set(Start_Sub) & set(Next_Sub)
-            if len(b) >= 2:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2
+            # เหมือนกัน 2,3 โหนด
+            if len(b) >= 2:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2 เหมือนกัน 1,2,3 โหนด
                 Dif_Den_N2 = 0.00  # ให้หมดนี่เท่ากับ 0.00
                 Dif_Den_N1 = 0.00
                 Re_inter4 = 0.00
@@ -212,7 +213,7 @@ def interintra2(Start, Compare):  # หาค่า interintra แบบเห�
                 # print 'Re_intra4', " %+2.2f" % Re_intra4
                 Dif_Den_N2 = Re_intra4 - Re_inter4
                 # print 'Difference Density =', " %+2.2f" % Dif_Den_N2
-
+            # เหมือนกันแค่ 1 โหนด
             if len(b) < 2:
                 Dif_Den_N2 = 0.0
                 Dif_Den_N1 = 0.0
@@ -285,9 +286,11 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
     for h in range(1):
         # หา Sub ที่มีโหนดรอบๆ 2 โหนด
         N2_R0 = Next_SubN2(Sub, Sub_sort)
-        if len(N2_R0) == 0:
+        if N2_R0 is None:  # ไม่เจอ Sub เหมือนกันแล้ว
+            Cluster = Cluster
+        elif len(N2_R0) == 0:
             Cluster.append(N2_R0)
-        if len(N2_R0) > 0:
+        elif len(N2_R0) > 0:
             N2_Sort = sorted(N2_R0)  # Sorted Sub 2
             # คำนวน interintra จาก Sub ที่หามา
             N2_inter_R0 = interintra(N2_R0, N2_Sort)  # Cal inter Sub 2
@@ -395,18 +398,21 @@ def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุ�
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
-Cluster1 = MakeCluster(Sub3,Sub_cycle3_sort)
-#print'Cluster1 =', Cluster1
 Node_Graph = [i for i in G.nodes]
 #print'Node_Graph =', Node_Graph
+Edges_Graph = [i for i in G.edges]
 
-Edges_InCluster_All = EdegsInCluster(Cluster1)
+# ได้เป็นก้อนๆครัสเตอร์
+Cluster_ALL = MakeCluster(Sub3,Sub_cycle3_sort)
+#print'Cluster1 =', Cluster1
+# หาเทอมินอลโหนดมาต่อ
+
+
+Edges_InCluster_All = EdegsInCluster(Cluster_ALL)
 print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster_All
 
-Nodes_InCluster_All = NodesInCluster(Cluster1)
+Nodes_InCluster_All = NodesInCluster(Cluster_ALL)
 print'โหนดทั้งหมดในครัสเตอร์ทุกก้อน =', Nodes_InCluster_All
-
-
 
 
 Coverage_Matric = Edges_InCluster_All / len(Node_Graph)

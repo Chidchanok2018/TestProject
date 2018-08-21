@@ -366,14 +366,27 @@ def MakeCluster(Sub, Sub_Sorted):
 
     return ClusterS
 
-def EdegsInCluster(Cluster_G, All_node):  # กิ่ง / โหนดทั้งหมด
+def EdegsInCluster(Cluster_G):  # กิ่งทั้งหมดในทุกก้อนครัสเตอร์
     M_CV = []
     G = nx.Graph()
     for j in Cluster_G:  # แต่ละก้อนครัสเตอร์
         G.add_cycle(j)  # ทำให้ก้อนแรกเป็นกราฟ
         L_C1 = float(len(G.edges))  # จำนวนกิ่งในกราฟ
         #print'กิ่งในแต่ละก้อนครัสเตอร์ =', L_C1
-        draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+        #draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+        # plt.savefig('Snowball2_Test1')
+        plt.figure(1)
+        plt.show()
+    return L_C1  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
+
+def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุกก้อนครัสเตอร์
+    M_CV = []
+    G = nx.Graph()
+    for j in Cluster_G:  # แต่ละก้อนครัสเตอร์
+        G.add_cycle(j)  # ทำให้ก้อนแรกเป็นกราฟ
+        L_C1 = float(len(G.nodes))  # จำนวนโหนดในกราฟ
+        #print'กิ่งในแต่ละก้อนครัสเตอร์ =', L_C1
+        #draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
         # plt.savefig('Snowball2_Test1')
         plt.figure(1)
         plt.show()
@@ -386,8 +399,15 @@ Cluster1 = MakeCluster(Sub3,Sub_cycle3_sort)
 #print'Cluster1 =', Cluster1
 Node_Graph = [i for i in G.nodes]
 #print'Node_Graph =', Node_Graph
-Edges_InCluster_All = EdegsInCluster(Cluster1, Node_Graph)
+
+Edges_InCluster_All = EdegsInCluster(Cluster1)
 print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster_All
+
+Nodes_InCluster_All = NodesInCluster(Cluster1)
+print'โหนดทั้งหมดในครัสเตอร์ทุกก้อน =', Nodes_InCluster_All
+
+
+
 
 Coverage_Matric = Edges_InCluster_All / len(Node_Graph)
 print'Coverage_Matric =', Coverage_Matric

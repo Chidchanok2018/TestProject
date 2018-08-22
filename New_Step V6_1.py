@@ -509,20 +509,82 @@ def InsidePlus(A):
             Start = Re
         return Start
 
+def Shortinterintra(Cluster):  # รับแบบเป็นกราฟ list
+    G = nx.Graph()
+    G.add_cycle(Cluster)
+    Dif_Den_N2 = 0.0
+    Dif_Den_N1 = 0.0
+    Re_inter4 = 0.0
+    Re_inter5 = 0.0
+    Re_intra5 = 0.0
+    Re_intra4 = 0.0
+    Dif_Den = 0.00
+    Number_of_Edges_Out1 = 1.00
+    Number_of_Edes_All1 = float(len(G.edges(Cluster)))
+    N1 = float(len(G.nodes(Cluster))) + 1.0
+    N_C1 = float(len(G.nodes(Cluster))) + 1.0
+    if (N_C1 * (N1 - N_C1)) == 0.0:
+        inter5 = 0.0
+        Re_inter5 = inter5
+    elif Number_of_Edges_Out1 <= 0.0:
+        inter5 = 0.0
+        Re_inter5 = inter5
+    else:
+        inter_1X = ((N_C1 * (N1 - N_C1)))
+        inter_2X = (Number_of_Edges_Out1) / inter_1X
+        Re_inter5 = round(inter_2X, 2)
+    # print 'Re_inter', Re_inter5
+    if (N_C1 * (N1 - 1) / 2) <= 0.0:
+        intra5 = 0.0
+        Re_intra5 = intra5
+    elif Number_of_Edes_All1 <= 0.0:
+        intra5 = 0.0
+        Re_intra5 = intra5
+    else:
+        intra_1X = (N_C1 * (N1 - 1) / 2)
+        intra_2X = (Number_of_Edes_All1) / (N_C1 * (N_C1 - 1) / 2)
+        Re_intra5 = round(intra_2X, 2)
+    # print 'Re_intra', " %+2.2f" % Re_intra5
+    Dif_Den = Re_intra5 - Re_inter5
+    return Dif_Den
 
 
-
-def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่
+def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่ หมุนครัสเตอร์
+    # Start = inter_C1 กิ่ง set ก้อน, Compare = Cluster_ALL1 กราฟครัสเตอร์ list ก้อน
     Cluster = []
-    for h in Compare:
-        count = len(Compare)
-        for i in range(count - 1):  # ครัสเตอร์ก้อนแรกใน Cluster_ALL1
-            Start  # กิ่งที่เป็น set ส่งมาจาก....
-            if i == 0:
-                Next = h
-            if i >= 1:
-                Next = set(h[i+1])
-        return Cluster
+    Keep1 = []
+    Keep2 = []
+    Keep3 = []
+    for h in Start:  #
+        count = len(Compare)  # จำนวนก้อนของครัสเตอร์ 5
+        for i in range(count - 1):  # จำนวนรอบ 4
+            h = list(h)  # กิ่งก้อนแรก ['9','42']
+            if i == 0:  # ครัสเตอร์ก้อนแรก
+                Next1 = Compare[0]
+                a = h + Next1
+                # ส่ง h ไป
+                D1 = Shortinterintra(h)
+                #Keep1.append(a)
+            if i == count:  # ครัสเตอร์ก้อนสุดท้าย
+                Next2 = Compare[-1]
+                b = h + Next2
+                D2 = Shortinterintra(h)
+                #Keep2.append(b)
+            else:
+                Next3 = Compare[i + 1]  # ครัสเตอร์ก้อนอื่นๆ
+                c = h + Next3
+                D3 = Shortinterintra(h)
+                #Keep3.append(c)
+                K3 = max[D3]
+
+            if D1 >= D2 >= D3 :
+                Cluster.append(a)
+            if D2 >= D1 >= D3 :
+                Cluster.append(b)
+            if D3 >= D1 >= D2 :
+                Cluster.append(c)
+
+        return Cluster  # ส่งค่า Scycle_same2 ออกไปเป็น list [[.....],[..],[.....],[...],]
 
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'

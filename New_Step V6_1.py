@@ -9,9 +9,11 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\simulated_blockmodel_graph_500_nodes_snowball_2.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\simulated_blockmodel_graph_500_nodes_snowball_1.txt", "rb")
 G = read_adjlist(fh)
-
+# draw_networkx(G, edge_color='b')
+# plt.figure(1)
+# plt.show()
 # -------Original Graph--------#
 Number_of_nodes = len(G.nodes)  # จำนวนโหนดทั้งหมด int
 Number_of_Edges = len(G.edges)  # จำนวนกิ่งทั้งหมด int
@@ -295,7 +297,7 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
             # คำนวน interintra จาก Sub ที่หามา
             N2_inter_R0 = interintra(N2_R0, N2_Sort)  # Cal inter Sub 2
             if N2_inter_R0 is None:
-                print'None'
+                print'N2_inter_R0 is None'
             # ได้ผลลัพท์เป็นก้อนยาวๆ
             # ------ หมุนๆ
             Count_Node = len(N2_R0)  # นับจำนวนโหนดที่ได้จากครั้งแรก
@@ -317,7 +319,8 @@ def MergeSubToCluster1(Sub, Sub_sort):  # ตั้งต้นการหา�
                         N2_inter_R1 = interintra2(N2_inter_R0, N2N1_R1)  # คำนวน interintra
                         # print 'N2_inter_R1', N2_inter_R1
                         if N2_inter_R1 is None:  # Sub ไม่ผ่าน interintra
-                            print 'None'
+                            print 'N2_inter_R1 is None'
+
                         else:
                             Cluster = Cluster + N2_inter_R1  # รวมให้เป็นครัสเตอร์
                             # print 'Cluster =', Cluster
@@ -363,25 +366,37 @@ def MakeCluster(Sub, Sub_Sorted):
             else:
                 ClusterS.append(N2_inter_R2)
             r = r + 1
-            print'จำนวนครัสเตอร์ในกราฟ =', r
+            #print'จำนวนครัสเตอร์ในกราฟ =', r
         else:
             print'หมด'
 
     return ClusterS
 
 
-def EdegsInCluster(Cluster_G):  # กิ่งทั้งหมดในทุกก้อนครัสเตอร์
+def EdegsInCluster(Cluster_G):  # กจำนวนกิ่งในแต่ละก้อน เฉพาะครัสเตอร์
     M_CV = []
     G = nx.Graph()
     for j in Cluster_G:  # แต่ละก้อนครัสเตอร์
         G.add_cycle(j)  # ทำให้ก้อนแรกเป็นกราฟ
         L_C1 = float(len(G.edges))  # จำนวนกิ่งในกราฟ
         #print'กิ่งในแต่ละก้อนครัสเตอร์ =', L_C1
+        M_CV.append(L_C1)
         #draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
         # plt.savefig('Snowball2_Test1')
-        plt.figure(1)
+        #plt.figure(1)
         plt.show()
-    return L_C1  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
+    return M_CV  # จำนวนกิ่งในครัสเตอร์แต่ละครัสเตอร์
+
+
+def TerminalInCluster(Terminal):  # จำนวนกิ่งในแต่ละก้อน เฉพาะเทอมินอล
+    M_CV = []
+    G = nx.Graph()
+    for j in Terminal:  # แต่ละก้อนเทอมินอลในก้อนครัสเตอร์
+        G.add_path(j)
+        L_C1 = float(len(G.edges))  # จำนวนกิ่งเทอมินอล
+        M_CV.append(L_C1)
+        plt.show()
+    return M_CV  # จำนวนกิ่งในครัสเตอร์แต่ละครัสเตอร์
 
 def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุกก้อนครัสเตอร์
     M_CV = []
@@ -389,12 +404,13 @@ def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุ�
     for j in Cluster_G:  # แต่ละก้อนครัสเตอร์
         G.add_cycle(j)  # ทำให้ก้อนแรกเป็นกราฟ
         L_C1 = float(len(G.nodes))  # จำนวนโหนดในกราฟ
-        #print'กิ่งในแต่ละก้อนครัสเตอร์ =', L_C1
+        #print'โหนดในแต่ละก้อนครัสเตอร์ =', L_C1
         #draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
         # plt.savefig('Snowball2_Test1')
-        plt.figure(1)
+        #plt.figure(1)
+        M_CV.append(L_C1)
         plt.show()
-    return L_C1  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
+    return M_CV  # จำนวนกิ่งในครัสเตอร์ บวกอัตโนมัติแหะ
 
 
 def MeargeCToList(Cluster_A):  # ทำ [[.....],[...]] เป็น [.........]
@@ -403,27 +419,95 @@ def MeargeCToList(Cluster_A):  # ทำ [[.....],[...]] เป็น [.........]
         A += i
     return A
 
-def TerminalNodes(A,B):  # หากิ่งที่ก้อน
+def TerminalNodesOneCluster(A, B):  # หากิ่งที่ก้อนต่อแบบ 1 ต่อ 1 แล้วรวมเข้ากับก้อนนั้นๆ
     Terminal = []
     keep = []
-    for h in A:  # แต่ละครัสเตอร์
-        Start = set(h)
-        count = len(B) - 1
-        for i in range(count + 1):  # หมุนกิ่งทั้งหมด
-            for j in B:
-                Next = set(j)
-                a = Start & Next  # โหนดที่มีซ้ำกัน
-                if len(a) == 1:  # ถ้ามีเหมือนกัน 1 โหนด
-                    a = list(Next)  # เปลี่ยนเป็น list
-                    b = h + a  # รวมกิ่งที่เพิ่มเข้ามา list
-                    G.add_cycle(h)
-                    p = len(G.edges(h))  # จำนวนกิ่งทั้งหมดในครัสเตอร์
+    h = A
+    Start = set(h)
+    for j in B:  # แต่ละตู่กิ่งในกิ่งทั้งหมด
+        Next = set(j)
+        a = Start & Next  # โหนดที่มีซ้ำกัน
+        if len(a) == 1:  # ถ้ามีเหมือนกัน 1 โหนด
+            a = list(Next)  # เปลี่ยนเป็น list
+            b = h + a  # รวมกิ่งที่เพิ่มเข้ามา list
+            Start = Start | Next
+            Terminal = b
+        else:
+            keep.append(Next)  # นอกนั้นยัดไว้ใน keep
 
-                    Terminal.append(Next)  # ใส่เป็นก้อนไว้ใน Terminal
+    return Terminal
 
+def FindTerminalNodesGraph(A, B):  #
+    Cluster = []
+    for h in A:  # แต่ละก้อนในครัสเตอร์
+        if h != []:
+            Start = h  # ก้อนครัสเตอร์ก้อนแรก
+            inter_Con = TerminalNodesOneCluster(Start, B)
+            Cluster.append(inter_Con)
+    return Cluster
+
+def TerminalNodesOneCluster_Terminal(A, B):  # หากิ่งที่ก้อนต่อแบบ 1 ต่อ 1 เอาเฉพาะเทอมินอล
+    Terminal = []
+    keep = []
+    h = A
+    Start = set(h)
+    for j in B:  # แต่ละคู่กิ่งในกิ่งทั้งหมด
+        Next = j
+        a = Start & Next  # โหนดที่มีซ้ำกัน
+        if len(a) == 1:  # ถ้ามีเหมือนกัน 1 โหนด
+            c = list(Next)  # เปลี่ยนเป็น list
+            # b = h + a  # รวมกิ่งที่เพิ่มเข้ามา list
+            # Start = Start | Next
+            Terminal.append(c)
+        else:
+            keep.append(Next)  # นอกนั้นยัดไว้ใน keep
+    return Terminal
+
+def FindTerminalNodesGraph_Terminal(A, B):  # เอาเฉพาะเทอมินอล
+    Terminal = []
+    for h in A:  # แต่ละก้อนในครัสเตอร์
+        if h != []:
+            Start = h  # ก้อนครัสเตอร์ก้อนแรก
+            inter_Con = TerminalNodesOneCluster_Terminal(Start, B)
+            Terminal.append(inter_Con)
+    return Terminal
+
+
+def Find_terminal(Start, Compare):  # หา  Terminal ที่โหนดเหมือนกัน 1 โหนด
+    # Start ใส่ list[.,.,.], Compare หมุนใส่ list[set([],[])]
+    Merge = []  # กำหนด type ให้ตัว Return
+    Keep = []
+    for h in Compare:  # Compare เป็นตัวหมุน
+        count = len(Compare) - 1  # จำนวน Start-1
+        for i in range(count + 1):  # จำนวนรอบใน count
+            # print '-------Next_Scycle---------------'
+            # print 'Len Round =', i
+            Start_Sub = set(Start)  # ให้ Start เป็น set
+            # print'StartScycle', Start_Sub
+            #if len(Merge) >= 1:
+                # Start_Sub = Start_Sub | b  # รวมไม่เอาที่ซ้ำ (set)
+            if i == count:  # แก้ปัญหารอบ cycle หาย
+                Next_Sub = set(Compare[0])  # list
+            if i < count:  # แก้ปัญหารอบ cycle หาย
+                Next_Sub = set(Compare[i + 1])  # เปลี่ยน Next ให้เป็น list
+            # print'NextScycle', Next_Sub
+            a = Start_Sub & Next_Sub  # บอกจำนวนที่แตกต่างของ Start,Next
+            if len(a) == 1:  # กำหนดจำนวนโหนดของ Sub ที่จะเอามาต่อ
+                #b = Start_Sub | Next_Sub
+                Merge.append(Next_Sub)
             else:
-                keep.append(Next)  # นอกนั้นยัดไว้ใน keep
-        return Terminal
+                Keep.append(Next_Sub)
+    return Merge
+
+def InsidePlus(A):
+    for i in A:
+        Start = i
+        count = len(A)
+        for h in range(count - 1):
+            Next = A[h + 1]
+            Re = Start + Next
+            Start = Re
+        return Start
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -433,28 +517,60 @@ Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 #print'Edges_Graph =', Edges_Graph
 
-# ได้เป็นก้อนๆครัสเตอร์
+# ได้เป็นก้อนๆครัสเตอร์ list
 Cluster_ALL = MakeCluster(Sub3,Sub_cycle3_sort)
-print'Cluster_ALL =', Cluster_ALL
+print'จำนวนครัสเตอร์ภายในกราฟ =', len(Cluster_ALL) - 1
+#print'Cluster_ALL =', Cluster_ALL
+
 C_G = MeargeCToList(Cluster_ALL)  # กราฟทุกก้อน [ยาวๆ]
 # เช็ค cycle หลงเหลือจาก Sub3
 T1 = CutSub(C_G, Sub3)  # ได้ก้อนสั้นๆ list[set(['98','63','71'])]
-T2 = MeargeCToList(T1)
-# หาเทอมินอลโหนดมาต่อ
-T = TerminalNodes(Cluster_ALL, Edges_Graph)
+T2 = MeargeCToList(T1)  # ['98','63','71']
+if len(T1) == 0:
+    Cluster_ALL
+    Cluster_ALL1 = Cluster_ALL
+else:
+    Cluster_ALL1 = Cluster_ALL + T2  # cycle ที่เหลือเข้าไป
+
+# หาเทอมินอลโหนดมาต่อ เช็คมีโหนดเหมือนกัน 1 โหนดแล้วมาคำนวน interintra ในแต่ละก้อน
+# หาเทอมินอลมาต่อ โดยยังไม่คำนวน เอาก้อนครัสเตอร์ทั้งหมดมาหากิ่งต่อ
+C_G1 = MeargeCToList(Cluster_ALL1)  # ก้อนยาวๆ + T2
+Rest_Edges = CutSub(C_G1, Edges_Graph)
+#print'CC =', Rest_Edges
+inter_C1 = Find_terminal(C_G1, Edges_Graph)  # เจอเทอมินอลที่เหมือนกับ set(C_G1)
+# print'inter_C', inter_C1 ออกมาเป็น [set(['',''])]
+# Ter = TerminalNodesOneCluster_Terminal(Cluster_ALL1, inter_C1)
 
 
+#inter_Con = TerminalNodesOneCluster(Cluster_ALL1, inter_C1)
+CC = FindTerminalNodesGraph(Cluster_ALL1, inter_C1)  # รวมไซเคิลเข้ากับครัสเตอร์แล้ว
+print'จำนวนครัสเตอร์ต่อเทอมินอลแล้ว =', len(CC) - 1
+TT = FindTerminalNodesGraph_Terminal(Cluster_ALL1, inter_C1)  # เอาเฉพาะเทอมินอลที่อยู่แยกเป็นก้อนครัสเตอร์
+# print'จำนวนเทอมินอลที่จะอยู่ในแต่ละครัสเตอร์ =', TT
 
+Edges_InCluster = EdegsInCluster(CC)  # เฉพาะที่เป็น cycle
+Edges_InCluster_cycles = InsidePlus(Edges_InCluster)  # cycles บวกกันข้างใน
+print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster_cycles
+# กิ่ง Terminal
+#T1 = MeargeCToList2(TT)  # ทำ [[.....],[...]] เป็น [.........]
+Edges_InCluster_Terminal = TerminalInCluster(TT)  #
 
-Edges_InCluster_All = EdegsInCluster(Cluster_ALL)
-print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster_All
-
-Nodes_InCluster_All = NodesInCluster(Cluster_ALL)
+Nodes_InCluster = NodesInCluster(Cluster_ALL1)
+Nodes_InCluster_All = InsidePlus(Nodes_InCluster)
 print'โหนดทั้งหมดในครัสเตอร์ทุกก้อน =', Nodes_InCluster_All
 
+Rest_Nodes = Number_of_nodes - Nodes_InCluster_All
+print'โหนดที่เหลืออยู่ในกราฟ =', Rest_Nodes
 
-Coverage_Matric = Edges_InCluster_All / len(Node_Graph)
-print'Coverage_Matric =', Coverage_Matric
+#Coverage_Matric = Edges_InCluster_All / len(Node_Graph)
+#print'Coverage_Matric =', Coverage_Matric
+
+# Con_1 = len(inter_C1) / Nodes_InCluster_All
+# Con_2 = (1.00 / 2.00) * Con_1
+# Conductance = 1.00 - Con_2
+# print'Conductance =', Conductance
+
+
 
 # for a in Cluster1:
 #     G = nx.Graph()

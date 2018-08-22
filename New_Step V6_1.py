@@ -509,6 +509,22 @@ def InsidePlus(A):
             Start = Re
         return Start
 
+
+
+
+def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่
+    Cluster = []
+    for h in Compare:
+        count = len(Compare)
+        for i in range(count - 1):  # ครัสเตอร์ก้อนแรกใน Cluster_ALL1
+            Start  # กิ่งที่เป็น set ส่งมาจาก....
+            if i == 0:
+                Next = h
+            if i >= 1:
+                Next = set(h[i+1])
+        return Cluster
+
+
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
@@ -521,8 +537,8 @@ Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 Cluster_ALL = MakeCluster(Sub3,Sub_cycle3_sort)
 print'จำนวนครัสเตอร์ภายในกราฟ =', len(Cluster_ALL) - 1
 #print'Cluster_ALL =', Cluster_ALL
-
 C_G = MeargeCToList(Cluster_ALL)  # กราฟทุกก้อน [ยาวๆ]
+
 # เช็ค cycle หลงเหลือจาก Sub3
 T1 = CutSub(C_G, Sub3)  # ได้ก้อนสั้นๆ list[set(['98','63','71'])]
 T2 = MeargeCToList(T1)  # ['98','63','71']
@@ -535,11 +551,13 @@ else:
 # หาเทอมินอลโหนดมาต่อ เช็คมีโหนดเหมือนกัน 1 โหนดแล้วมาคำนวน interintra ในแต่ละก้อน
 # หาเทอมินอลมาต่อ โดยยังไม่คำนวน เอาก้อนครัสเตอร์ทั้งหมดมาหากิ่งต่อ
 C_G1 = MeargeCToList(Cluster_ALL1)  # ก้อนยาวๆ + T2
-Rest_Edges = CutSub(C_G1, Edges_Graph)
+Rest_Edges = CutSub(C_G1, Edges_Graph)  # กิ่งในกราฟที่ไม่เหมือนในครัสเตอร์ทั้งหมด
 #print'CC =', Rest_Edges
 inter_C1 = Find_terminal(C_G1, Edges_Graph)  # เจอเทอมินอลที่เหมือนกับ set(C_G1)
 # print'inter_C', inter_C1 ออกมาเป็น [set(['',''])]
-# Ter = TerminalNodesOneCluster_Terminal(Cluster_ALL1, inter_C1)
+
+# ต่อโหนดที่เหลือเข้าครัสเตอร์แบบอาจารย์
+Check = TorRestNodes1(inter_C1, Cluster_ALL1)
 
 
 #inter_Con = TerminalNodesOneCluster(Cluster_ALL1, inter_C1)

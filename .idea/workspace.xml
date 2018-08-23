@@ -24,7 +24,7 @@
     <SUITE FILE_PATH="coverage/TestProject$From_SnapFile.coverage" NAME="From_SnapFile Coverage Results" MODIFIED="1529816881997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$B.coverage" NAME="B Coverage Results" MODIFIED="1528302884174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1534049832021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$New_Step_V6_1.coverage" NAME="New_Step V6_1 Coverage Results" MODIFIED="1535037177242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V6_1.coverage" NAME="New_Step V6_1 Coverage Results" MODIFIED="1535042069487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_1.coverage" NAME="New_Step V4_1 Coverage Results" MODIFIED="1534672478960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1534249909574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -47,12 +47,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="36881" />
+          <entry key="py" value="37639" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="36881" />
+          <entry key="Python" value="37639" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,16 +88,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="697" selection-start-line="697" selection-end-line="697" selection-end-column="21" />
+            <state relative-caret-position="151">
+              <caret line="727" selection-start-line="727" selection-end-line="727" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#22477#22564#0" />
-                <marker date="1535037169222" expanded="true" signature="17221:17508" ph="..." />
-                <marker date="1535037169222" expanded="true" signature="19878:19881" ph="..." />
-                <marker date="1535037169222" expanded="true" signature="22497:22499" ph="..." />
-                <marker date="1535037169222" expanded="true" signature="25088:25239" ph="..." />
-                <marker date="1535037169222" expanded="true" signature="25329:27078" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="17332:17619" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="18406:18484" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="20197:20210" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="22840:22842" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="25205:25356" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="25458:27542" ph="..." />
+                <marker date="1535042069431" expanded="true" signature="27307:27542" ph="..." />
               </folding>
             </state>
           </provider>
@@ -356,13 +358,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.48421052" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.32312927" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.35204083" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3010204" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -535,13 +538,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
-          <line>697</line>
+          <line>726</line>
           <option name="timeStamp" value="731" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
-          <line>700</line>
-          <option name="timeStamp" value="742" />
+          <line>727</line>
+          <option name="timeStamp" value="746" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>427</line>
+          <option name="timeStamp" value="748" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>430</line>
+          <option name="timeStamp" value="749" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>710</line>
+          <option name="timeStamp" value="750" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>711</line>
+          <option name="timeStamp" value="751" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -562,6 +585,10 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
+        <watch expression="Cluster_ALL1" language="Python" />
+        <watch expression="C_G1" language="Python" />
+        <watch expression="Rest_Edges" language="Python" />
+        <watch expression="inter_C1" language="Python" />
         <watch expression="Dic_Cluster_RestNodes" language="Python" />
       </configuration>
     </watches-manager>
@@ -581,37 +608,7 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Check1</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
         <expression-string>inter_C1</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>a</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Merge</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Compare</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Start</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Number_of_Edges</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -621,7 +618,32 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Edges_Graph</expression-string>
+        <expression-string>C_G1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Cluster_ALL1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>T1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>T2</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Dic_Graph_R</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -894,16 +916,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="697" selection-start-line="697" selection-end-line="697" selection-end-column="21" />
+        <state relative-caret-position="151">
+          <caret line="727" selection-start-line="727" selection-end-line="727" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
             <element signature="e#22477#22564#0" />
-            <marker date="1535037169222" expanded="true" signature="17221:17508" ph="..." />
-            <marker date="1535037169222" expanded="true" signature="19878:19881" ph="..." />
-            <marker date="1535037169222" expanded="true" signature="22497:22499" ph="..." />
-            <marker date="1535037169222" expanded="true" signature="25088:25239" ph="..." />
-            <marker date="1535037169222" expanded="true" signature="25329:27078" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="17332:17619" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="18406:18484" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="20197:20210" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="22840:22842" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="25205:25356" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="25458:27542" ph="..." />
+            <marker date="1535042069431" expanded="true" signature="27307:27542" ph="..." />
           </folding>
         </state>
       </provider>

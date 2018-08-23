@@ -624,23 +624,41 @@ def TorRestNodes(Start, Compare):
     Start
     Compare_Cluster = Compare
     Dic_Graph = Make_Dic_Cluster(Start, Compare)
+    Dic_Graph_R = Make_Dic_Cluster(Start, Compare)
+    Dic_DD_CL = {}
     # เอากิ่งมาต่อ
     for i in Start:  # แต่ละรอบของกิ่ง
         count = len(Compare_Cluster)
         for h in range(count - 1):  # แต่ละรอบของครัสเตอร์
             if h == 0:  # รอบแรก
                 Start_edges = list(i)  # กิ่ง
-                Next_CL1 = Compare_Cluster[h]  # ครัสเตอร์
+                Next_CL1 = Dic_Graph_R[h]  # ครัสเตอร์
                 a = Start_edges + Next_CL1  # รวมกันเพื่อเอาไปใช้อะไร list
-                Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
+                #Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
                 D1 = Shortinterintra(Next_CL1)  # คำนวนค่า interintra
+                Dic_DD_CL[D1] = h
             if h > 0:
                 Start_edges = list(i)  # กิ่ง
-                Next_CL2 = Compare_Cluster[h+1]  # ครัสเตอร์ก้อนต่อไป
+                Next_CL2 = Dic_Graph_R[h]  # ครัสเตอร์ก้อนต่อไป
                 b = Start_edges + Next_CL2  # รวมกันเพื่อเอาไปใช้อะไร list
-                Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
+                #Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
                 D2 = Shortinterintra(Next_CL2)  # คำนวนค่า interintra
-            
+                Dic_DD_CL[D2] = h
+
+        max_value = max(Dic_DD_CL.values())  #
+        sort_value = max(Dic_DD_CL.items())  #
+        print'dd'
+        p = 0
+        #for j in sort_value:
+            #print j
+        count = len(sort_value)
+        for l in range(count):
+            if l == 1:
+                f =sort_value[1]
+                Dic_Graph_R[f] += Start_edges
+            else:
+                p += 1
+        Dic_DD_CL.clear()
     return Result
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'

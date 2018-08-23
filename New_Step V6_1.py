@@ -552,39 +552,43 @@ def Shortinterintra(Cluster):  # รับแบบเป็นกราฟ list
 def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่ หมุนครัสเตอร์
     # Start = inter_C1 กิ่ง set ก้อน, Compare = Cluster_ALL1 กราฟครัสเตอร์ list ก้อน
     Cluster = []
-    Keep1 = []
-    Keep2 = []
-    Keep3 = []
+    Keep1 = {}
     for h in Start:  #
         count = len(Compare)  # จำนวนก้อนของครัสเตอร์ 5
         for i in range(count - 1):  # จำนวนรอบ 4
             h = list(h)  # กิ่งก้อนแรก ['9','42']
             if i == 0:  # ครัสเตอร์ก้อนแรก
-                Next1 = Compare[0]
+                Next1 = Compare[i]
                 a = h + Next1
-                # ส่ง h ไป
-                D1 = Shortinterintra(Next1)
-                #Keep1.append(a)
-            if i == count:  # ครัสเตอร์ก้อนสุดท้าย
-                Next2 = Compare[-1]
-                b = h + Next2
-                D2 = Shortinterintra(Next2)
-                #Keep2.append(b)
-            if i < count:  # ครัสเตอร์อื่นๆ
-                Next3 = Compare[i + 1]  # ครัสเตอร์ก้อนอื่นๆ
+                # ส่ง h ไปคำนวน
+                D1 = Shortinterintra(Next1)  # ได้ค่าเป็น float กลับมา
+                Keep1[D1] = a
+            if i > 0:  # ครัสเตอร์ตรงกลาง
+                Next3 = Compare[i]  # ครัสเตอร์ก้อนอื่นๆ
                 c = h + Next3
                 D3 = Shortinterintra(Next3)
-                #Keep3.append(c)
-                K3 = max[D3]
+                Keep1[D3] = c
+            if i == count:  # ครัสเตอร์ก้อนสุดท้าย
+                Next2 = h[-1]
+                b = h + Next2
+                D2 = Shortinterintra(Next2)
+                Keep1[D2] = b
 
-                if D1 >= D2 >= D3 :
-                    Cluster.append(a)
-                if D2 >= D1 >= D3 :
-                    Cluster.append(b)
-                if D3 >= D1 >= D2 :
-                    Cluster.append(c)
+        max_value = max(Keep1.keys())  # 0.74
+        w = max(Keep1.items())  # (0.74,['','',''])
+        p = 0
+        for k in w:
+            print k
+            count = len(w)
+            for l in range(count - 1):  # l คือรอบ
+                if p == 1:  # เอาตัวที่ 1 คือ list ของกราฟที่มีเทอมินอล
+                    Next = w[l+1]
+                    Cluster.append(Next)  # ใส่ list ที่ครัสเตอร์ + กิ่งเข้าไป
+                else:
+                    print'Something'
+                    p += 1
 
-        return Cluster  # ส่งค่า Scycle_same2 ออกไปเป็น list [[.....],[..],[.....],[...],]
+    return Cluster  # ส่งค่า Cluster ออกไปเป็น list [[.....],[..],[.....],[...],]
 
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'

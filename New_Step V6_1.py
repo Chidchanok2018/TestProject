@@ -563,26 +563,26 @@ def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่
                 Next1 = Compare[0]
                 a = h + Next1
                 # ส่ง h ไป
-                D1 = Shortinterintra(h)
+                D1 = Shortinterintra(Next1)
                 #Keep1.append(a)
             if i == count:  # ครัสเตอร์ก้อนสุดท้าย
                 Next2 = Compare[-1]
                 b = h + Next2
-                D2 = Shortinterintra(h)
+                D2 = Shortinterintra(Next2)
                 #Keep2.append(b)
-            else:
+            if i < count:  # ครัสเตอร์อื่นๆ
                 Next3 = Compare[i + 1]  # ครัสเตอร์ก้อนอื่นๆ
                 c = h + Next3
-                D3 = Shortinterintra(h)
+                D3 = Shortinterintra(Next3)
                 #Keep3.append(c)
                 K3 = max[D3]
 
-            if D1 >= D2 >= D3 :
-                Cluster.append(a)
-            if D2 >= D1 >= D3 :
-                Cluster.append(b)
-            if D3 >= D1 >= D2 :
-                Cluster.append(c)
+                if D1 >= D2 >= D3 :
+                    Cluster.append(a)
+                if D2 >= D1 >= D3 :
+                    Cluster.append(b)
+                if D3 >= D1 >= D2 :
+                    Cluster.append(c)
 
         return Cluster  # ส่งค่า Scycle_same2 ออกไปเป็น list [[.....],[..],[.....],[...],]
 

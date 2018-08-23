@@ -24,7 +24,7 @@
     <SUITE FILE_PATH="coverage/TestProject$From_SnapFile.coverage" NAME="From_SnapFile Coverage Results" MODIFIED="1529816881997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$B.coverage" NAME="B Coverage Results" MODIFIED="1528302884174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1534049832021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$New_Step_V6_1.coverage" NAME="New_Step V6_1 Coverage Results" MODIFIED="1534960078779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$New_Step_V6_1.coverage" NAME="New_Step V6_1 Coverage Results" MODIFIED="1534963493466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_1.coverage" NAME="New_Step V4_1 Coverage Results" MODIFIED="1534672478960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1534249909574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -47,12 +47,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="34077" />
+          <entry key="py" value="34130" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="34077" />
+          <entry key="Python" value="34130" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -88,14 +88,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="585" lean-forward="true" selection-start-line="585" selection-end-line="585" />
+            <state relative-caret-position="390">
+              <caret line="571" column="32" lean-forward="true" selection-start-line="571" selection-start-column="32" selection-end-line="571" selection-end-column="32" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <marker date="1534963191031" expanded="true" signature="17219:17490" ph="..." />
-                <marker date="1534963191031" expanded="true" signature="19860:19863" ph="..." />
-                <marker date="1534963191031" expanded="true" signature="21336:22477" ph="..." />
-                <marker date="1534963191031" expanded="true" signature="23788:23790" ph="..." />
+                <marker date="1534963823369" expanded="true" signature="17219:17490" ph="..." />
+                <marker date="1534963823369" expanded="true" signature="19860:19863" ph="..." />
+                <marker date="1534963823369" expanded="true" signature="21336:22477" ph="..." />
+                <marker date="1534963823369" expanded="true" signature="23850:23852" ph="..." />
               </folding>
             </state>
           </provider>
@@ -552,6 +552,16 @@
           <line>586</line>
           <option name="timeStamp" value="711" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>548</line>
+          <option name="timeStamp" value="712" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/New_Step V6_1.py</url>
+          <line>512</line>
+          <option name="timeStamp" value="713" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>
@@ -571,11 +581,15 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="i" language="Python" />
         <watch expression="Start" language="Python" />
-        <watch expression="Next" language="Python" />
-        <watch expression="Start_C" language="Python" />
+        <watch expression="Next1" language="Python" />
         <watch expression="h" language="Python" />
+        <watch expression="Compare" language="Python" />
+        <watch expression="a" language="Python" />
+        <watch expression="D1" language="Python" />
+        <watch expression="c" language="Python" />
+        <watch expression="D3" language="Python" />
+        <watch expression="K3" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -589,52 +603,52 @@
     </expressions>
     <expressions id="watch">
       <expression>
+        <expression-string>K3</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>D3</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>c</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Dif_Den</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Next1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>D1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>a</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Compare</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>h</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
         <expression-string>Start_C</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Next</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Start</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>i</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Scycle_same2</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Edges_Graph</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>C_G</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>C_G1</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>inter_C1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -900,14 +914,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="585" lean-forward="true" selection-start-line="585" selection-end-line="585" />
+        <state relative-caret-position="390">
+          <caret line="571" column="32" lean-forward="true" selection-start-line="571" selection-start-column="32" selection-end-line="571" selection-end-column="32" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <marker date="1534963191031" expanded="true" signature="17219:17490" ph="..." />
-            <marker date="1534963191031" expanded="true" signature="19860:19863" ph="..." />
-            <marker date="1534963191031" expanded="true" signature="21336:22477" ph="..." />
-            <marker date="1534963191031" expanded="true" signature="23788:23790" ph="..." />
+            <marker date="1534963823369" expanded="true" signature="17219:17490" ph="..." />
+            <marker date="1534963823369" expanded="true" signature="19860:19863" ph="..." />
+            <marker date="1534963823369" expanded="true" signature="21336:22477" ph="..." />
+            <marker date="1534963823369" expanded="true" signature="23850:23852" ph="..." />
           </folding>
         </state>
       </provider>

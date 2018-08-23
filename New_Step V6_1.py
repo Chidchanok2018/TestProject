@@ -552,24 +552,40 @@ def Shortinterintra(Cluster):  # รับแบบเป็นกราฟ list
 def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่ หมุนครัสเตอร์
     # Start = inter_C1 กิ่ง set ก้อน, Compare = Cluster_ALL1 กราฟครัสเตอร์ list ก้อน
     Cluster = []
-    Keep1 = {}
+    p = 0
+    Next = set()
     for h in Start:  #
+        D1 = 0
+        D2 = 0
+        D3 = 0
+        Keep1 = {}
         count = len(Compare)  # จำนวนก้อนของครัสเตอร์ 5
         for i in range(count - 1):  # จำนวนรอบ 4
             h = list(h)  # กิ่งก้อนแรก ['9','42']
             if i == 0:  # ครัสเตอร์ก้อนแรก
-                Next1 = Compare[i]
+                if p == 0:
+                    Next1 = Compare[i]
+                if p == 1:  # หาเงื่อนไขใหม่...........
+                    Next1 = Next   # เอาก้อนที่รวมกิ่งเข้าไปเรียบร้อยแล้ว
                 a = h + Next1
                 # ส่ง h ไปคำนวน
                 D1 = Shortinterintra(Next1)  # ได้ค่าเป็น float กลับมา
                 Keep1[D1] = a
             if i > 0:  # ครัสเตอร์ตรงกลาง
-                Next3 = Compare[i]  # ครัสเตอร์ก้อนอื่นๆ
+                Next3_S = set(Compare[i])  # ทำให้เป็น set
+                CCC = set(Next) & Next3_S
+                if  len(CCC) < 2:
+                    Next3 = Compare[i]  # ครัสเตอร์ก้อนอื่นๆ
+                if len(CCC) >= 2:
+                    Next3 = Next
                 c = h + Next3
                 D3 = Shortinterintra(Next3)
                 Keep1[D3] = c
             if i == count:  # ครัสเตอร์ก้อนสุดท้าย
-                Next2 = h[-1]
+                if p == 0:
+                    Next2 = Compare[-1]
+                if p == 1:
+                    Next2 = Compare[-1]
                 b = h + Next2
                 D2 = Shortinterintra(Next2)
                 Keep1[D2] = b
@@ -582,8 +598,9 @@ def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่
             count = len(w)
             for l in range(count - 1):  # l คือรอบ
                 if p == 1:  # เอาตัวที่ 1 คือ list ของกราฟที่มีเทอมินอล
-                    Next = w[l+1]
+                    Next = w[l+1]  # ก้อนที่มีการเพิ่มกิ่ง
                     Cluster.append(Next)  # ใส่ list ที่ครัสเตอร์ + กิ่งเข้าไป
+                    Next_S = set(Next)
                 else:
                     print'Something'
                     p += 1

@@ -563,9 +563,11 @@ def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่
         for i in range(count - 1):  # จำนวนรอบ 4
             h = list(h)  # กิ่งก้อนแรก ['9','42']
             if i == 0:  # ครัสเตอร์ก้อนแรก
-                if p == 0:
+                Next1_S = set(Compare[i])  # ทำให้เป็น set
+                AAA = set(Next) & Next1_S
+                if len(AAA) < 2:
                     Next1 = Compare[i]
-                if p == 1:  # หาเงื่อนไขใหม่...........
+                if len(AAA) >= 2:  # หาเงื่อนไขใหม่...........
                     Next1 = Next   # เอาก้อนที่รวมกิ่งเข้าไปเรียบร้อยแล้ว
                 a = h + Next1
                 # ส่ง h ไปคำนวน
@@ -582,10 +584,12 @@ def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่
                 D3 = Shortinterintra(Next3)
                 Keep1[D3] = c
             if i == count:  # ครัสเตอร์ก้อนสุดท้าย
-                if p == 0:
+                Next2_S = set(Compare[i])  # ทำให้เป็น set
+                BBB = set(Next) & Next2_S
+                if len(BBB) < 2:
                     Next2 = Compare[-1]
-                if p == 1:
-                    Next2 = Compare[-1]
+                if len(BBB) >= 2:
+                    Next2 = Next
                 b = h + Next2
                 D2 = Shortinterintra(Next2)
                 Keep1[D2] = b
@@ -607,6 +611,37 @@ def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่
 
     return Cluster  # ส่งค่า Cluster ออกไปเป็น list [[.....],[..],[.....],[...],]
 
+def Make_Dic_Cluster(Start, Compare):
+    All_Graph = {}
+    i = 0
+    for h in Compare:
+        All_Graph[i] = h
+        i += 1
+    return All_Graph  # เก็บครัสเตอร์ไว้เป็น Dic 0:[],1:[]
+
+def TorRestNodes(Start, Compare):
+    Result = []
+    Start
+    Compare_Cluster = Compare
+    Dic_Graph = Make_Dic_Cluster(Start, Compare)
+    # เอากิ่งมาต่อ
+    for i in Start:  # แต่ละรอบของกิ่ง
+        count = len(Compare_Cluster)
+        for h in range(count - 1):  # แต่ละรอบของครัสเตอร์
+            if h == 0:  # รอบแรก
+                Start_edges = list(i)  # กิ่ง
+                Next_CL1 = Compare_Cluster[h]  # ครัสเตอร์
+                a = Start_edges + Next_CL1  # รวมกันเพื่อเอาไปใช้อะไร list
+                Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
+                D1 = Shortinterintra(Next_CL1)  # คำนวนค่า interintra
+            if h > 0:
+                Start_edges = list(i)  # กิ่ง
+                Next_CL2 = Compare_Cluster[h+1]  # ครัสเตอร์ก้อนต่อไป
+                b = Start_edges + Next_CL2  # รวมกันเพื่อเอาไปใช้อะไร list
+                Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
+                D2 = Shortinterintra(Next_CL2)  # คำนวนค่า interintra
+            
+    return Result
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -640,8 +675,8 @@ inter_C1 = Find_terminal(C_G1, Edges_Graph)  # เจอเทอมินอล
 # print'inter_C', inter_C1 ออกมาเป็น [set(['',''])]
 
 # ต่อโหนดที่เหลือเข้าครัสเตอร์แบบอาจารย์
-Check = TorRestNodes1(inter_C1, Cluster_ALL1)
-
+#Check = TorRestNodes1(inter_C1, Cluster_ALL1)
+Check1 = TorRestNodes(inter_C1, Cluster_ALL1)
 
 #inter_Con = TerminalNodesOneCluster(Cluster_ALL1, inter_C1)
 CC = FindTerminalNodesGraph(Cluster_ALL1, inter_C1)  # รวมไซเคิลเข้ากับครัสเตอร์แล้ว

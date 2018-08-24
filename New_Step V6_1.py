@@ -519,22 +519,69 @@ def InsidePlus(A):
             Start = Re
         return Start
 
-# ใช้งาน 16
-def Cal_DD_CL_Last(Cluster_ALL, Dic_Cluster_RestNodes):
+# ใช้งาน 16 intra
+def Keep_intra(Cluster_ALL):  # intra
     Result = []
     # ต้องส่งทีละก้อนครัสเตอร์ให้
-    for i in Cluster_ALL:  # แต่ละก้อนครัสเตอร์ไซเคิล
+    for i in Cluster_ALL:  # แต่ละก้อนครัสเตอร์ไซเคิลดั้งเดิม ไม่ต่อโหนดเหลือ
         intra_CE = EdegsInCluster(i)  # จำนวนกิ่งภายในแต่ละก้อนไซเคิล intra
-        Edges_inter = Find_Edges_between_C(Dic_Cluster_RestNodes)
-        for h in Edges_inter.values():  # จำนวนกิ่งภายนอกของแต่ละก้อนครัสเตอร์ inter
-            inter_CE = h
-            NC = float(len(set(i)))
-            for j in Dic_Cluster_RestNodes.values():
-                N = float(len(set(j)))
+        print 'จำนวนกิ่งภายในครัสเตอร์ ', i, '=', intra_CE, 'กิ่ง'
+        Result.append(intra_CE)
+        # for h in Edges_inter.values():  # จำนวนกิ่งภายนอกของแต่ละก้อนครัสเตอร์ inter
+        #     inter_CE = h
+        #     print 'จำนวนกิ่งภายนอกครัสเตอร์ ', h, '=', inter_CE
+        #     NC = float(len(set(i)))
+        #     print 'จำนวนโหนดในครัสเตอร์ ', h, '=', NC
+        #     for j in Dic_Cluster_RestNodes.values():
+        #         N = float(len(set(j)))
+        #         print 'จำนวนโหนดทั้งหมดของครัสเตอร์ ', h, '=', N
+    return Result  # intra
 
+# ใช้งาน 17  N
+def Keep_N(AA):  # Dic_Cluster_RestNodes N
+    Result1 = []
+    for v in AA.values():
+        N = len(set(v))
+        Result1.append(N)
 
-    return Result
+    return Result1  # []
 
+# ใช้งาน 18 iner
+def Keep_inter(BB):
+    Result2 = []
+    for k in BB.values():
+        Result2.append(k)
+    return Result2
+
+# ใช้งาน 19
+def Keep_NC(CC):
+    Result3 = []
+    for j in CC:
+        NC = len(set(j))
+        Result3.append(NC)
+    return Result3
+
+# ใช้งาน 14
+def Find_Edges_between_C(Start):  # หาโหนดที่อยู่ระหว่างครัสเตอร์ Dict
+    Result = {}  # คือ Dict ของครัสเตอร์ที่ต่อโหนดที่เหลือแล้ว
+    Start  # Dic_Cluster_RestNodes
+    p = int(0)
+    Edges_inter = {}
+    for h in Start.values():  # values ก้อนที่ 0
+        count = (len(Start)) - 1
+        p += 1
+        for j in range(count):
+            if j == 0:
+                Start_CL = set(h)  # ก้อนแรก
+            Next_CL = set(Start[j+1])  # ก้อนสอง
+            a = Start_CL & Next_CL
+            b = len(a)
+            Result[j] = b
+        c = Result.values()
+        c = sum(c)
+        Edges_inter[p] = c
+
+    return Edges_inter
 
 # ใช้งาน 17
 def EdegsInCluster(Cluster_G):  # จำนวนกิ่งในแต่ละก้อน เฉพาะครัสเตอร์ list 1 หน่วย
@@ -648,27 +695,16 @@ def TorRestNodes(Start, Compare):   # inter_C1, Cluster_ALL2
 
     return Dic_Graph_R
 
-# ใช้งาน 14
-def Find_Edges_between_C(Start):  # หาโหนดที่อยู่ระหว่างครัสเตอร์ Dict
-    Result = {}  # คือ Dict ของครัสเตอร์ที่ต่อโหนดที่เหลือแล้ว
-    Start
-    p = int(0)
-    Edges_inter = {}
-    for h in Start.values():  # values ก้อนที่ 0
-        count = (len(Start)) - 1
-        p += 1
-        for j in range(count):
-            if j == 0:
-                Start_CL = set(h)  # ก้อนแรก
-            Next_CL = set(Start[j+1])  # ก้อนสอง
-            a = Start_CL & Next_CL
-            b = len(a)
-            Result[j] = b
-        c = Result.values()
-        c = sum(c)
-        Edges_inter[p] = c
-    return Edges_inter
 
+def Cal_DiffDen(intra, inter, NC, N, ClusterA2):
+    Result4 = {}
+    count = len(ClusterA2)
+    for i in range(count - 1):
+        
+        print 'dd'
+
+
+    return Result4
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -697,7 +733,6 @@ else:
     Cluster_ALL2 = Cluster_ALL1 + T3  # cycle ที่เหลือเข้าไป
 
 # หาเทอมินอลโหนดมาต่อ เช็คมีโหนดเหมือนกัน 1 โหนดแล้วมาคำนวน inter-intra ในแต่ละก้อน
-# หาเทอมินอลมาต่อ โดยยังไม่คำนวน เอาก้อนครัสเตอร์ทั้งหมดมาหากิ่งต่อ
 C_G1 = MeargeCToList(Cluster_ALL2)  # ก้อนยาวๆ + T2
 Rest_Edges = CutSub(C_G1, Edges_Graph)  # กิ่งในกราฟที่ไม่เหมือนในครัสเตอร์ทั้งหมด
 # print'CC =', Rest_Edges
@@ -712,12 +747,19 @@ print'จำนวนครัสเตอร์ภายในกราฟก�
 
 # หากิ่งระหว่างครัสเตอร์
 Dic_Edges_inter_Cluster = Find_Edges_between_C(Dic_Cluster_RestNodes)  # กิ่งภายนอกของแต่ละครัสเตอร์
-print'Check1 =', Dic_Edges_inter_Cluster
+print'กิ่งที่อยู่ระหว่างครัสเตอร์ 2 ครัสเตอร์ =', Dic_Edges_inter_Cluster
 
 
-# Edges_InCluster = EdegsInCluster(Cluster_ALL2)  # กิ่งภายในของแต่ละครัสเตอร์
-Check = Cal_DD_CL_Last(Cluster_ALL, Dic_Cluster_RestNodes)
+# ค่าของตัวแปร inter, intra, N ,NC แบบ list
+intra_list = Keep_intra(Cluster_ALL)  # list [intra,intra,intra]
+N_list = Keep_N(Dic_Cluster_RestNodes)  # [N,N,N]
+inter_list = Keep_inter(Dic_Edges_inter_Cluster)
+NC_list = Keep_NC(Cluster_ALL)
+print'aaa'
 
+# คำนวน Measure ต่างๆ
+Diff_Density = Cal_DiffDen(intra_list, inter_list, NC_list, N_list, Cluster_ALL2)
+print Diff_Density
 # Edges_InCluster_cycles = InsidePlus(Edges_InCluster)  # cycles บวกกันข้างใน
 # print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster
 # กิ่ง Terminal

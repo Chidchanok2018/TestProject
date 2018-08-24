@@ -37,7 +37,7 @@ else:
 
 # --------เตรียม Sub cycles เ---------------#
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]  # Sub = 3 list[['65','79','24']]
-print'Len of Sub3', len(Sub3), 'Cycles'  # พิมพ์จำนวน cycle3 ในกราฟ
+# print'Len of Sub3', len(Sub3), 'Cycles'  # พิมพ์จำนวน cycle3 ในกราฟ
 Sub_cycle3_sort = sorted(Sub3)  # เรียง Sub3 ใหม่จากน้อยไปมาก list[['11','80','79']]
 
 
@@ -525,7 +525,7 @@ def Keep_intra(Cluster_ALL):  # intra
     # ต้องส่งทีละก้อนครัสเตอร์ให้
     for i in Cluster_ALL:  # แต่ละก้อนครัสเตอร์ไซเคิลดั้งเดิม ไม่ต่อโหนดเหลือ
         intra_CE = EdegsInCluster(i)  # จำนวนกิ่งภายในแต่ละก้อนไซเคิล intra
-        print 'จำนวนกิ่งภายในครัสเตอร์ ', i, '=', intra_CE, 'กิ่ง'
+        # print 'จำนวนกิ่งภายในครัสเตอร์ ', i, '=', intra_CE, 'กิ่ง'
         Result.append(intra_CE)
         # for h in Edges_inter.values():  # จำนวนกิ่งภายนอกของแต่ละก้อนครัสเตอร์ inter
         #     inter_CE = h
@@ -700,9 +700,58 @@ def Cal_DiffDen(intra, inter, NC, N, ClusterA2):
     Result4 = {}
     count = len(ClusterA2)
     for i in range(count - 1):
-        
-        print 'dd'
-
+        if i == 0:
+            intra1 = 0.00
+            inter1 = 0.00
+            NC1 = 0.00
+            N1 = 0.00
+            inter_R1 = 0.00
+            intra_R1 = 0.00
+            DD1 = 0.00
+            intra1 = intra[i]
+            inter1 = float(inter[i])
+            NC1    = float(NC[i])
+            N1     = float(N[i])
+            # inter cluster density
+            inter_1 = NC1 * (N1 - NC1)
+            if inter_1 == 0:
+                inter_R1 = 0
+            else:
+                inter_R1 = inter1 / inter_1
+            # intra cluster density
+            intra_1 = ((NC1 - 1)/2) * NC1
+            if intra_1 ==0:
+                intra_R1 = 0
+            else:
+                intra_R1 = intra1 / intra_1
+            DD1 = intra_R1 - inter_R1
+            Result4[i] = DD1
+        if i > 0:
+            intra2 = 0.00
+            inter2 = 0.00
+            NC2 = 0.00
+            N2 = 0.00
+            inter_R2 = 0.00
+            intra_R2 = 0.00
+            DD2 = 0.00
+            intra2 = intra[i]
+            inter2 = inter[i]
+            NC2 = NC[i]
+            N2 = N[i]
+            # inter cluster density
+            inter_2 = NC2 * (N2 - NC2)
+            if inter_2 == 0:
+                inter_R2 = 0
+            else:
+                inter_R2 = inter2 / inter_2
+            # intra cluster density
+            intra_2 = ((NC2 - 1) / 2) * NC2
+            if intra_2 == 0:
+                intra_R2 = 0
+            else:
+                intra_R2 = intra2 / intra_2
+            DD2 = intra_R2 - inter_R2
+            Result4[i] = DD2
 
     return Result4
 
@@ -716,7 +765,7 @@ Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 
 # ได้เป็นก้อนๆครัสเตอร์ list
 Cluster_ALL = MakeCluster(Sub3, Sub_cycle3_sort)
-print'หน้าตาครัสเตอร์ =', Cluster_ALL
+# print'หน้าตาครัสเตอร์ =', Cluster_ALL
 print'จำนวนครัสเตอร์ภายในกราฟก่อนต่อกิ่ง =', len(Cluster_ALL) - 1
 # print'Cluster_ALL =', Cluster_ALL
 Cluster_ALL1 = copy.deepcopy(Cluster_ALL)  # Deep Copy
@@ -747,7 +796,7 @@ print'จำนวนครัสเตอร์ภายในกราฟก�
 
 # หากิ่งระหว่างครัสเตอร์
 Dic_Edges_inter_Cluster = Find_Edges_between_C(Dic_Cluster_RestNodes)  # กิ่งภายนอกของแต่ละครัสเตอร์
-print'กิ่งที่อยู่ระหว่างครัสเตอร์ 2 ครัสเตอร์ =', Dic_Edges_inter_Cluster
+# print'กิ่งที่อยู่ระหว่างครัสเตอร์ 2 ครัสเตอร์ =', Dic_Edges_inter_Cluster
 
 
 # ค่าของตัวแปร inter, intra, N ,NC แบบ list
@@ -755,20 +804,16 @@ intra_list = Keep_intra(Cluster_ALL)  # list [intra,intra,intra]
 N_list = Keep_N(Dic_Cluster_RestNodes)  # [N,N,N]
 inter_list = Keep_inter(Dic_Edges_inter_Cluster)
 NC_list = Keep_NC(Cluster_ALL)
-print'aaa'
+print 'ค่า inter of edges =', inter_list
+print 'ค่า intra of edges =', intra_list
+print 'ค่า โหนดในครัสเตอร์แต่ละก้อน =', NC_list
+print 'ค่า โหนดทั้งหมดในครัสเตอร์แต่ละก้อน =', N_list
 
-# คำนวน Measure ต่างๆ
+# คำนวน Measure Difference Density
 Diff_Density = Cal_DiffDen(intra_list, inter_list, NC_list, N_list, Cluster_ALL2)
-print Diff_Density
-# Edges_InCluster_cycles = InsidePlus(Edges_InCluster)  # cycles บวกกันข้างใน
-# print'กิ่งทั้งหมดในครัสเตอร์ทุกก้อน =', Edges_InCluster
-# กิ่ง Terminal
-# T1 = MeargeCToList2(TT)  # ทำ [[.....],[...]] เป็น [.........]
-# Edges_InCluster_Terminal = TerminalInCluster(TT)  #
+print 'ค่า Difference Density ในแต่ละก้อน =', Diff_Density
 
-# Nodes_InCluster = NodesInCluster(Cluster_ALL1)
-# Nodes_InCluster_All = InsidePlus(Nodes_InCluster)
-# print'โหนดทั้งหมดในครัสเตอร์ทุกก้อน =', Nodes_InCluster_All
+
 
 # Rest_Nodes = Number_of_nodes - Nodes_InCluster_All
 # print'โหนดที่เหลืออยู่ในกราฟ =', Rest_Nodes

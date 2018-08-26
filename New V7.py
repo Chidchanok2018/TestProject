@@ -391,7 +391,6 @@ def MakeCluster(Sub, Sub_Sorted):
 #         plt.show()
 #     return M_CV  # จำนวนกิ่งในครัสเตอร์แต่ละครัสเตอร์
 
-
 def NodesInCluster(Cluster_G):  # โหนดทั้งหมดในทุกก้อนครัสเตอร์
     M_CV = []
     G = nx.Graph()
@@ -509,6 +508,39 @@ def Find_terminal(Start, Compare):  # หา  Terminal ที่โหนดเ�
                 Keep.append(Next_Sub)
         return Merge
 
+def Find_termina2(Cluster, Edges):  # หาเทอมินอลโหนดที่มีกิ่งเหมือนกันแต่ละก้อน
+    Result = []
+    Result1 = []
+    Keep = []
+    for i in Cluster:
+        count = len(Edges)
+        # count1 = len(Cluster)
+        for h in range(count - 1):
+            Start = set(i)
+            if Start == set([]):
+                Next = i
+            if h == 0:
+                Next = Edges[h]
+            if h > 0:
+                Next = Edges[h+1]
+            a = Start & set(Next)
+            if len(a) == 1:
+                Result.append(Next)
+                R = len(Result)
+            else:
+                if a != set([]):
+                    Keep.append(Next)
+                    K = len(Keep)
+        # R1 = copy.deepcopy(Result)
+        # K1 = copy.deepcopy(Keep)
+        # b = set(R1) & set(K1)
+        # Result1.append(R)
+        # G.add_edges_from(Result1)
+        # draw_networkx(G, edge_color='b')
+        # plt.savefig('Snowball2_Test1')
+        # plt.figure(1)
+        # plt.show()
+        return Result
 
 def InsidePlus(A):
     for i in A:
@@ -521,7 +553,7 @@ def InsidePlus(A):
         return Start
 
 # ใช้งาน 16 intra
-def Keep_intra(Cluster_ALL):  # intra Cluster_ALL
+def Keep_intra(Cluster_ALL):  # intra
     Result = []
     # ต้องส่งทีละก้อนครัสเตอร์ให้
     for i in Cluster_ALL:  # แต่ละก้อนครัสเตอร์ไซเคิลดั้งเดิม ไม่ต่อโหนดเหลือ
@@ -644,7 +676,7 @@ def Shortinterintra(Cluster):  # รับแบบเป็นกราฟ list
 
 
 # ใช้งาน 9
-def Make_Dic_Cluster(Compare):
+def Make_Dic_Cluster(Start, Compare):
     All_Graph = {}
     i = 0
     for h in Compare:
@@ -657,31 +689,27 @@ def TorRestNodes(Start, Compare):   # inter_C1, Cluster_ALL2
     Result = []
     Start  # กิ่ง
     Compare_Cluster = Compare
-    Dic_Graph = Make_Dic_Cluster(Compare_Cluster)
-    Dic_Graph_R = copy.deepcopy(Dic_Graph)
+    # Dic_Graph = Make_Dic_Cluster(Start, Compare)
+    Dic_Graph_R = Make_Dic_Cluster(Start, Compare_Cluster)
     Dic_DD_CL = {}
     # เอากิ่งมาต่อ
     for i in Start:  # แต่ละรอบของกิ่ง
         count = len(Compare_Cluster)
         for h in range(count - 1):  # แต่ละรอบของครัสเตอร์
             if h == 0:  # รอบแรก
-                Start_edges = i  # กิ่ง ['','']
-                Next_CL1 = Dic_Graph_R[h]  # ครัสเตอร์ [ก้อนยาว]
-                Result = copy.deepcopy(Next_CL1)  # Copy ออกจาก Next_CL1
-                Result.append(Start_edges)  # [ก้อนครัสเตอร์,[Start_edges]]
-                # Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่
-                a = Start_edges + Next_CL1  # รวมกัน ['','','',.....]
-                D1 = Shortinterintra(a)  # คำนวนค่า interintra
-                Dic_DD_CL[D1] = h  # ใส่ค่า DD ลงใน Dic ชั่วราว
-            if h > 0:
-                Start_edges = i  # กิ่ง
-                Next_CL2 = Dic_Graph_R[h]  # ครัสเตอร์ก้อนต่อไป
-                Result2 = copy.deepcopy(Next_CL2)
-                Result2.append(Start_edges) # รวมกันเพื่อเอาไปใช้อะไร list
+                Start_edges = list(i)  # กิ่ง
+                Next_CL1 = Dic_Graph_R[h]  # ครัสเตอร์
+                # a = Start_edges + Next_CL1  # รวมกันเพื่อเอาไปใช้อะไร list
                 # Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
-                b = Start_edges + Next_CL2  # รวมกัน ['','','',.....]
-                D2 = Shortinterintra(b)  # คำนวนค่า interintra
-                Dic_DD_CL[D2] = h  # ใส่ค่า DD ลงใน Dic ชั่วราว
+                D1 = Shortinterintra(Next_CL1)  # คำนวนค่า interintra
+                Dic_DD_CL[D1] = h
+            if h > 0:
+                Start_edges = list(i)  # กิ่ง
+                Next_CL2 = Dic_Graph_R[h]  # ครัสเตอร์ก้อนต่อไป
+                # b = Start_edges + Next_CL2  # รวมกันเพื่อเอาไปใช้อะไร list
+                # Dic_Graph[h] += Start_edges  # บวกกิ่งเข้าไปที่ i:ก้อนเดิม+Start_edges
+                D2 = Shortinterintra(Next_CL2)  # คำนวนค่า interintra
+                Dic_DD_CL[D2] = h
 
         max_value = max(Dic_DD_CL.values())  # ยังไม่ได้ใช้งาน
         sort_value = max(Dic_DD_CL.items())  # หาค่า Max ของครัสเตอร์
@@ -694,12 +722,11 @@ def TorRestNodes(Start, Compare):   # inter_C1, Cluster_ALL2
             if l == 1:  # ตน.ครัสเตอร์อยู่รอบที่ l = 1
                 f = sort_value[1]  # ให้ f คือตำแหน่งของครัสเตอร์ใน sort_value
                 Dic_Graph_R[f] += Start_edges  # เพิ่มกิ่งที่ถูกต้องในครัสเตอร์ตน. f
-                Dic_Graph[f] = Result
             else:
                 p += 1  # ยังไม่ได้ใช้งาน
         Dic_DD_CL.clear()  # เคลียร์ Dict ที่เก็บค่า DD
 
-    return Dic_Graph
+    return Dic_Graph_R
 
 
 def Cal_DiffDen(intra, inter, NC, N, ClusterA2):
@@ -718,6 +745,7 @@ def Cal_DiffDen(intra, inter, NC, N, ClusterA2):
             intra1 = intra[i]
             print 'ค่า intra of edges ', i, '=', intra1
             inter1 = float(inter[i])
+            # inter1 = float(N[i]) - float(NC[i])
             print 'ค่า inter of edges ', i, '=', inter1
             NC1 = float(NC[i])
             print 'ค่า inside Nodes of cluster ', i, '=', NC1
@@ -788,6 +816,27 @@ def pontang(Cluster3, Cluster2):  # (Cluster_ALL3, Cluster_ALL2)
             Result.append(C)
     return Result
 
+def Make_LchunkToSchunk(Cluster_ALL, Sub3):
+    Result = []
+    Result1 = []
+    Keep = []
+    for i in Cluster_ALL:
+        count = len(Sub3)
+        for h in range(count):
+            Start = i
+            if Start == []:
+                Next = i
+            if h == 0:
+                Next = Sub3[h]
+            if h > 0:
+                Next = Sub3[h]
+            a = set(Start) & set(Next)
+            if len(a) == 3:
+                Result.append(Next)
+            else:
+                Keep.append(Next)
+        Result1.append(Result)
+    return Result1
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -820,25 +869,36 @@ if len(T1) == 0:
 else:
     Cluster_ALL2 = Cluster_ALL1 + T3  # cycle ที่เหลือเข้าไป
 
+# ทำให้ [[........],[........]] เป็น [(1,2,3),(4,5,6)]
+Chunk_Cluster = Make_LchunkToSchunk(Cluster_ALL2, Sub3)
 
 # หาเทอมินอลโหนดมาต่อ เช็คมีโหนดเหมือนกัน 1 โหนดแล้วมาคำนวน inter-intra ในแต่ละก้อน
-C_G1 = MeargeCToList(Cluster_ALL2)  # ก้อนยาวๆ + T3
-Rest_Edges = CutSub(C_G1, Edges_Graph)  # กิ่งในกราฟที่ไม่เหมือนในครัสเตอร์ทั้งหมด [set(['',''])]
+C_G1 = MeargeCToList(Cluster_ALL2)  # ก้อนยาวๆ + T2
+
+Rest_Edges = CutSub(C_G1, Edges_Graph)  # กิ่งในกราฟที่ไม่เหมือนในครัสเตอร์ทั้งหมด
 # print'CC =', Rest_Edges
 inter_C1 = Find_terminal(C_G1, Edges_Graph)  # เจอเทอมินอลที่เหมือนกับ set(C_G1)
+inter_C2 = Find_termina2(Cluster_ALL, Edges_Graph)  # หาเทอมินอลที่มีโหนดเหมือบกัับแต่ละก้อนครัสเตอร์ [(),(),...]
 # print'inter_C', inter_C1 ออกมาเป็น [set(['',''])]
 # ทำให้ set(['',''])] เป็น [[],[]]
 inter_C11 = RestSub_setTolist(inter_C1)
+# print 'inter_C11 =', inter_C11
 
+J = Cluster_ALL[0] + inter_C2
+# G.add_cycle(Cluster_ALL[0])
+# G.add_edges_from(J)
+draw_networkx(G, edge_color='b')
+# plt.savefig('Snowball2_Test1')
+plt.figure(1)
+plt.show()
 
 
 # ต่อโหนดที่เหลือเข้าครัสเตอร์แบบอาจารย์!!!! {0:['','',''......],1:['','']}
 # Check = TorRestNodes1(inter_C1, Cluster_ALL2)
-Dic_CTorRN = TorRestNodes(inter_C11, Cluster_ALL1)
-# Dic_Cluster_RestNodes = TorRestNodes(inter_C1, Cluster_ALL1)  # ได้ครัสเตอร์ที่ต่อกับโหนดที่เหลือแว้ว
-# print'จำนวนครัสเตอร์ภายในกราฟกหลังต่อกิ่ง =', len(Dic_Cluster_RestNodes) - 1
+Dic_Cluster_RestNodes = TorRestNodes(inter_C1, Cluster_ALL1)  # ได้ครัสเตอร์ที่ต่อกับโหนดที่เหลือแว้ว
+print'จำนวนครัสเตอร์ภายในกราฟกหลังต่อกิ่ง =', len(Dic_Cluster_RestNodes) - 1
 
-# C = len(set(Cluster_ALL2[0]))
+# C = set(Cluster_ALL2[0])
 # print'C', C
 # D = set(Cluster_ALL2[1])
 # print 'D', D
@@ -868,94 +928,3 @@ NC_list = Keep_NC(Cluster_ALL)
 # คำนวน Measure Difference Density
 Diff_Density = Cal_DiffDen(intra_list, inter_list, NC_list, N_list, Cluster_ALL2)
 print 'ค่า Difference Density ในแต่ละก้อน =', Diff_Density
-
-# คำนวน Measure Coverage
-
-
-# Rest_Nodes = Number_of_nodes - Nodes_InCluster_All
-# print'โหนดที่เหลืออยู่ในกราฟ =', Rest_Nodes
-
-# Coverage_Matric = Edges_InCluster_All / len(Node_Graph)
-# print'Coverage_Matric =', Coverage_Matric
-
-# Con_1 = len(inter_C1) / Nodes_InCluster_All
-# Con_2 = (1.00 / 2.00) * Con_1
-# Conductance = 1.00 - Con_2
-# print'Conductance =', Conductance
-
-# for a in Cluster1:
-#     G = nx.Graph()
-#     G.add_cycle(a)
-#     draw_networkx(G, edge_color='b')
-#     plt.figure(1)
-#     plt.show()
-
-
-# -------- Not to use Codes
-# inter_Con = TerminalNodesOneCluster(Cluster_ALL1, inter_C1)
-# CC = FindTerminalNodesGraph(Cluster_ALL1, inter_C1)  # รวมไซเคิลเข้ากับครัสเตอร์แล้ว
-# print'จำนวนครัสเตอร์ต่อเทอมินอลแล้ว =', len(CC) - 1
-# TT = FindTerminalNodesGraph_Terminal(Cluster_ALL1, inter_C1)  # เอาเฉพาะเทอมินอลที่อยู่แยกเป็นก้อนครัสเตอร์
-# print'จำนวนเทอมินอลที่จะอยู่ในแต่ละครัสเตอร์ =', TT
-
-# def TorRestNodes1(Start, Compare):  # หาครัสเตอร์ที่โหนดที่เหลือควรอยู่ หมุนครัสเตอร์
-#     Start = inter_C1 กิ่ง set ก้อน, Compare = Cluster_ALL1 กราฟครัสเตอร์ list ก้อน
-# Cluster = []
-# p = 0
-# Next = set()
-# for h in Start:  #
-#     D1 = 0
-#     D2 = 0
-#     D3 = 0
-#     Keep1 = {}
-#     count = len(Compare)  # จำนวนก้อนของครัสเตอร์ 5
-#     for i in range(count - 1):  # จำนวนรอบ 4
-#         h = list(h)  # กิ่งก้อนแรก ['9','42']
-#         if i == 0:  # ครัสเตอร์ก้อนแรก
-#             Next1_S = set(Compare[i])  # ทำให้เป็น set
-#             AAA = set(Next) & Next1_S
-#             if len(AAA) < 2:
-#                 Next1 = Compare[i]
-#             if len(AAA) >= 2:  # หาเงื่อนไขใหม่...........
-#                 Next1 = Next   # เอาก้อนที่รวมกิ่งเข้าไปเรียบร้อยแล้ว
-#             a = h + Next1
-#             ส่ง h ไปคำนวน
-#             D1 = Shortinterintra(Next1)  # ได้ค่าเป็น float กลับมา
-#             Keep1[D1] = a
-#         if i > 0:  # ครัสเตอร์ตรงกลาง
-#             Next3_S = set(Compare[i])  # ทำให้เป็น set
-#             CCC = set(Next) & Next3_S
-#             if  len(CCC) < 2:
-#                 Next3 = Compare[i]  # ครัสเตอร์ก้อนอื่นๆ
-#             if len(CCC) >= 2:
-#                 Next3 = Next
-#             c = h + Next3
-#             D3 = Shortinterintra(Next3)
-#             Keep1[D3] = c
-#         if i == count:  # ครัสเตอร์ก้อนสุดท้าย
-#             Next2_S = set(Compare[i])  # ทำให้เป็น set
-#             BBB = set(Next) & Next2_S
-#             if len(BBB) < 2:
-#                 Next2 = Compare[-1]
-#             if len(BBB) >= 2:
-#                 Next2 = Next
-#             b = h + Next2
-#             D2 = Shortinterintra(Next2)
-#             Keep1[D2] = b
-#
-#     max_value = max(Keep1.keys())  # 0.74
-#     w = max(Keep1.items())  # (0.74,['','',''])
-#     p = 0
-#     for k in w:
-#         print k
-#         count = len(w)
-#         for l in range(count - 1):  # l คือรอบ
-#             if p == 1:  # เอาตัวที่ 1 คือ list ของกราฟที่มีเทอมินอล
-#                 Next = w[l+1]  # ก้อนที่มีการเพิ่มกิ่ง
-#                 Cluster.append(Next)  # ใส่ list ที่ครัสเตอร์ + กิ่งเข้าไป
-#                 Next_S = set(Next)
-#             else:
-#                 print'Something'
-#                 p += 1
-#
-# return Cluster  # ส่งค่า Cluster ออกไปเป็น list [[.....],[..],[.....],[...],]

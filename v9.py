@@ -78,19 +78,69 @@ def Difference_Density(Start, Compare, DD):  # (Next_SNodes2, Next_SNodes2_Sort,
     # เริ่มต้นให้ตัวแปรเป็น list, เปรียบเทียบตัวแปรเป็น set, เพิ่มตัว Start เป็น list
     Keep = []
     G = nx.Graph()
+    K = nx.Graph()
     Start_L = []
     for item3 in Start:
         count = len(Compare) - 1
-        Start_L = list(item3)
-        G.add_cycle(Start_L)
+        Start_L = list(item3)  # ให้ตั้งต้นไซเคิลด้วยตัวแรกของกราฟ
+        # G.add_cycle(Start_L)  # ใส่ไซเคิลเข้าไปก่อนเพราะจะไม่เปลี่ยนค่า
+        K.add_cycle(Start_L)
         for i in range(count):
-            Next_L = list(Compare[i+1])
+            Next_L = list(Compare[i+1])  #
             Result.append(Next_L)
             Result.append(Start_L)
+            # G คือกราฟที่เอาไว้คำนวน
             G.add_cycle(Next_L)
+            # G.add_edges_from(('1','8','30'),('8','30','21'))
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
             plt.show()
+            a = set(Next_L) - set(Start_L)
+            a = list(a)
+            b = set(Start_L) & set(Next_L)
+            Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+            N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+            # inter Cluster Density
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+            # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                print Dif_Den_N2
+            # if len(b) >= 2:
+            #     c = 0.79
+            #     if c >= 0.80:
+            #         G.remove_nodes_from(a)
+            #         draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            #         plt.show()
+            if len(b) < 2:
+                    G.remove_nodes_from(Next_L)
+                    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                    plt.show()
 
+            # K.add_cycle(Next_L)
+            # K.remove_nodes_from(a)  # มันลบทุกโหนดในกราฟ ต้องเอาโหนดเฉพาะที่จะลบ 1 โหนด
+            # draw_networkx(K, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
 
     return Result  # ผลลัพทธ์ออกมา [['','',''],['','','']]
 

@@ -87,14 +87,27 @@ def DiffDen(Next_SNodes2, Compare, DD):
 
     for item3 in Next_SNodes2:
         count = len(Next_SNodes2)
+        k = nx.Graph()
+
         for i in range(count - 1):
-            O = item3 + Compare[i]
-            O += Compare[i+1]
-            G.add_cycle(O)
+            Start = item3
+            Next = Compare[i]
+            if i > 0:
+                Start = a
+            a = Start + Next
+            # O = item3 + Next
+            # O += Compare[i+1]
+            G.add_cycle(a)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
             plt.show()
-            
-
+            if i == 4:
+                G.clear()
+                a.pop(-1)
+                a.pop(-1)
+                a.pop(-1)
+                G.add_cycle(a)
+                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                plt.show()
         return
 
 

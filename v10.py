@@ -37,6 +37,7 @@ else:
 
 # --------เตรียม Sub cycles เ---------------#
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]  # Sub = 3 list[['65','79','24']]
+Sub4 = [c for c in nx.cycle_basis(G) if len(c) == 4]
 # print'Len of Sub3', len(Sub3), 'Cycles'  # พิมพ์จำนวน cycle3 ในกราฟ
 Sub_cycle3_sort = sorted(Sub3)  # เรียง Sub3 ใหม่จากน้อยไปมาก list[['11','80','79']]
 
@@ -84,33 +85,96 @@ def RestSub_setTolist(Start):  # ทำ set(['','',''],['','','']) เป็น 
     return T1
 
 def DiffDen(Next_SNodes2, Compare, DD):
-
+    Result = []
+    Keep = []
     for item3 in Next_SNodes2:
         count = len(Next_SNodes2)
-        k = nx.Graph()
-
         for i in range(count - 1):
             Start = item3
             Next = Compare[i]
             if i > 0:
                 Start = a
             a = Start + Next
-            # O = item3 + Next
-            # O += Compare[i+1]
             G.add_cycle(a)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-            plt.show()
-            if i == 4:
+            # plt.show()
+
+            b = set(Start) & set(Next)
+            Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+            N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+                # inter Cluster Density
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                if Dif_Den_N2 >= DD:
+                    Result = a
+                else:
+                    G.clear()
+                    a.pop(-1)
+                    a.pop(-1)
+                    a.pop(-1)
+                    G.add_cycle(a)
+                    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                    # plt.show()
+                    Keep.append(Next)
+            else:
                 G.clear()
                 a.pop(-1)
                 a.pop(-1)
                 a.pop(-1)
                 G.add_cycle(a)
                 draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
-        return
+                # plt.show()
+                Keep.append(Next)
 
+        # G.add_cycle(a)
+        # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+        # plt.show()
+        return Result
 
+# ใช้งาน 3
+def Next_SubN2N1(Start, Compare):  # หา Sub รอบที่ 2 ที่โหนดเหมือน 2
+    # Start ใส่ list[.,.,.], Compare หมุนใส่ list[set([],[])]
+    Result = []  # กำหนด type ให้ตัว Return
+    Keep = []
+
+    for i in Compare:  # Compare เป็นตัวหมุน
+        count = len(Compare)   # จำนวน Start-1
+        for h in range(count - 1):  # จำนวนรอบใน count
+            Start = set(Start)  # ให้ Start ยาว ๆ เป็น set
+            if len(Result) > 0:
+                Start = Start | b  # รวมไม่เอาที่ซ้ำ (set)
+            Next = set(Compare[h])  # เปลี่ยน Next ให้เป็น list
+            a = Start & Next  # บอกจำนวนที่แตกต่างของ Start,Next
+            if len(a) >= 2:  # กำหนดจำนวนโหนดของ Sub ที่จะเอามาต่อ
+                b = Start | Next
+                Result.append(Next)
+            else:
+                Keep.append(Next)
+
+        return Result
 
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
@@ -129,8 +193,9 @@ print 'จำนวนไซเคิลข้างเคียงในรอ�
 print 'จำนวนไซเคิลที่เหลืออยํู =', len(Sub3) - len(Next_SNodes2)
 L = RestSub_setTolist(Next_SNodes2)
 L1 = sorted(L)
-DDD = DiffDen(L, L1, DD)
+D1 = DiffDen(L, L1, DD)
 print 'a'
+L2 = Next_SubN2N1(D1, Sub4)
 
 
 

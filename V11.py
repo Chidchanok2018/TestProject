@@ -39,42 +39,11 @@ else:
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]  # Sub = 3 list[['65','79','24']]
 # Sub4 = [c for c in nx.cycle_basis(G) if len(c) == 4]
 # print'Len of Sub3', len(Sub3), 'Cycles'  # พิมพ์จำนวน cycle3 ในกราฟ
-Sub_cycle3_sort = sorted(Sub3)  # เรียง Sub3 ใหม่จากน้อยไปมาก list[['11','80','79']]
+# Sub_cycle3_sort = sorted(Sub3)  # เรียง Sub3 ใหม่จากน้อยไปมาก list[['11','80','79']]
 
 
 # -------------Definition of Program--------------#
 
-# ใช้งาน 1 สำหรับการหาโหนดข้างเคียงที่มีโหนดเหมือนกัน 2 โหนด
-def Next_SubN2(Start, Compare):  # เอาเหมือนรอบๆ 2 โหนด
-
-    Scycle_same2 = []
-    Keep = []
-    for h in Start:  # เอา Start แค่ตัวเดียว
-        count = len(Start) - 1  # นับจำนวนแต่ละตัวใน Start
-        for i in range(count + 1):  # แต่ละตัวใน Start รอบ+1 เพื่อจะได้เอา [0]
-            Start_Scycle = set(h)  # แต่ละตัวใน Start set(['24','65','24'])
-            if i == count:  # เอาตำแหน่ง [0]
-                Next_Sub = set(Compare[0])  # set
-            if i < count:  # เอาตำแหน่งมากกว่า [0]
-                Next_Sub = set(Compare[i + 1])  # set
-            a = Start_Scycle & Next_Sub  # ที่แตกต่าง กันของ Start กับ Next set([])
-            # b = Start_Scycle - Next_Scycle # เอาที่ไม่เหมือน
-            if len(a) == 2.0:  # ถ้า จำนวนของ a มากกว่าเท่ากับ 2
-                Merge_Sub = Start_Scycle | Next_Sub  # เอามารวมกัน
-                Scycle_same2.append(Next_Sub)  # เพิ่ม Next ใน Scycle_same2
-            else:
-                Keep.append(Next_Sub)  # set(['95','14','53'])
-        return Scycle_same2  # ส่งค่า Scycle_same2 [set([],[],...)]
-
-# ใช้ 2 เอาไว้เปลี่ยนจาก [[],[],[]] -> [[...........]] ก้อนเป็นยาว ๆ
-def Change_Shlist_TO_Llist(Sh_list):
-    Result = []
-    for i in Sh_list:
-        Result += (i)
-    return Result
-
-
-# ใช้ 12, T1 มี 2 cycles
 def Change_SetTolist(Start):  # ทำ set(['','',''],['','','']) เป็น list[[],[]]
     T1 = []
     for i in Start:
@@ -82,7 +51,13 @@ def Change_SetTolist(Start):  # ทำ set(['','',''],['','','']) เป็น l
         T1.append(T)
     return T1
 
-def Plus_ListToLost(Start, Plus):
+def Change_Shlist_TO_Llist(Sh_list):  # [[],[],[]] -> [[...........]] ก้อนเป็นยาว ๆ
+    Result = []
+    for i in Sh_list:
+        Result += (i)
+    return Result
+
+def Plus_ListToLost(Start, Plus):  # [['1','','']] + [['2','','']] = [['1','',''],['2','','']]
     T1 = Start
     T11 = copy.deepcopy(T1)
     for i in Plus:
@@ -96,7 +71,27 @@ def Change_ListToSet(Start):  # ทำ List[[],[]] เป็น [set[],set[],set
         T1.append(T)
     return T1
 
-def DiffDen(Next_SNodes2, Compare3, DD):
+def Next_SN2(Start, Compare, V):
+    # List[['','',''],['','','']]  List[['','',''],['','','']]
+    Result = []
+    Keep = []
+    for h in Start:
+        count = len(Compare)
+        Start_L = h
+        Start_S = set(h)
+        Result.append(Start_L)
+        for i in range(count - 1):
+            Next_L = Compare[i]
+            Next_S = set(Next_L)
+            a = Start_S & Next_S
+            if len(a) >= V:
+                Result.append(Next_L)
+            else:
+                Keep.append(Next_L)
+        return Result  # List[['','',''],['','','']]
+
+
+def DiffDen(Compare3, DD):
     # List[['','',''],['','','']]  List[['','',''],['','','']]
     Result = []
     Keep = []
@@ -114,7 +109,7 @@ def DiffDen(Next_SNodes2, Compare3, DD):
             a = Start + Next
             G.add_cycle(a)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-            plt.show()
+            # plt.show()
 
             b = set(Start) & set(Next)
             Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
@@ -158,7 +153,7 @@ def DiffDen(Next_SNodes2, Compare3, DD):
                     a.pop(-1)
                     G.add_cycle(a)
                     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                    plt.show()
+                    # plt.show()
                     Keep.append(Next)
             else:
                 G.clear()
@@ -167,7 +162,7 @@ def DiffDen(Next_SNodes2, Compare3, DD):
                 a.pop(-1)
                 G.add_cycle(a)
                 draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
+                # plt.show()
                 Keep.append(Next)
 
         # for ii in range(count4 - 1):
@@ -229,10 +224,8 @@ def DiffDen(Next_SNodes2, Compare3, DD):
             #     Keep.append(Next) #
         return Result_L  # D1 = List[['','',''],['','','']]
 
-
-# ใช้งาน 3
 def Cut_Sub(Start, Compare):  # หา Sub ที่เหลือจากทั้งหมด
-
+    # List[['','',''],['','','']]  List[['','',''],['','','']]
     Result = []  # กำหนด type ให้ตัว Return
     Keep = []
     Start_L = Change_Shlist_TO_Llist(Start)
@@ -252,27 +245,8 @@ def Cut_Sub(Start, Compare):  # หา Sub ที่เหลือจากท�
         return Result  # CutSub = [['','',''],['','','']]
 
 
-def Next_SN2(Start, Compare):
-    # List[['','',''],['','','']]  List[['','',''],['','','']]
-    Result = []
-    Keep = []
-    for h in Start:
-        count = len(Compare)
-        Start_L = h
-        Start_S = set(h)
-        Result.append(Start_L)
-        for i in range(count - 1):
-            Next_L = Compare[i]
-            Next_S = set(Next_L)
-            a = Start_S & Next_S
-            if len(a) >= 1:
-                Result.append(Next_L)
-            else:
-                Keep.append(Next_L)
-        return Result  # List[['','',''],['','','']]
-
-
 def draw_Cluster(Start, Compare):
+    # List[['','',''],['','','']] List[['','',''],['','','']]
     Result = []
     k = nx.Graph()
     for h in Start:
@@ -283,7 +257,7 @@ def draw_Cluster(Start, Compare):
             a = Start_L + Next_L
             k.add_cycle(a)
             draw_networkx(k, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-            plt.show()
+            # plt.show()
         for J in Compare:
             Start_LL = a + J
             count1 = len(Compare)
@@ -292,9 +266,75 @@ def draw_Cluster(Start, Compare):
                 aa = Start_LL + Next_LL
                 k.add_cycle(aa)
                 draw_networkx(k, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
+                # plt.show()
 
             return
+
+def Check_inter_Edges(Start, Compare):  # Cluster, All Edges
+    # List[['','',''],['','','']]  List[('','',''),('','','')]
+    Result = []
+    Keep = []
+    Start_L = Change_Shlist_TO_Llist(Start)
+    Start_S = set(Start_L)
+    for h in Compare:
+        Next_L = h
+        Next_S = set(h)
+        a = Start_S & Next_S
+        if len(a) == 1:
+            Result.append(Next_L)
+        else:
+            Keep.append(Next_L)
+    return Result
+
+
+def Make_Cluster(Cycles):
+    Result = {}
+    keep = []
+    w = 0
+    h = 0
+    i = len(Cycles)
+    while w > 0:
+        Cycles_sort = sorted(Cycles)
+        N0 = Next_SN2(Cycles, Cycles_sort, 2)  # หา SUB ข้างเคียงที่เหลืออยู่
+        w = len(N0)  # หาก Sub ข้างเคียงไม่เหลือ
+        D0 = DiffDen(N0, 0.65)  # เอา N0 มาคำนวนหา DD
+        if len(D0) == 0:
+            Result[h] = N0
+        w = len(D0)  # หากคำนวน DD แล้วไม่มีรอดสัก SUB
+        # ตัดออกจาก SUB ทั้งหมด
+        C0 = Cut_Sub(D0, Cycles)  # ตัดก้อนเล็กออกจากกอง SUB ทั้งหมด
+        if len(C0) == 0:
+            Result[h] = D0
+        w = len(C0)  # หากไม่มี SUB เหลืออยู่
+        C0_sort = sorted(C0)
+        # เริ่มเอา SUB มาต่อรอบๆก้อนเล็ก
+        N0_1 = Next_SN2(C0, C0_sort, 1)  # หา SUB ที่เหลือมาหาที่เหมือนกับก้อนเล็ก
+        if len(N0_1) == 0:
+            Result[h] = D0
+        w = len(N0_1)
+        D0_1 = copy.deepcopy(D0)
+        P0 = Plus_ListToLost(D0_1, N0_1)  # เอาก้อนเล็ก + N0_1
+        w = len(Sub3_L) - len(P0)
+        # วาดรูป
+        # draw_Cluster(D0_1, N0_1)  # วาดเฉพาะก้อน P0
+        # จัดใส่ผลลัพท์
+        Result[h] = P0  # {ก้อนครัสเตอร์ : กิ่งรอบ ๆ}
+        h += 1
+        # ตัดก้อนครัสเตอร์ออกจาก Sub ทั้งหมด
+        keep += P0  # เก็บจำนวน SUB ในครัสเตอร์
+        if h == 1:
+            C0_1 = Cut_Sub(P0, Sub3_L)  # Sub ที่เหลืออยู่
+        if h >= 2:
+            C0_1 = Cut_Sub(keep, Sub3_L)  # Sub ที่เหลืออยู่
+        Cycles = C0_1
+        if len(C0_1) == 1:
+            Result[h] = C0_1
+            w = 0  # จบการทำงานไปเลย
+        w = len(C0_1)  # หากไม่มีซับเหลืออยู่แล้ว
+
+    return Result
+
+
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -307,25 +347,21 @@ DD = float(0.65)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]
-Next_SNodes2 = Next_SubN2(Sub3, Sub_cycle3_sort)  # list [set(['1','8','30']),...]#
-print 'จำนวนไซเคิลข้างเคียงในรอบแรก =', len(Next_SNodes2)
-print 'จำนวนไซเคิลที่เหลืออยํู =', len(Sub3) - len(Next_SNodes2)
-L = Change_SetTolist(Next_SNodes2)
-L1 = sorted(L)
-D1 = DiffDen(L, L1, DD)
+# ทำให้เป็น List จะได้ง่าย
+Sub3_L = Change_SetTolist(Sub3)
+Sub3_L_sort = sorted(Sub3_L)
 
-C2 = Cut_Sub(D1, Sub3)  # ตัดครัสเตอร์แรกออกจากกอง SUB ทั้งหมด
-C2_sort = sorted(C2)
-N2 = Next_SN2(C2, C2_sort)  # หาครัสเตอร์ใหม่
-Draw2 = draw_Cluster(D1, N2)
-P2 = Plus_ListToLost(D1, N2)  # ได้ก้อนครัสเตอร์ 1
 
-C3 = Cut_Sub(P2, Sub3)  # ตัดครัสเตอร์แรกออกจากกอง SUB ทั้งหมด
-C3_sort = sorted(C3)
+# N1 = Next_SN2(Sub3_L, Sub3_L_sort, 2)
+# D1 = DiffDen(N1, DD)
+# C1 = Cut_Sub(D1, Sub3_L)  # ตัดครัสเตอร์แรกออกจากกอง SUB ทั้งหมด
+# C1_sort = sorted(C1)
+# N1_1 = Next_SN2(C1, C1_sort, 1)  # หารอบ ๆ ครัสเตอร์
+# draw_Cluster(D1, N1_1)
+# D1_1 = copy.deepcopy(D1)
+# P1 = Plus_ListToLost(D1_1, N1_1)  # ได้ก้อนครัสเตอร์ 1
+# ED1 = Check_inter_Edges(P1, Edges_Graph)  # กิ่งที่ต่อกับครัสเตอร์ 1
+# C1_1 = Cut_Sub(P1, Sub3_L)  # Sub ที่เหลืออยู่
+D_Cluster = Make_Cluster(Sub3_L)
 
-D3 = DiffDen(C3, C3_sort, DD)
 print 'a'
-
-
-
-

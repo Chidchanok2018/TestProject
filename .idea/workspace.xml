@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/V11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v10.py" beforeDir="false" afterPath="$PROJECT_DIR$/v10.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +17,9 @@
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V3.coverage" NAME="New_Step V3 Coverage Results" MODIFIED="1534243851374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$v8.coverage" NAME="v8 Coverage Results" MODIFIED="1535293455090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$VeryReal_06062561.coverage" NAME="VeryReal 06062561 Coverage Results" MODIFIED="1529564909654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
-    <SUITE FILE_PATH="coverage/TestProject$v10.coverage" NAME="v10 Coverage Results" MODIFIED="1535549604025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$v10.coverage" NAME="v10 Coverage Results" MODIFIED="1535716650318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V5_1.coverage" NAME="New_Step V5_1 Coverage Results" MODIFIED="1534817616783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V11.coverage" NAME="V11 Coverage Results" MODIFIED="1535816968974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Rewrite_21062561.coverage" NAME="Rewrite_21062561 Coverage Results" MODIFIED="1533203833611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
     <SUITE FILE_PATH="coverage/TestProject$Real18052561.coverage" NAME="Real18052561 Coverage Results" MODIFIED="1528302463916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -38,38 +41,42 @@
     <session id="107775073">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="52111" />
+          <entry key="py" value="56244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="52111" />
+          <entry key="Python" value="56244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="24" />
+          <entry key="py" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="24" />
+          <entry key="Python" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -83,46 +90,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="316" column="35" selection-start-line="316" selection-start-column="35" selection-end-line="316" selection-end-column="35" />
+            <state relative-caret-position="6924">
+              <caret line="705" column="9" selection-start-line="705" selection-start-column="9" selection-end-line="705" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/v8.py">
+        <entry file="file://$PROJECT_DIR$/v10.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-710">
-              <caret line="273" column="37" selection-start-line="273" selection-start-column="37" selection-end-line="273" selection-end-column="37" />
+            <state relative-caret-position="5320">
+              <caret line="274" selection-start-line="274" selection-end-line="296" selection-end-column="18" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <marker date="1535308946415" expanded="true" signature="7062:11797" ph="..." />
-                <marker date="1535308946415" expanded="true" signature="12306:12554" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/v9.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="165" selection-start-line="165" selection-end-line="165" selection-end-column="73" />
-              <folding>
-                <element signature="e#24#46#0" expanded="true" />
-                <marker date="1535380809628" expanded="true" signature="3309:6444" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/v10.py">
+        <entry file="file://$PROJECT_DIR$/V11.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="167" column="58" selection-start-line="167" selection-start-column="58" selection-end-line="167" selection-end-column="58" />
+            <state relative-caret-position="221">
+              <caret line="300" column="24" lean-forward="true" selection-start-line="300" selection-start-column="24" selection-end-line="300" selection-end-column="24" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
+                <element signature="e#6109#6139#0" />
+                <element signature="e#11670#11678#0" />
               </folding>
             </state>
           </provider>
@@ -131,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/Python27/FileFromMilk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+            <state relative-caret-position="540">
+              <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -172,6 +166,8 @@
       <find>draw_networkx</find>
       <find>Make_LchunkToSchunk</find>
       <find>MakeCluster</find>
+      <find>Result</find>
+      <find>plt</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,6 +199,7 @@
         <option value="$PROJECT_DIR$/v9.py" />
         <option value="C:/Python27/FileFromMilk.py" />
         <option value="$PROJECT_DIR$/v10.py" />
+        <option value="$PROJECT_DIR$/V11.py" />
       </list>
     </option>
   </component>
@@ -212,7 +209,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -224,6 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,13 +233,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Kmutt_Wan/PycharmProjects/TestProject/testFile.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -267,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.v10">
+  <component name="RunManager" selected="Python.V11">
     <configuration name="FileFromMilk" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -290,7 +287,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="New V7" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="V11" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -303,7 +300,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/New V7.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/V11.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -380,18 +377,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.FileFromMilk" />
-      <item itemvalue="Python.New V7" />
       <item itemvalue="Python.v8" />
       <item itemvalue="Python.v9" />
       <item itemvalue="Python.v10" />
+      <item itemvalue="Python.V11" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.V11" />
         <item itemvalue="Python.v10" />
         <item itemvalue="Python.v9" />
         <item itemvalue="Python.FileFromMilk" />
         <item itemvalue="Python.v8" />
-        <item itemvalue="Python.New V7" />
       </list>
     </recent_temporary>
   </component>
@@ -419,7 +416,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
@@ -441,7 +437,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.37140697" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.31316188" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -719,18 +715,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v10.py</url>
-          <line>164</line>
-          <option name="timeStamp" value="976" />
+          <line>326</line>
+          <option name="timeStamp" value="1031" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v10.py</url>
-          <line>159</line>
-          <option name="timeStamp" value="977" />
+          <line>325</line>
+          <option name="timeStamp" value="1057" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/v10.py</url>
-          <line>176</line>
-          <option name="timeStamp" value="979" />
+          <url>file://$PROJECT_DIR$/V11.py</url>
+          <line>366</line>
+          <option name="timeStamp" value="1070" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V11.py</url>
+          <line>290</line>
+          <option name="timeStamp" value="1071" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V11.py</url>
+          <line>334</line>
+          <option name="timeStamp" value="1072" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V11.py</url>
+          <line>364</line>
+          <option name="timeStamp" value="1073" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -751,12 +762,18 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="Start" language="Python" />
-        <watch expression="Next" language="Python" />
-        <watch expression="a" language="Python" />
-        <watch expression="b" language="Python" />
+        <watch expression="N0" language="Python" />
+        <watch expression="D0" language="Python" />
+        <watch expression="C0" language="Python" />
+        <watch expression="N0_1" language="Python" />
+        <watch expression="P0" language="Python" />
+        <watch expression="keep" language="Python" />
+        <watch expression="h" language="Python" />
+        <watch expression="w" language="Python" />
+        <watch expression="Cycles" language="Python" />
         <watch expression="Result" language="Python" />
-        <watch expression="len(Keep)" language="Python" />
+        <watch expression="C0_1" language="Python" />
+        <watch expression="Result" />
       </configuration>
     </watches-manager>
   </component>
@@ -770,27 +787,27 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>b</expression-string>
+        <expression-string>keep</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>ิb</expression-string>
+        <expression-string>len(keep)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Next_SNodes2</expression-string>
+        <expression-string>C0_1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(Keep)</expression-string>
+        <expression-string>Cycles</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Start</expression-string>
+        <expression-string>h</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -800,22 +817,22 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Compare</expression-string>
+        <expression-string>len(Sub3_L)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>a</expression-string>
+        <expression-string>w</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Next</expression-string>
+        <expression-string>len(Edges_Graph)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Compare[i]</expression-string>
+        <expression-string>ED0</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1098,16 +1115,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/FileFromMilk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/v8.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-710">
+        <state relative-caret-position="5300">
           <caret line="273" column="37" selection-start-line="273" selection-start-column="37" selection-end-line="273" selection-end-column="37" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
@@ -1119,7 +1129,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/v9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="3140">
           <caret line="165" selection-start-line="165" selection-end-line="165" selection-end-column="73" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
@@ -1128,19 +1138,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
+    <entry file="file://$PROJECT_DIR$/v10.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="316" column="35" selection-start-line="316" selection-start-column="35" selection-end-line="316" selection-end-column="35" />
+        <state relative-caret-position="5320">
+          <caret line="274" selection-start-line="274" selection-end-line="296" selection-end-column="18" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/v10.py">
+    <entry file="file://C:/Python27/FileFromMilk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="167" column="58" selection-start-line="167" selection-start-column="58" selection-end-line="167" selection-end-column="58" />
+        <state relative-caret-position="540">
+          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6924">
+          <caret line="705" column="9" selection-start-line="705" selection-start-column="9" selection-end-line="705" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="300" column="24" lean-forward="true" selection-start-line="300" selection-start-column="24" selection-end-line="300" selection-end-column="24" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#6109#6139#0" />
+            <element signature="e#11670#11678#0" />
           </folding>
         </state>
       </provider>

@@ -232,7 +232,7 @@ def Cut_Sub(Start, Compare):  # หา Sub ที่เหลือจากท�
     Start_S = set(Start_L)
     for h in Start_S:
         count = len(Compare)
-        for i in range(count - 1):
+        for i in range(count):
             Next = Compare[i]
             Next_S = set(Next)
             a = Start_S & Next_S  # สมาชิกที่ซ้ำกัน
@@ -287,15 +287,16 @@ def Check_inter_Edges(Start, Compare):  # Cluster, All Edges
     return Result
 
 
-def Make_Cluster(Cycles):
+def Make_Cluster(Cycles, R):
     Result = {}
     keep = []
-    w = 0
+    Cycles_Def = copy.deepcopy(Cycles)
+    w = 1
     h = 0
-    i = len(Cycles)
+    i = len(Cycles_Def)
     while w > 0:
-        Cycles_sort = sorted(Cycles)
-        N0 = Next_SN2(Cycles, Cycles_sort, 2)  # หา SUB ข้างเคียงที่เหลืออยู่
+        Cycles_sort = sorted(Cycles_Def)
+        N0 = Next_SN2(Cycles_Def, Cycles_sort, 2)  # หา SUB ข้างเคียงที่เหลืออยู่
         w = len(N0)  # หาก Sub ข้างเคียงไม่เหลือ
         D0 = DiffDen(N0, 0.65)  # เอา N0 มาคำนวนหา DD
         if len(D0) == 0:
@@ -308,25 +309,27 @@ def Make_Cluster(Cycles):
         w = len(C0)  # หากไม่มี SUB เหลืออยู่
         C0_sort = sorted(C0)
         # เริ่มเอา SUB มาต่อรอบๆก้อนเล็ก
-        N0_1 = Next_SN2(C0, C0_sort, 1)  # หา SUB ที่เหลือมาหาที่เหมือนกับก้อนเล็ก
+        N0_1 = Next_SN2(C0, C0_sort, 2)  # หา SUB ที่เหลือมาหาที่เหมือนกับก้อนเล็ก
         if len(N0_1) == 0:
             Result[h] = D0
         w = len(N0_1)
         D0_1 = copy.deepcopy(D0)
         P0 = Plus_ListToLost(D0_1, N0_1)  # เอาก้อนเล็ก + N0_1
-        w = len(Sub3_L) - len(P0)
+        w = len(Cycles_Def) - len(P0)
         # วาดรูป
         # draw_Cluster(D0_1, N0_1)  # วาดเฉพาะก้อน P0
         # จัดใส่ผลลัพท์
         Result[h] = P0  # {ก้อนครัสเตอร์ : กิ่งรอบ ๆ}
         h += 1
+        if h == R:
+            break
         # ตัดก้อนครัสเตอร์ออกจาก Sub ทั้งหมด
         keep += P0  # เก็บจำนวน SUB ในครัสเตอร์
         if h == 1:
-            C0_1 = Cut_Sub(P0, Sub3_L)  # Sub ที่เหลืออยู่
+            C0_1 = Cut_Sub(P0, Cycles)  # Sub ที่เหลืออยู่
         if h >= 2:
-            C0_1 = Cut_Sub(keep, Sub3_L)  # Sub ที่เหลืออยู่
-        Cycles = C0_1
+            C0_1 = Cut_Sub(keep, Cycles)  # Sub ที่เหลืออยู่
+        Cycles_Def = C0_1
         if len(C0_1) == 1:
             Result[h] = C0_1
             w = 0  # จบการทำงานไปเลย
@@ -334,7 +337,105 @@ def Make_Cluster(Cycles):
 
     return Result
 
+def Cluster_Cut_ALLSub(Start, Compare):
+    Result = []
+    keep = []
+    kep = []
+    # รวมครัสเตอร์ก่อน
+    count = len(Start)
+    for i in range(count):  # วนทุกครัสเตอร์
+        Start_L = Start[i]
+        Start_Long = Change_Shlist_TO_Llist(Start_L)
+        keep += Start_Long
+    keep_S = set(keep)
+    count1 = len(Compare)
+    for h in range(count1):
+        Next_L = Compare[h]
+        Next_S = set(Next_L)
+        a = keep_S & Next_S
+        if len(a) == 3:
+            kep.append(Next_L)
+        else:
+            Result.append(Next_L)
 
+    return Result
+
+
+def Cluster_Tor_RSub(Start1, Compare, V):
+    Result = {}
+    Result1 = {}
+    keep = []
+    # a = []
+    # count = len(Start)
+    # k = nx.Graph()
+    # for h in Start.values():  # ทำกราฟจากครัสเตอร์ก้อนแรก
+    #     Start_L = h
+    #     for u in Start_L:
+    #         Start_LL = u
+    #         count = len(Start_L)
+    #         for i in range(count):
+    #             Next_LL = Start_L[i+1]
+    #             if i >= 1:
+    #                 Start_LL = keep
+    #             a = Start_LL + Next_LL
+    #             k.add_cycle(a)
+    #             draw_networkx(k, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+    #             # plt.show()
+    #             keep = a
+    Start = copy.deepcopy(Start1)
+    for e, r in Start1.items():
+        Result1[e] = r
+    for k, v in Start.items():
+        Result[k] = Change_Shlist_TO_Llist(v)
+    for h in Compare:
+        Start_L = h
+        Start_S = set(h)
+        count = len(Start)
+        for i in range(count):
+            G = nx.Graph()
+            Next_1 = Result1[i]
+            Next_L = Result[i]
+            Next_S = set(Next_L)
+            a = Start_S & Next_S
+            if len(a) == V:
+                b = Start_L + Next_L
+                G.add_cycle(b)
+                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                # plt.show()
+                Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+                Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+                if i >= 2:
+                    Number_of_Edes_All = float(len(G.edges)) - 1.00  # จำนวนกิ่งภายในครัสเตอร์
+                N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+                N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                if Dif_Den_N2 >= 0.00:
+                    Result[i] = b
+                    Next_1.append(Start_L)
+
+    return Result1
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -351,7 +452,6 @@ DD = float(0.65)
 Sub3_L = Change_SetTolist(Sub3)
 Sub3_L_sort = sorted(Sub3_L)
 
-
 # N1 = Next_SN2(Sub3_L, Sub3_L_sort, 2)
 # D1 = DiffDen(N1, DD)
 # C1 = Cut_Sub(D1, Sub3_L)  # ตัดครัสเตอร์แรกออกจากกอง SUB ทั้งหมด
@@ -362,6 +462,9 @@ Sub3_L_sort = sorted(Sub3_L)
 # P1 = Plus_ListToLost(D1_1, N1_1)  # ได้ก้อนครัสเตอร์ 1
 # ED1 = Check_inter_Edges(P1, Edges_Graph)  # กิ่งที่ต่อกับครัสเตอร์ 1
 # C1_1 = Cut_Sub(P1, Sub3_L)  # Sub ที่เหลืออยู่
-D_Cluster = Make_Cluster(Sub3_L)
-
+D_Cluster = Make_Cluster(Sub3_L, 5)  # ได้ครัสเตอร์ออกมาตามที่กำหนด
+# ตัด Sub ที่มีในครัสเตอร์ออกจาก SUB ทั้งหมด
+Rest_Sub = Cluster_Cut_ALLSub(D_Cluster, Sub3_L)
+D_Cluster_Tor_Sub = Cluster_Tor_RSub(D_Cluster, Rest_Sub, 2)
+Rest_Sub1 = Cluster_Cut_ALLSub(D_Cluster_Tor_Sub, Sub3_L)
 print 'a'

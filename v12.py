@@ -270,6 +270,51 @@ def draw_Cluster(Start, Compare):
 
             return
 
+def Check_inter_Edges(Start, Compare):  # Cluster, All Edges
+    # Dict{0:['','',''],1:['','','']}  List[('','',''),('','','')]
+    Result = {}
+    Result1 = {}
+    Keep = []
+    kep = []
+    u = 0
+    Start1 = copy.deepcopy(Start)
+    for k, v in Start.items():
+        Result1[k] = Change_Shlist_TO_Llist(v)
+    # for h in Compare:
+    #     Start_L = list(h)
+    #     Start_S = set(h)
+    #     count = len(Start)
+    #     for i in range(count):
+    #         G = nx.Graph()
+    #         Next_L = Result1[i]
+    #         Next_S = set(Next_L)
+    #         a = Start_S & Next_S
+    #         if len(a) == 1:
+    #             if u == 0:
+    #                 Result[i] = Start_L
+    #             if u >= 1:
+    #                 Result[i] = Start_L
+    #         else:
+    #             Keep.append(Start_L)
+    #     u += 1
+    i = 0
+    for r in Result1.values():
+        count = len(Compare)
+        for e in range(count):
+            Start_L = r
+            Start_S = set(r)
+            Next_L = list(Compare[e])
+            Next_S = set(Next_L)
+            a = Start_S & Next_S
+            if len(a) == 1:
+                kep.append(Next_L)
+                Result[i] = kep
+            else:
+                Keep.append(Next_L)
+        kep = []
+        i += 1
+    return Result
+
 
 def Make_Cluster(Cycles, R):
     Result = {}
@@ -285,6 +330,7 @@ def Make_Cluster(Cycles, R):
         D0 = DiffDen(N0, 0.65)  # เอา N0 มาคำนวนหา DD
         if len(D0) == 0:
             Result[h] = N0
+            break
         w = len(D0)  # หากคำนวน DD แล้วไม่มีรอดสัก SUB
         # ตัดออกจาก SUB ทั้งหมด
         if h == 0:
@@ -295,10 +341,13 @@ def Make_Cluster(Cycles, R):
             C0 = Cut_Sub(D1, Cycles)
         if len(C0) == 0:
             Result[h] = D0
+            break
         w = len(C0)  # หากไม่มี SUB เหลืออยู่
         C0_sort = sorted(C0)
         # เริ่มเอา SUB มาต่อรอบๆก้อนเล็ก
         N0_1 = Next_SN2(C0, C0_sort, 2)  # หา SUB ที่เหลือมาหาที่เหมือนกับก้อนเล็ก
+        if N0_1 is None:
+            Result[h] = D0
         if len(N0_1) == 0:
             Result[h] = D0
         w = len(N0_1)
@@ -310,8 +359,8 @@ def Make_Cluster(Cycles, R):
         # จัดใส่ผลลัพท์
         Result[h] = P0  # {ก้อนครัสเตอร์ : กิ่งรอบ ๆ}
         h += 1
-        if h == R:
-            break
+        # if h == R:
+        #     break
         # ตัดก้อนครัสเตอร์ออกจาก Sub ทั้งหมด
         keep += P0  # เก็บจำนวน SUB ในครัสเตอร์
         if h == 1:
@@ -444,53 +493,6 @@ def Nodes_intra(Start):
         Result_1[h] = N
     return Result_1
 
-def Check_inter_Edges(Start, Compare):  # Cluster, All Edges
-    # Dict{0:['','',''],1:['','','']}  List[('','',''),('','','')]
-    Result = {}
-    Result1 = {}
-    Keep = []
-    kep = []
-    u = 0
-    Start1 = copy.deepcopy(Start)
-    for k, v in Start.items():
-        Result1[k] = Change_Shlist_TO_Llist(v)
-    # for h in Compare:
-    #     Start_L = list(h)
-    #     Start_S = set(h)
-    #     count = len(Start)
-    #     for i in range(count):
-    #         G = nx.Graph()
-    #         Next_L = Result1[i]
-    #         Next_S = set(Next_L)
-    #         a = Start_S & Next_S
-    #         if len(a) == 1:
-    #             if u == 0:
-    #                 Result[i] = Start_L
-    #             if u >= 1:
-    #                 Result[i] = Start_L
-    #         else:
-    #             Keep.append(Start_L)
-    #     u += 1
-    i = 0
-    for r in Result1.values():
-        count = len(Compare)
-        for e in range(count):
-            Start_L = r
-            Start_S = set(r)
-            Next_L = list(Compare[e])
-            Next_S = set(Next_L)
-            a = Start_S & Next_S
-            if len(a) == 1:
-                kep.append(Next_L)
-                Result[i] = kep
-            else:
-                Keep.append(Next_L)
-        kep = []
-        i += 1
-    return Result
-
-
-
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
@@ -517,11 +519,5 @@ Sub3_L_sort = sorted(Sub3_L)
 # ED1 = Check_inter_Edges(P1, Edges_Graph)  # กิ่งที่ต่อกับครัสเตอร์ 1
 # C1_1 = Cut_Sub(P1, Sub3_L)  # Sub ที่เหลืออยู่
 D_Cluster = Make_Cluster(Sub3_L, 5)  # ได้ครัสเตอร์ออกมาตามที่กำหนด
-# ตัด Sub ที่มีในครัสเตอร์ออกจาก SUB ทั้งหมด
-Rest_Sub = Cluster_Cut_ALLSub(D_Cluster, Sub3_L)
-D_Cluster_Tor_Sub = Cluster_Tor_RSub(D_Cluster, Rest_Sub, 2)
-Rest_Sub1 = Cluster_Cut_ALLSub(D_Cluster_Tor_Sub, Sub3_L)
-
-D_Edges_Cluster = Check_inter_Edges(D_Cluster_Tor_Sub, Edges_Graph)
-D_Nodes_intra = Nodes_intra(D_Cluster_Tor_Sub)
-print 'a'
+D_Nodes_intra = Nodes_intra(D_Cluster)
+print 'Nodes intra =', D_Nodes_intra

@@ -114,8 +114,8 @@ def DiffDen(Compare3, DD):
             b = set(Start) & set(Next)
             Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
             Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
-            if i >= 2:
-                Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
+            # if i >= 2:
+            #     Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
             N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
             N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
             if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
@@ -297,8 +297,8 @@ def DiffDen2(Compare3, DD):
             b = set(Start) & set(Next)
             Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
             Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
-            if i >= 2:
-                Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
+            # if i >= 2:
+            #     Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
             N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
             N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
             if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
@@ -419,7 +419,7 @@ def Make_Cluster(Cycles, R):
         Cycles_sort = sorted(Cycles_Def)
         N0 = Next_SN2(Cycles_Def, Cycles_sort, 2)  # หา SUB ข้างเคียงที่เหลืออยู่ ซ้ำกันมากกว่า2
         w = len(N0)  # หาก Sub ข้างเคียงไม่เหลือ
-        D0 = DiffDen(N0, 0.50)  # เอา N0 มาคำนวนหา DD
+        D0 = DiffDen(N0, R)  # เอา N0 มาคำนวนหา DD
         if D0 is None:
             Result[h] = D0
             break
@@ -430,15 +430,24 @@ def Make_Cluster(Cycles, R):
 
         if h == 0:
             C00 = Cut_Sub_2(D0, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
-            D00 = DiffDen(C00, 0.50)  # คำนวน Sub ที่ตกค้าง
+            D00 = DiffDen(C00, R)  # คำนวน Sub ที่ตกค้าง
             # หา SUB ข้างเคียงเพิ่ม เผื่อเจอมากขึ้น
             N1 = Cut_Sub(D00, Cycles)  # เอาที่เหมือนกัน 2 โหนด
-            # บวกเข้าด้วยกันก่อนเอาไปคำนวน
+
             D01 = copy.deepcopy(D00)
-            P0 = Plus_ListToLost(D01, N1)
-            D01 = DiffDen2(P0, 0.50)  # คำนวน Sub ที่ตกค้าง
+            P0 = Plus_ListToLost(D01, N1)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D01 = DiffDen2(P0, R)  # คำนวน Sub ที่ตกค้าง
+            C01 = Cut_Sub_2(D01, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่มอีก
+            C02 = Cut_Sub_3(C01, D01)  # ไม่เอาที่ซ้ำกันใน D02
 
+            D02 = copy.deepcopy(D01)
+            P1 = Plus_ListToLost(D02, C02)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D03 = DiffDen2(P1, R)  # คำนวน Sub ที่ตกค้าง
+            
 
+            C0 = Cut_Sub_3(Cycles, D03)  # ไม่เอาที่ซ้ำกันใน C03
+            keep += D03  #  เก็บ
+            Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
             # หากไม่มีแล้ว
             # while len(D00) != len(C01):
             #     D00 = DiffDen(C01, 0.50)
@@ -450,15 +459,16 @@ def Make_Cluster(Cycles, R):
         if h >= 1:
             C00 = Cut_Sub_2(D0, Cycles,)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม แต่จะมีในก้อน1มาด้วย
             C01 = Cut_Sub_3(C00, keep)  # ไม่เอาที่ซ้ำกันใน keep ก้อนแรก ก้อนจริง
-            D00 = DiffDen(C01, 0.50)  # คำนวน Sub ที่ตกค้าง
-            C02 = Cut_Sub_2(D00, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
-            C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
-            while len(C01) != len(C03):
-                D00 = DiffDen(C03, 0.50)
-                C02 = Cut_Sub_2(D00, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
-                C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
-            keep += C03  #
-            Result[h] = C03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+            D00 = DiffDen2(C01, 0.50)  # คำนวน Sub ที่ตกค้าง
+
+            # C02 = Cut_Sub_2(D00, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
+            # C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
+            # while len(C01) != len(C03):
+            #     D00 = DiffDen(C03, 0.50)
+            #     C02 = Cut_Sub_2(D00, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
+            #     C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
+            # keep += C03  #
+            # Result[h] = C03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
             C0 = Cut_Sub_3(Cycles, keep)  # ไม่เอาที่ซ้ำกันใน C03
 
         if len(C0) == 0:
@@ -491,4 +501,4 @@ Sub3_L_sort = sorted(Sub3_L)
 # D1 = DiffDen(N1, DD)
 # C1 = Cut_Sub(D1, Sub3_L)  # ตัดครัสเตอร์แรกออกจากกอง SUB ทั้งหมด
 # C1_sort = sorted(C1)
-D_Cluster = Make_Cluster(Sub3_L, 5)  # ได้ครัสเตอร์ออกมาตามที่กำหนด
+D_Cluster = Make_Cluster(Sub3_L, 0.5)  # ได้ครัสเตอร์ออกมาตามที่กำหนด

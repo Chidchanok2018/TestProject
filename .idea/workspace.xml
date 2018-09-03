@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/v13.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v12.py" beforeDir="false" afterPath="$PROJECT_DIR$/v12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v13.py" beforeDir="false" afterPath="$PROJECT_DIR$/v13.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +25,7 @@
     <SUITE FILE_PATH="coverage/TestProject$A.coverage" NAME="A Coverage Results" MODIFIED="1528310671312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V4.coverage" NAME="New_Step V4 Coverage Results" MODIFIED="1534777421798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$v9.coverage" NAME="v9 Coverage Results" MODIFIED="1535380747281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$v13.coverage" NAME="v13 Coverage Results" MODIFIED="1535984942073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$v13.coverage" NAME="v13 Coverage Results" MODIFIED="1536001722742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$VeryReal_06062561.coverage" NAME="VeryReal 06062561 Coverage Results" MODIFIED="1529564909654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/TestProject$v10.coverage" NAME="v10 Coverage Results" MODIFIED="1535716650318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
@@ -64,12 +62,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="60264" />
+          <entry key="py" value="60475" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="60264" />
+          <entry key="Python" value="60475" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -103,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/V11.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="453" column="33" lean-forward="true" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
+              <caret line="453" column="33" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#6115#6145#0" />
@@ -136,14 +134,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/v13.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="439" lean-forward="true" selection-start-line="439" selection-end-line="439" />
+            <state relative-caret-position="303">
+              <caret line="445" column="12" lean-forward="true" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="12" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#6109#6139#0" />
+                <element signature="e#11060#11072#0" />
                 <element signature="e#13246#13276#0" />
-                <element signature="e#11292#11306#0" />
-                <marker date="1535984941983" expanded="true" signature="10114:15878" ph="..." />
+                <element signature="e#17094#17108#0" />
+                <marker date="1536004099671" expanded="true" signature="10118:15886" ph="..." />
               </folding>
             </state>
           </provider>
@@ -240,7 +239,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -469,7 +468,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.2912254" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.33661118" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -782,18 +781,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v13.py</url>
-          <line>470</line>
+          <line>480</line>
           <option name="timeStamp" value="1141" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/v13.py</url>
-          <line>438</line>
-          <option name="timeStamp" value="1194" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/v13.py</url>
-          <line>437</line>
-          <option name="timeStamp" value="1196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v13.py</url>
@@ -802,13 +791,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v13.py</url>
-          <line>286</line>
-          <option name="timeStamp" value="1202" />
+          <line>407</line>
+          <option name="timeStamp" value="1203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/v13.py</url>
-          <line>407</line>
-          <option name="timeStamp" value="1203" />
+          <line>449</line>
+          <option name="timeStamp" value="1209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/v13.py</url>
+          <line>444</line>
+          <option name="timeStamp" value="1212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/v13.py</url>
+          <line>443</line>
+          <option name="timeStamp" value="1219" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -830,22 +829,25 @@
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="Sub3_L" language="Python" />
+        <watch expression="Next" language="Python" />
+        <watch expression="N" language="Python" />
+        <watch expression="Number_of_Edes_All" language="Python" />
+        <watch expression="Dif_Den_N2" language="Python" />
         <watch expression="N0" language="Python" />
         <watch expression="N1" language="Python" />
-        <watch expression="D0" language="Python" />
+        <watch expression="C0" language="Python" />
         <watch expression="C00" language="Python" />
         <watch expression="C01" language="Python" />
         <watch expression="C02" language="Python" />
-        <watch expression="C03" language="Python" />
+        <watch expression="D0" language="Python" />
         <watch expression="D00" language="Python" />
-        <watch expression="C0" language="Python" />
         <watch expression="D01" language="Python" />
         <watch expression="D02" language="Python" />
+        <watch expression="D03" language="Python" />
         <watch expression="Result" language="Python" />
         <watch expression="keep" language="Python" />
-        <watch expression="Compare3" language="Python" />
-        <watch expression="Dif_Den_N2" language="Python" />
         <watch expression="P0" language="Python" />
+        <watch expression="P1" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -859,37 +861,12 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>Dif_Den_N2</expression-string>
+        <expression-string>D03</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Compare3</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>P0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>N1</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>C03</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Compare</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>C02</expression-string>
+        <expression-string>P1</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -899,12 +876,37 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>D01</expression-string>
+        <expression-string>Next</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>C01</expression-string>
+        <expression-string>Number_of_Edes_All</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>N</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Dif_Den_N2</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>C02</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>CU1</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Result_L</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1237,7 +1239,7 @@
     <entry file="file://$PROJECT_DIR$/V11.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="453" column="33" lean-forward="true" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
+          <caret line="453" column="33" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
             <element signature="e#6115#6145#0" />
@@ -1266,14 +1268,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/v13.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="439" lean-forward="true" selection-start-line="439" selection-end-line="439" />
+        <state relative-caret-position="303">
+          <caret line="445" column="12" lean-forward="true" selection-start-line="445" selection-start-column="12" selection-end-line="445" selection-end-column="12" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
             <element signature="e#6109#6139#0" />
+            <element signature="e#11060#11072#0" />
             <element signature="e#13246#13276#0" />
-            <element signature="e#11292#11306#0" />
-            <marker date="1535984941983" expanded="true" signature="10114:15878" ph="..." />
+            <element signature="e#17094#17108#0" />
+            <marker date="1536004099671" expanded="true" signature="10118:15886" ph="..." />
           </folding>
         </state>
       </provider>

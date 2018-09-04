@@ -61,7 +61,8 @@ def Plus_ListToLost(Start, Plus):  # [['1','','']] + [['2','','']] = [['1','',''
     T1 = Start
     T11 = copy.deepcopy(T1)
     for i in Plus:
-        T1.append(i)
+        if i is not []:
+            T1.append(i)
     return T1
 
 def Change_ListToSet(Start):  # ทำ List[[],[]] เป็น [set[],set[],set[]]
@@ -109,7 +110,7 @@ def DiffDen(Compare3, DD):
             a = Start + Next
             G.add_cycle(a)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-            plt.show()
+            # plt.show()
 
             b = set(Start) & set(Next)
             Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
@@ -153,7 +154,7 @@ def DiffDen(Compare3, DD):
                     a.pop(-1)
                     G.add_cycle(a)
                     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                    plt.show()
+                    # plt.show()
                     Keep.append(Next)
             else:
                 G.clear()
@@ -162,7 +163,7 @@ def DiffDen(Compare3, DD):
                 a.pop(-1)
                 G.add_cycle(a)
                 draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
+                # plt.show()
                 Keep.append(Next)
 
         # for ii in range(count4 - 1):
@@ -292,7 +293,7 @@ def DiffDen2(Compare3, DD):
             a = Start + Next
             G.add_cycle(a)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-            plt.show()
+            # plt.show()
 
             b = set(Start) & set(Next)
             Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
@@ -336,7 +337,7 @@ def DiffDen2(Compare3, DD):
                     a.pop(-1)
                     G.add_cycle(a)
                     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                    plt.show()
+                    # plt.show()
                     Keep.append(Next)
             else:
                 G.clear()
@@ -345,7 +346,7 @@ def DiffDen2(Compare3, DD):
                 a.pop(-1)
                 G.add_cycle(a)
                 draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
+                # plt.show()
                 Keep.append(Next)
 
         # for ii in range(count4 - 1):
@@ -407,6 +408,404 @@ def DiffDen2(Compare3, DD):
             #     Keep.append(Next) #
         return Result_L  # D1 = List[['','',''],['','','']]
 
+def DiffDen3(Compare3, DD):
+    # List[['','',''],['','','']]
+    Result = []
+    Keep = []
+    G = nx.Graph()
+    Result_L = []
+    for item3 in Compare3:
+        count3 = len(Compare3)
+        # count4 = len(Compare4)
+        Result_L.append(item3)
+        for i in range(count3):  # รอบ 3 โหนดรอบแรก
+            Start = item3
+            Next = Compare3[i]
+            if i > 0:
+                Start = a
+            a = Start + Next
+            G.add_cycle(a)
+            draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+
+            b = set(Start) & set(Next)
+            Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+            # if i >= 2:
+            #     Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
+            N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+                # inter Cluster Density
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                if Dif_Den_N2 >= DD:
+                    Result = a
+                    if Next not in Result_L:
+                        Result_L.append(Next)
+                else:
+                    G.clear()
+                    a.pop(-1)
+                    a.pop(-1)
+                    a.pop(-1)
+                    G.add_cycle(a)
+                    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                    # plt.show()
+                    Keep.append(Next)
+            else:
+                G.clear()
+                a.pop(-1)
+                a.pop(-1)
+                a.pop(-1)
+                G.add_cycle(a)
+                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                # plt.show()
+                Keep.append(Next)
+
+        # for ii in range(count4 - 1):
+        #     Start = a
+        #     Next = Compare4[ii]
+        #     if i > 0:
+        #         Start = a
+            # a = Start + Next
+            # G.add_cycle(a)
+            # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+            #
+            # b = set(Start) & set(Next)
+            # Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            # Number_of_Edes_All = float(len(G.edges)) - 1.0 # จำนวนกิ่งภายในครัสเตอร์
+            # N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            # N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            # if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+            #     inter Cluster Density
+                # if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # else:  # นอกนั้นคำนวนได้
+                #     inter_1 = ((N_C * (N - N_C)))
+                #     inter_2 = (Number_of_Edges_Out) / inter_1
+                #     Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                # if (N_C * (N - 1) / 2) <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # elif Number_of_Edes_All <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # else:
+                #     intra_1 = (N_C * (N - 1.00) / 2.00)
+                #     intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                #     Re_intra4 = round(intra_2, 2)
+                # Dif_Den_N3 = Re_intra4 - Re_inter4
+                # if Dif_Den_N3 >= 0.55:
+                #     Result = a
+                # else:
+                #     G.clear()
+                #     for U in range(len(Next)):
+                #         a.pop(-1)
+                #     G.add_cycle(a)
+                #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                #     plt.show()
+                #     Keep.append(Next)
+            # else:
+            #     G.clear()
+            #     for U in range(len(Next)):
+            #         a.pop(-1)
+            #     G.add_cycle(a)
+            #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            #     plt.show()
+            #     Keep.append(Next) #
+        return Result_L  # D1 = List[['','',''],['','','']]
+
+def DiffDen4(Compare3, DD):
+    # List[['','',''],['','','']]
+    Result = []
+    Keep = []
+    G = nx.Graph()
+    Result_L = []
+    for item3 in Compare3:
+        count3 = len(Compare3)
+        # count4 = len(Compare4)
+        Result_L.append(item3)
+        for i in range(count3):  # รอบ 3 โหนดรอบแรก
+            Start = item3
+            Next = Compare3[i]
+            if i > 0:
+                Start = a
+            a = Start + Next
+            G.add_cycle(a)
+            draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+
+            b = set(Start) & set(Next)
+            Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+            # if i >= 2:
+            #     Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
+            N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+                # inter Cluster Density
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                if Dif_Den_N2 >= DD:
+                    Result = a
+                    if Next not in Result_L:
+                        Result_L.append(Next)
+                else:
+                    G.clear()
+                    a.pop(-1)
+                    a.pop(-1)
+                    a.pop(-1)
+                    G.add_cycle(a)
+                    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                    # plt.show()
+                    Keep.append(Next)
+            else:
+                G.clear()
+                a.pop(-1)
+                a.pop(-1)
+                a.pop(-1)
+                G.add_cycle(a)
+                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                # plt.show()
+                Keep.append(Next)
+
+        # for ii in range(count4 - 1):
+        #     Start = a
+        #     Next = Compare4[ii]
+        #     if i > 0:
+        #         Start = a
+            # a = Start + Next
+            # G.add_cycle(a)
+            # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+            #
+            # b = set(Start) & set(Next)
+            # Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            # Number_of_Edes_All = float(len(G.edges)) - 1.0 # จำนวนกิ่งภายในครัสเตอร์
+            # N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            # N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            # if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+            #     inter Cluster Density
+                # if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # else:  # นอกนั้นคำนวนได้
+                #     inter_1 = ((N_C * (N - N_C)))
+                #     inter_2 = (Number_of_Edges_Out) / inter_1
+                #     Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                # if (N_C * (N - 1) / 2) <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # elif Number_of_Edes_All <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # else:
+                #     intra_1 = (N_C * (N - 1.00) / 2.00)
+                #     intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                #     Re_intra4 = round(intra_2, 2)
+                # Dif_Den_N3 = Re_intra4 - Re_inter4
+                # if Dif_Den_N3 >= 0.55:
+                #     Result = a
+                # else:
+                #     G.clear()
+                #     for U in range(len(Next)):
+                #         a.pop(-1)
+                #     G.add_cycle(a)
+                #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                #     plt.show()
+                #     Keep.append(Next)
+            # else:
+            #     G.clear()
+            #     for U in range(len(Next)):
+            #         a.pop(-1)
+            #     G.add_cycle(a)
+            #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            #     plt.show()
+            #     Keep.append(Next) #
+        return Result_L  # D1 = List[['','',''],['','','']]
+
+def DiffDen5(Compare3, DD):
+    # List[['','',''],['','','']]
+    Result = []
+    Keep = []
+    G = nx.Graph()
+    Result_L = []
+    for item3 in Compare3:
+        count3 = len(Compare3)
+        # count4 = len(Compare4)
+        Result_L.append(item3)
+        for i in range(count3):  # รอบ 3 โหนดรอบแรก
+            Start = item3
+            Next = Compare3[i]
+            if i > 0:
+                Start = a
+            a = Start + Next
+            G.add_cycle(a)
+            draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+
+            b = set(Start) & set(Next)
+            Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
+            # if i >= 2:
+            #     Number_of_Edes_All = float(len(G.edges)) - 1.00 # จำนวนกิ่งภายในครัสเตอร์
+            N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+                # inter Cluster Density
+                if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                    interN4 = 0.00
+                    Re_inter4 = interN4
+                else:  # นอกนั้นคำนวนได้
+                    inter_1 = ((N_C * (N - N_C)))
+                    inter_2 = (Number_of_Edges_Out) / inter_1
+                    Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                if (N_C * (N - 1) / 2) <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                elif Number_of_Edes_All <= 0.00:
+                    intra4 = 0.00
+                    Re_intra4 = intra4
+                else:
+                    intra_1 = (N_C * (N - 1.00) / 2.00)
+                    intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                    Re_intra4 = round(intra_2, 2)
+                Dif_Den_N2 = Re_intra4 - Re_inter4
+                if Dif_Den_N2 >= DD:
+                    Result = a
+                    if Next not in Result_L:
+                        Result_L.append(Next)
+                else:
+                    G.clear()
+                    a.pop(-1)
+                    a.pop(-1)
+                    a.pop(-1)
+                    G.add_cycle(a)
+                    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                    # plt.show()
+                    Keep.append(Next)
+            else:
+                G.clear()
+                a.pop(-1)
+                a.pop(-1)
+                a.pop(-1)
+                G.add_cycle(a)
+                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                # plt.show()
+                Keep.append(Next)
+
+        # for ii in range(count4 - 1):
+        #     Start = a
+        #     Next = Compare4[ii]
+        #     if i > 0:
+        #         Start = a
+            # a = Start + Next
+            # G.add_cycle(a)
+            # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            # plt.show()
+            #
+            # b = set(Start) & set(Next)
+            # Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
+            # Number_of_Edes_All = float(len(G.edges)) - 1.0 # จำนวนกิ่งภายในครัสเตอร์
+            # N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
+            # N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
+            # if len(b) >= 2:  # มีโหนดเหมือนมากกว่า 2 โหนด
+            #     inter Cluster Density
+                # if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # elif Number_of_Edges_Out <= 0.00:  # ถ้าเศษเป็น 0 ให้ inter-edges = 0
+                #     interN4 = 0.00
+                #     Re_inter4 = interN4
+                # else:  # นอกนั้นคำนวนได้
+                #     inter_1 = ((N_C * (N - N_C)))
+                #     inter_2 = (Number_of_Edges_Out) / inter_1
+                #     Re_inter4 = round(inter_2, 2)  # ให้เหลือทศนิยม 2 ตำแหน่ง
+                # intra cluster Density
+                # if (N_C * (N - 1) / 2) <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # elif Number_of_Edes_All <= 0.00:
+                #     intra4 = 0.00
+                #     Re_intra4 = intra4
+                # else:
+                #     intra_1 = (N_C * (N - 1.00) / 2.00)
+                #     intra_2 = (Number_of_Edes_All) / (N_C * (N_C - 1) / 2)
+                #     Re_intra4 = round(intra_2, 2)
+                # Dif_Den_N3 = Re_intra4 - Re_inter4
+                # if Dif_Den_N3 >= 0.55:
+                #     Result = a
+                # else:
+                #     G.clear()
+                #     for U in range(len(Next)):
+                #         a.pop(-1)
+                #     G.add_cycle(a)
+                #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                #     plt.show()
+                #     Keep.append(Next)
+            # else:
+            #     G.clear()
+            #     for U in range(len(Next)):
+            #         a.pop(-1)
+            #     G.add_cycle(a)
+            #     draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+            #     plt.show()
+            #     Keep.append(Next) #
+        return Result_L  # D1 = List[['','',''],['','','']]
 
 def Make_Cluster(Cycles, R):
     Result = {}
@@ -416,7 +815,7 @@ def Make_Cluster(Cycles, R):
     h = 0
     i = len(Cycles_Def)
     while w > 0:
-        Cycles_sort = sorted(Cycles_Def)
+        Cycles_sort = sorted(Cycles_Def)  # Cycles_Def คือ Cycles ที่เหลือ
         N0 = Next_SN2(Cycles_Def, Cycles_sort, 2)  # หา SUB ข้างเคียงที่เหลืออยู่ ซ้ำกันมากกว่า2
         w = len(N0)  # หาก Sub ข้างเคียงไม่เหลือ
         D0 = DiffDen(N0, R)  # เอา N0 มาคำนวนหา DD
@@ -433,18 +832,43 @@ def Make_Cluster(Cycles, R):
             D00 = DiffDen(C00, R)  # คำนวน Sub ที่ตกค้าง
             # หา SUB ข้างเคียงเพิ่ม เผื่อเจอมากขึ้น
             N1 = Cut_Sub(D00, Cycles)  # เอาที่เหมือนกัน 2 โหนด
-
             D01 = copy.deepcopy(D00)
             P0 = Plus_ListToLost(D01, N1)  # รวมกับก้อนที่หามาก่อนหน้านี้
             D01 = DiffDen2(P0, R)  # คำนวน Sub ที่ตกค้าง
             C01 = Cut_Sub_2(D01, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่มอีก
             C02 = Cut_Sub_3(C01, D01)  # ไม่เอาที่ซ้ำกันใน D02
-
             D02 = copy.deepcopy(D01)
-            P1 = Plus_ListToLost(D02, C02)  # รวมกับก้อนที่หามาก่อนหน้านี้
-            D03 = DiffDen2(P1, R)  # คำนวน Sub ที่ตกค้าง
-            
-
+            C022 = copy.deepcopy(C02)
+            if len(C02) == 0:
+                Result[h] = D01  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                break
+            e = 1
+            P2 = [1]
+            while e > 0:
+                P1 = Plus_ListToLost(D02, C022)  # รวมกับก้อนที่หามาก่อนหน้านี้
+                D03 = DiffDen3(P1, R)  # คำนวน Sub ที่ตกค้าง
+                if (len(P1) - len(P2)) == len(D03):
+                    Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                    break
+                # เช็คกิ่ง
+                C03 = Cut_Sub_2(D03, Cycles)  # หากิ่งเพิ่มในครัสเตอร์นั้น
+                CN3 = Cut_Sub_3(C03, D03)  # ไม่เอาที่ซ้ำกันใน D03
+                e = len(CN3)
+                # เช็ค SUB
+                N2 = Cut_Sub(D03, Cycles)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+                CN2 = Cut_Sub_3(N2, D03)  # ไม่เอาที่ซ้ำกันใน D03
+                if len(CN2) == 0:
+                    Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                    e = 0
+                    break
+                e = len(CN2)
+                # ส่งกลับไปคำนวน
+                CN33 = copy.deepcopy(CN3)
+                CN22 = copy.deepcopy(CN2)
+                P2 = Plus_ListToLost(CN33, CN22)  # รวมกับก้อนที่หามาก่อนหน้านี้
+                D02 = D03
+                C022 = P2
+            # Cycle ที่เหลือ
             C0 = Cut_Sub_3(Cycles, D03)  # ไม่เอาที่ซ้ำกันใน C03
             keep += D03  #  เก็บ
             Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
@@ -456,10 +880,125 @@ def Make_Cluster(Cycles, R):
             # keep += C01  #
             # Result[h] = C01  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
 
-        if h >= 1:
-            C00 = Cut_Sub_2(D0, Cycles,)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม แต่จะมีในก้อน1มาด้วย
-            C01 = Cut_Sub_3(C00, keep)  # ไม่เอาที่ซ้ำกันใน keep ก้อนแรก ก้อนจริง
-            D00 = DiffDen2(C01, 0.50)  # คำนวน Sub ที่ตกค้าง
+        if h == 1:
+            # Cycles_Def คือ C0 ไซเคิลที่เหลือจากการหาก้อนแรก
+            # มาเป็นก้อน D0 จากนั้นหากิ่งเพิ่ม โดยที่ไม่เอาก้อนเดิมมาคิดด้วย
+            C00 = Cut_Sub_2(D0, Cycles_Def)  # หากิ่งเพิ่ม
+            D00 = DiffDen4(C00, R)  # คำนวน Sub #############
+            N1 = Cut_Sub(D00, Cycles_Def)  # หาโหนดเพิ่ม
+            D01 = copy.deepcopy(D00)
+            P0 = Plus_ListToLost(D01, N1)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D01 = DiffDen4(P0, R)  # คำนวน Sub #############
+            goto
+            C01 = Cut_Sub_2(D01, Cycles_Def)  # หากิ่งเพิ่ม
+            C02 = Cut_Sub_3(C01, D01)  # ไม่เอาที่ซ้ำกันใน D01
+            N2 = Cut_Sub(D01, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+            CN2 = Cut_Sub_3(N2, D01)  # ไม่เอาที่ซ้ำกันใน D03
+            if len(CN2) == 0:
+                Result[h] = D01  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                e = 0
+                break
+            e = len(CN2)
+            CN33 = copy.deepcopy(C02)  # กิ่ง
+            CN22 = copy.deepcopy(CN2)
+            P2 = Plus_ListToLost(CN33, CN22)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            P1 = Plus_ListToLost(D01, P2)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D03 = DiffDen4(P1, R)  # คำนวน Sub ที่ตกค้าง
+            C03 = Cut_Sub_2(D03, Cycles_Def)  # หากิ่งเพิ่ม
+            C04 = Cut_Sub_3(C03, D03)  # ไม่เอาที่ซ้ำกันใน D01
+            N3 = Cut_Sub(D03, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+            CN3 = Cut_Sub_3(N2, D01)  # ไม่เอาที่ซ้ำกันใน D03
+            Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+            CN13 = copy.deepcopy(C04)  # กิ่ง
+            CN12 = copy.deepcopy(CN3)
+            P3 = Plus_ListToLost(CN13, CN12)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            P4 = Plus_ListToLost(D03, P3)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D04 = DiffDen4(P4, R)  # คำนวน Sub ที่ตกค้าง
+
+            C0 = Cut_Sub_3(Cycles, D04)  # ไม่เอาที่ซ้ำกันใน C03
+            keep += D04  # เก็บ
+            Result[h] = D04  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+
+        if h == 2:
+            # Cycles_Def คือ C0 ไซเคิลที่เหลือจากการหาก้อนแรก
+            # มาเป็นก้อน D0 จากนั้นหากิ่งเพิ่ม โดยที่ไม่เอาก้อนเดิมมาคิดด้วย
+            C00 = Cut_Sub_2(D0, Cycles_Def)  # หากิ่งเพิ่ม
+            D00 = DiffDen5(C00, R)  # คำนวน Sub #############
+            N1 = Cut_Sub(D00, Cycles_Def)  # หาโหนดเพิ่ม
+            D01 = copy.deepcopy(D00)
+            P0 = Plus_ListToLost(D01, N1)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D01 = DiffDen5(P0, R)  # คำนวน Sub #############
+
+            C01 = Cut_Sub_2(D01, Cycles_Def)  # หากิ่งเพิ่ม
+            C02 = Cut_Sub_3(C01, D01)  # ไม่เอาที่ซ้ำกันใน D01
+            N2 = Cut_Sub(D01, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+            CN2 = Cut_Sub_3(N2, D01)  # ไม่เอาที่ซ้ำกันใน D03
+            if len(CN2) == 0:
+                Result[h] = D01  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                e = 0
+                break
+            e = len(CN2)
+            CN33 = copy.deepcopy(C02)  # กิ่ง
+            CN22 = copy.deepcopy(CN2)
+            P2 = Plus_ListToLost(CN33, CN22)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            P1 = Plus_ListToLost(D01, P2)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D03 = DiffDen5(P1, R)  # คำนวน Sub ที่ตกค้าง
+            C03 = Cut_Sub_2(D03, Cycles_Def)  # หากิ่งเพิ่ม
+            C04 = Cut_Sub_3(C03, D03)  # ไม่เอาที่ซ้ำกันใน D01
+            N3 = Cut_Sub(D03, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+            CN3 = Cut_Sub_3(N2, D01)  # ไม่เอาที่ซ้ำกันใน D03
+
+            CN13 = copy.deepcopy(C04)  # กิ่ง
+            CN12 = copy.deepcopy(CN3)
+            P3 = Plus_ListToLost(CN13, CN12)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            P4 = Plus_ListToLost(D03, P3)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            D04 = DiffDen5(P4, R)  # คำนวน Sub ที่ตกค้าง
+
+            C0 = Cut_Sub_3(Cycles, D04)  # ไม่เอาที่ซ้ำกันใน C03
+            keep += D04  # เก็บ
+            Result[h] = D04  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+            # ส่งกลับไปคำนวน
+
+            # D02 = copy.deepcopy(D01)
+            # C022 = copy.deepcopy(C02)
+            # if len(C02) == 0:
+            #     Result[h] = D01  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+            #     C0 = Cut_Sub_3(Cycles_Def, D01)  # ไม่เอาที่ซ้ำกันใน C03
+                # Result[h+1] = C0
+
+            # e = 1
+            # P2 = [1]
+            # while e > 0:
+            #     P1 = Plus_ListToLost(D02, C022)  # รวมกับก้อนที่หามาก่อนหน้านี้
+            #     D03 = DiffDen3(P1, R)  # คำนวน Sub ที่ตกค้าง
+            #     if (len(P1) - len(P2)) == len(D03):
+            #         Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+            #         C0 = Cut_Sub_3(Cycles_Def, D03)  # ไม่เอาที่ซ้ำกันใน C03
+            #         Result[h + 1] = C0
+            #         h = 0
+            #     เช็คกิ่ง
+                # C03 = Cut_Sub_2(D03, Cycles_Def)  # หากิ่งเพิ่มในครัสเตอร์นั้น
+                # CN3 = Cut_Sub_3(C03, D03)  # ไม่เอาที่ซ้ำกันใน D03
+                # e = len(CN3)
+                # เช็ค SUB
+                # N2 = Cut_Sub(D03, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด
+                # CN2 = Cut_Sub_3(N2, D03)  # ไม่เอาที่ซ้ำกันใน D03
+                # if len(CN2) == 0:
+                #     Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
+                #     C0 = Cut_Sub_3(Cycles_Def, D03)  # ไม่เอาที่ซ้ำกันใน C03
+                #     Result[h + 1] = C0
+                #     h = 0
+                # e = len(CN2)
+                # ส่งกลับไปคำนวน
+                # CN33 = copy.deepcopy(CN3)
+                # CN22 = copy.deepcopy(CN2)
+                # P2 = Plus_ListToLost(CN33, CN22)  # รวมกับก้อนที่หามาก่อนหน้านี้
+                # D02 = D03
+                # C022 = P2
+            # Cycle ที่เหลือ
+            # C0 = Cut_Sub_3(Cycles_Def, D03)  # ไม่เอาที่ซ้ำกันใน C03
+            # keep += D03  # เก็บ
+            # Result[h] = D03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
 
             # C02 = Cut_Sub_2(D00, Cycles)  # มีโหนดที่ซ้ำกัน3 หากิ่งเพิ่ม
             # C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
@@ -469,14 +1008,17 @@ def Make_Cluster(Cycles, R):
             #     C03 = Cut_Sub_3(C02, keep)  # ไม่เอาที่ซ้ำกันใน keep
             # keep += C03  #
             # Result[h] = C03  # {ก้อนครัสเตอร์ : Sub ครัสเตอร์}
-            C0 = Cut_Sub_3(Cycles, keep)  # ไม่เอาที่ซ้ำกันใน C03
+            # C0 = Cut_Sub_3(Cycles, keep)  # ไม่เอาที่ซ้ำกันใน C03
+        # if len(C0) == 0:
+        #     Result[h] = D03
+        #     C0 = Cut_Sub_3(Cycles_Def, D03)  # ไม่เอาที่ซ้ำกันใน C03
+        #     Result[h + 1] = C0
+        #     break
 
-        if len(C0) == 0:
-            Result[h] = D00
-            break
         Cycles_Def = C0
         h += 1
         w = len(C0)  # เช็ค Sub ที่เหลือ
+
 
     return Result
 

@@ -889,7 +889,7 @@ def Make_Cluster(Cycles, R):
             D01 = copy.deepcopy(D00)
             P0 = Plus_ListToLost(D01, N1)  # รวมกับก้อนที่หามาก่อนหน้านี้
             D01 = DiffDen4(P0, R)  # คำนวน Sub #############
-            goto
+
             C01 = Cut_Sub_2(D01, Cycles_Def)  # หากิ่งเพิ่ม
             C02 = Cut_Sub_3(C01, D01)  # ไม่เอาที่ซ้ำกันใน D01
             N2 = Cut_Sub(D01, Cycles_Def)  # หา SUB เพิ่มเอาที่เหมือนกัน 2 โหนด

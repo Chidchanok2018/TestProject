@@ -98,11 +98,22 @@ def Plus_ListToLost(Start, Plus):  # [['1','','']] + [['2','','']] = [['1','',''
     return T1
 
 
+def Plus_ListToLost3(Start, Plus):  # Compare_DIFFDENS0, NS21
+    T11 = copy.deepcopy(Start)
+    T12 = copy.deepcopy(Plus)
+    T1 = T11
+    # T1.append(T11)
+    for i in T12:
+        if i is not []:
+            T1.append(i)
+    return T1
 
 def Plus_ListToLost2(Start, Plus):  # [['1','','']] + [['2','','']] = [['1','',''],['2','','']]
     T11 = copy.deepcopy(Start)
     T12 = copy.deepcopy(Plus)
     T1 = T11
+    if T12 == [[]]:
+        T12 = []
     for i in T12:
         if i is not []:
             T1.append(i)
@@ -151,7 +162,8 @@ def Next_Sub_Inside(Start, Compare, DD):  # NS20, Sub3_L, DD
                 Result.append(Next_L)
             else:
                 keep.append(Next_L)
-
+    if Result == []:
+        Result = [[]]
     return Result  # List[['','',''],['','','']]
 
 
@@ -195,18 +207,18 @@ def Difference_Density(Start, DD):
         Re_intra4 = round(intra_2, 2)
     Dif_Den_N2 = Re_intra4 - Re_inter4
     Result = Dif_Den_N2
-
+    # print Result
     return Result  # ค่า Difference Density
 
 
-def Calcuclate_DIFF(Merge_Sub, Next_Sub, Edge_Insiide, DIFF_DENS, DD):
+def Compare_DIFF(Merge_Sub, Next_Sub, Edge_Insiide, DIFF_DENS, DD):
     # Merge_NE01, L_M_Sub, NS20, NS2Inside0, DIFF_DENS0
     Result = []
     keep = []
     Start = copy.deepcopy(Merge_Sub)
     Start_Long = Change_Shlist_TO_Llist(Start)
     SOLO_N = Next_Sub
-    SOLO_E = Change_Shlist_TO_Llist(Edge_Insiide)
+    SOLO_E = Edge_Insiide
     G = nx.Graph()
     if DIFF_DENS >= DD:
         Result = Merge_Sub
@@ -231,9 +243,94 @@ def Calcuclate_DIFF(Merge_Sub, Next_Sub, Edge_Insiide, DIFF_DENS, DD):
             G.add_cycle(Result1)
             draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
             plt.show()
-
+    # print 'Compare_DIFFDENS = ', Result
     return Result  # List[['','',''],['','','']]
 
+
+def Cut_Sub_3(Start, Compare):  # Start = Sub3ทั้งหมด Compare = ก้อนที่หามา
+    # List[['','',''],['','','']]  # List[['','',''],['','','']]
+    Result = []
+    keep = []
+    for h in Start:
+        Start_L = h
+        if Start_L not in Compare:
+            Result.append(Start_L)
+
+    return Result
+
+
+def Next_Sub_2n2(Start, Compare):  # NS2Inside, Sub3_L
+    # List[['','',''],['','','']]  # List[['','',''],['','','']]
+    Result = []
+    keep = []
+    Start_L = Start
+    Start_Long = Change_Shlist_TO_Llist(Start)
+    Start_S = set(Start_Long)
+    # Result = Start_L
+    for h in Compare:
+        Next_L = h
+        Next_S = set(h)
+        a = Start_S & Next_S
+        if len(a) == 2:
+            Result.append(Next_L)
+            return Result  # List[['','','']
+
+
+
+def Merge_SubToCluster(Sub3_L, DD):
+    Result = []
+    Cluster = {}
+    Start_SUB = copy.deepcopy(Sub3_L)
+    Num_Sub = len(Start_SUB)
+    h = 0
+    while Num_Sub >= 0:
+        h += 1
+        if h > 1:
+            Start_SUB = Cut_Sub_3(Start_SUB, Compare_DIFFDENS0)
+            Start_SUB = Cut_Sub_3(Start_SUB, L_M_Sub)
+        M_Sub = D_Max_Degree_Sub(Start_SUB)  # dict
+        L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List
+        print 'Max_Degree_SUB =', L_M_Sub
+        # ------------------ สำหรับเริ่มต้นการหา
+        NS20 = Next_Sub_2n(L_M_Sub, Start_SUB)  # ค้นหา SUB ที่มี 2n,1e
+        Merge_NE0 = Plus_ListToLost(L_M_Sub, NS20)  # นำ SUB ทั้ง 2 มารวมกัน
+        NS2Inside0 = Next_Sub_Inside(Merge_NE0, Start_SUB, DD)
+        Merge_NE01 = Plus_ListToLost2(Merge_NE0, NS2Inside0)
+        DIFF_DENS0 = Difference_Density(Merge_NE01, DD)
+        print 'DIFF_DENS0 =', DIFF_DENS0
+        Compare_DIFFDENS0 = Compare_DIFF(Merge_NE01, NS20, NS2Inside0, DIFF_DENS0, DD)
+        print 'Compare_DIFFDENS0 = ', Compare_DIFFDENS0
+        Cut_SUB0 = Cut_Sub_3(Start_SUB, Compare_DIFFDENS0)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+        Num_Sub = len(Cut_SUB0)
+        # ----------------- เริ่มต้นการหารอบที่ 2
+        e = 1
+        while e >= DD:
+            NS21 = Next_Sub_2n2(Compare_DIFFDENS0, Cut_SUB0)  # เลือก SUB มาต่อ
+            Merge_NE1 = Plus_ListToLost2(Compare_DIFFDENS0, NS21)  # SUB เดิม + SUB มาต่อ
+            NS2Inside1 = Next_Sub_Inside(Merge_NE1, Cut_SUB0, DD)  # หา กิ่ง ภายในของทั้งก้อน
+            Merge_NE11 = Plus_ListToLost2(Merge_NE1, NS2Inside1)  # ก้อน SUB + กิ่ง ภายใน
+            DIFF_DENS1 = Difference_Density(Merge_NE11, DD)  # คำนวน DD
+            print 'DIFF_DENS1 =', DIFF_DENS1
+            Compare_DIFFDENS1 = Compare_DIFF(Merge_NE11, NS21, NS2Inside1, DIFF_DENS1, DD)  # ผ่านเกณฑ์หรือไม่
+            print 'Compare_DIFFDENS1 = ', Compare_DIFFDENS1
+            Cut_SUB0 = Cut_Sub_3(Start_SUB, Compare_DIFFDENS0)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+            print 'Cut_SUB0 =', len(Cut_SUB0)
+
+            if DIFF_DENS1 >= DD:  # ------- กรณีค่า DIFF_DENS1 น้อยกว่าค่า DD
+                e = DIFF_DENS1
+                Compare_DIFFDENS0 = Compare_DIFFDENS1
+            else:
+                e = DIFF_DENS1
+                Cluster[h] = Compare_DIFFDENS1
+                Compare_DIFFDENS0 = Compare_DIFFDENS1
+                # break  # ออกไปยัง While Num_Sub > 0
+            if len(Cut_SUB0) >= 0:  # ------- กรณีจำนวน SUB หมด
+                Num_Sub = len(Cut_SUB0)
+            else:
+                Cluster[h] = Compare_DIFFDENS1
+                Cut_SUB0
+                break  # ออกไปยัง While Num_Sub > 0
+    return Cluster
 
 print'------เริ่มทำการหาครัสเตอร์---Snow ball 2---------------'
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
@@ -250,15 +347,51 @@ DD = float(0.50)
 Sub3_L = Change_SetTolist(Sub3)
 Sub3_L_sort = sorted(Sub3_L)
 
-M_Sub = D_Max_Degree_Sub(Sub3_L)  # dict
-L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List
+# ---------------------------------------------- #
 
-NS20 = Next_Sub_2n(L_M_Sub, Sub3_L)  # รับ 1 SUB
-Merge_NE0 = Plus_ListToLost(L_M_Sub, NS20)
-NS2Inside0 = Next_Sub_Inside(NS20, Sub3_L, DD)
-Merge_NE01 = Plus_ListToLost2(Merge_NE0, NS2Inside0)
-DIFF_DENS0 = Difference_Density(Merge_NE01, DD)
-# DIFF_DENS0 = 0.04
-Cal_DIFFDENS0 = Calcuclate_DIFF(Merge_NE01, NS20, NS2Inside0, DIFF_DENS0, DD)
+M1 = Merge_SubToCluster(Sub3_L, DD)
+
+# M_Sub = D_Max_Degree_Sub(Sub3_L)  # dict
+# L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List
+
+# NS20 = Next_Sub_2n(L_M_Sub, Sub3_L)  # รับ 1 SUB
+# Merge_NE0 = Plus_ListToLost(L_M_Sub, NS20)
+# NS2Inside0 = Next_Sub_Inside(Merge_NE0, Sub3_L, DD)
+# Merge_NE01 = Plus_ListToLost2(Merge_NE0, NS2Inside0)
+# DIFF_DENS0 = Difference_Density(Merge_NE01, DD)
+# Compare_DIFFDENS0 = Compare_DIFF(Merge_NE01, NS20, NS2Inside0, DIFF_DENS0, DD)
+# Cut_SUB0 = Cut_Sub_3(Sub3_L, Compare_DIFFDENS0)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+
+# NS21 = Next_Sub_2n2(Compare_DIFFDENS0, Cut_SUB0)  # เลือก SUB มาต่อ
+# Merge_NE1 = Plus_ListToLost2(Compare_DIFFDENS0, NS21)
+# NS2Inside1 = Next_Sub_Inside(Merge_NE1, Cut_SUB0, DD)
+# Merge_NE11 = Plus_ListToLost2(Merge_NE1, NS2Inside1)
+# DIFF_DENS1 = Difference_Density(Merge_NE11, DD)
+# Compare_DIFFDENS1 = Compare_DIFF(Merge_NE11, NS21, NS2Inside1, DIFF_DENS1, DD)
+# Cut_SUB1 = Cut_Sub_3(Sub3_L, Compare_DIFFDENS1)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+
+# NS22 = Next_Sub_2n2(Compare_DIFFDENS1, Cut_SUB1)  # เลือก SUB มาต่อ
+# Merge_NE2 = Plus_ListToLost2(Compare_DIFFDENS1, NS22)
+# NS2Inside2 = Next_Sub_Inside(Merge_NE2, Cut_SUB1, DD)
+# Merge_NE21 = Plus_ListToLost2(Merge_NE2, NS2Inside2)
+# DIFF_DENS2 = Difference_Density(Merge_NE21, DD)
+# Compare_DIFFDENS2 = Compare_DIFF(Merge_NE21, NS22, NS2Inside2, DIFF_DENS2, DD)
+# Cut_SUB2 = Cut_Sub_3(Sub3_L, Compare_DIFFDENS2)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+
+# NS23 = Next_Sub_2n2(Compare_DIFFDENS2, Cut_SUB2)  # เลือก SUB มาต่อ
+# Merge_NE3 = Plus_ListToLost2(Compare_DIFFDENS2, NS23)
+# NS2Inside3 = Next_Sub_Inside(Merge_NE3, Cut_SUB2, DD)
+# Merge_NE31 = Plus_ListToLost2(Merge_NE3, NS2Inside3)
+# DIFF_DENS3 = Difference_Density(Merge_NE31, DD)
+# Compare_DIFFDENS3 = Compare_DIFF(Merge_NE31, NS23, NS2Inside3, DIFF_DENS3, DD)
+# Cut_SUB3 = Cut_Sub_3(Sub3_L, Compare_DIFFDENS3)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+
+# NS24 = Next_Sub_2n2(Compare_DIFFDENS3, Cut_SUB3)  # เลือก SUB มาต่อ
+# Merge_NE4 = Plus_ListToLost2(Compare_DIFFDENS3, NS24)
+# NS2Inside4 = Next_Sub_Inside(Merge_NE4, Cut_SUB3, DD)
+# Merge_NE41 = Plus_ListToLost2(Merge_NE4, NS2Inside4)
+# DIFF_DENS4 = Difference_Density(Merge_NE41, DD)
+# Compare_DIFFDENS4 = Compare_DIFF(Merge_NE41, NS24, NS2Inside4, DIFF_DENS4, DD)
+# Cut_SUB4 = Cut_Sub_3(Sub3_L, Compare_DIFFDENS4)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
 
 print 'a'

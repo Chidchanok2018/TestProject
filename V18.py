@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\simulated_blockmodel_graph_500_nodes_snowball_2.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50.txt", "rb")
 G = read_adjlist(fh)
 # draw_networkx(G, edge_color='b')
 # plt.figure(1)
@@ -37,7 +37,6 @@ else:
 
 # --------เตรียม Sub cycles เ---------------#
 Sub3 = [c for c in nx.cycle_basis(G) if len(c) == 3]
-
 
 # -------- SUB MAX Degree --------------- #
 
@@ -467,7 +466,8 @@ def Cut_Start_edges(Compare, Start):  # Start_edge1, Result <= 1
                 b = Start_SS & Next_SS
                 if len(b) <= 1:
                     Result.append(u)
-
+    if len(Start) == 1:
+        Result = keep
     return Result
 
 def List_Not_In(Start):  # Compare_DIFFDENS0
@@ -508,6 +508,29 @@ def Cut_Start_Edges_Sub_Cluster(Compare, Start):  # Compare_DIFFDENS1, Result <=
             Result0 = copy.deepcopy(Result1)
             keep = Result0
     Result = Result1
+    if len(Start_L) == 1:
+        Result = keep
+    return Result
+
+
+def Rest_Sub(Start, Compare):  # Compare_DIFFDENS1, Start_Sub
+    # List [[],[],[]] # List [[],[],[]]
+    Result = []
+    keep = []
+    Start_L = copy.deepcopy(Start)
+    Compare_L = copy.deepcopy(Compare)
+    for h in Start_L:
+        Start_S = set(h)
+        for i in Compare_L:
+            Compare_S = set(i)
+            a = Start_S & Compare_S
+            if len(a) < 3:
+                if i not in Result:
+                    Result.append(i)
+            if len(a) == 3:
+                if i not in keep:
+                    keep.append(i)
+
     return Result
 
 def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
@@ -535,19 +558,36 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
         # หา Sub cycle ที่มีดีกรีรวมสูงสุด
         if C <= 1:
             M_Sub = D_Max_Degree_Sub(Start_Sub1)  # dict
-        L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List[]
-        print 'SUB เริ่มต้น =', L_M_Sub
+        if len(M_Sub) >= 1:
+            L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List[]
+            print 'SUB เริ่มต้น =', L_M_Sub
+        # เจอ M_Sub == 0
+        if len(M_Sub) == 0:
+            M_Sub = D_Max_Degree_Sub(Start_Sub1)  # dict
+            print 'M_Sub = 0'
+            if len(M_Sub) == 0:
+                M_Sub = Rest_Sub(Compare_DIFFDENS1, Start_Sub)
+
         # ถ้าไม่มี Sub cycle เหลืออยู่แล้ว
-        if len(L_M_Sub) == 0:
-            print 'ไม่มี Sub เริ่มต้นแล้ว 1'
-            break
+        # if len(L_M_Sub) == 0:
+        #     print 'ไม่มี Sub เริ่มต้นแล้ว 1'
+        #     break
+
         # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
         NS20 = Next_Sub_2n(L_M_Sub, Start_Sub1)  # ค้นหา SUB ที่มีโหนดเหมือนกัน 2 โหนด
         # ไม่มี Sub cycle ที่นำมาต่อแล้ว
         if len(NS20) == 0:
             Result[C] = L_M_Sub
             print 'ไม่มีซับข้างเคียงแล้ว 1'
-            break
+            Node_2 = Change_Shlist_TO_Llist(L_M_Sub)
+            print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+            # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+            # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+            Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+            # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+            Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+            C += 1
+            break  # หลุด Loop While A >= 0
         Node_SMD0 = Node_Sub_Degree(L_M_Sub, NS20, Start_degree)  # List[[]]
         print 'Sub ที่เพิ่มขึ้น =', Node_SMD0
         Merge_NE0 = Plus_ListToLost(L_M_Sub, Node_SMD0)  # List[]+[[]]
@@ -638,6 +678,8 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                     Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
 
                 C += 1
+
+    
     return Result
 
 

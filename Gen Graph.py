@@ -14,11 +14,11 @@ G = nx.Graph()
 # G = nx.circular_ladder_graph(10)  # วงล้อ 2 วง
 # k = Graph.Erdos_Renyi(n=10, m=10)
 # G = nx.gnm_random_graph(50,200)  # ตัวแรกจำนวนโหนด ตัวหลังจำนวนกิ่ง
-G = nx.dense_gnm_random_graph(50,150)
-nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_150_1.tsv",delimiter=' ',data=True)
+# G = nx.dense_gnm_random_graph(50,150)
+# nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_150_1.tsv",delimiter=' ',data=True)
 
-# fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50.txt", "rb")
-# G = read_adjlist(fh)
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50.txt", "rb")
+G = read_adjlist(fh)
 draw_networkx(G, edge_color='b')
 plt.show()
 

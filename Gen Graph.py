@@ -17,7 +17,7 @@ G = nx.Graph()
 # G = nx.dense_gnm_random_graph(50,150)
 # nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_150_1.tsv",delimiter=' ',data=True)
 
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_450.txt", "rb")
 G = read_adjlist(fh)
 draw_networkx(G, edge_color='b')
 plt.show()

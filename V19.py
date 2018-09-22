@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_450.txt", "rb")
 G = read_adjlist(fh)
 # draw_networkx(G, edge_color='b')
 # plt.figure(1)
@@ -757,10 +757,12 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             B = DD
             if len(Cut_Edges_Start) == 0:
                 Cut_Edges_Start = Cut_Edges
+            # ทำ Sub graph จาก Cut_Edges_Start
             Start_Sub2 = Create_Graph_another(Cut_Edges_Start)
-            if len(Start_Sub2) == 0:
-                Start_Sub2 = Start_Sub1
-
+            if len(Start_Sub2) == 0:  # หากไม่มีซับเหลือจากโหนดที่เหลือที่ไม่เหมือนกับครัสเตอร์ก่อนหน้า
+                print 'กิ่งที่เหลือไม่เจอ Sub 3'
+                Start_Sub2
+                break
             M_Sub = D_Max_Degree_Sub(Start_Sub2)  # dict
 
             Start_Sub0 = Create_Graph_another(Cut_Edges)  # กราฟที่เหลือ
@@ -894,7 +896,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                     Result[C] = Compare_DIFFDENS1
                     # นับจำนวนโหนด
                     Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS1)
-                    print 'จำนวนโหนดในครัสเตอร์ 2 =', len(set(Node_2))
+                    print 'จำนวนโหนดในครัสเตอร์ 2 =', set(Node_2)
                     # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
                     # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
                     Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -902,8 +904,8 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                     Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
 
                 C += 1
-
-    while B >= DD:
+    H = len(Start_Sub)
+    while H >= 0:
         if C >= 2:  # หา cycle ดีกรีรวมสูงสุดที่โหนดไม่ซ้ำเดิม
             B = DD
             if len(Cut_Edges_Start) == 0:
@@ -933,14 +935,139 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 Result_Sub_TorSub_Node = Result_CutNode(Result_Sub_TorSub)
                 # หาโหนดที่เหลืออยู่ โหนดที่ไม่ถูกนำมาจัด
                 Result_Rest_Node = Check_Nodes_Rest(Result_Cut_Node, Result_Sub_TorSub, Node_Graph)
+                print 'โหนดที่ไม่ถูกจัดอยู่ในครัสเตอร์ =', Result_Rest_Node
                 # จาก Result_Rest_Node นำมาหากิ่งของโหนดที่เหลือ วาดรูปเช็คซับอีกรอบ
                 Result_Rest_Node_Edge = Check_Edge_Nodes_Rest(Result_Rest_Node, Edges_Graph)
                 Sub3_1 = Create_Graph_Edges(Result_Rest_Node_Edge)
 
                 # Result_Cut_Node_2 = Add_Node_FTorSub(Result_Cut_Node, Result_Sub_TorSub_Node)
+                break
+            # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
+            NS20 = Next_Sub_2n(L_M_Sub, Start_Sub1)  # ค้นหา SUB ที่มีโหนดเหมือนกัน 2 โหนด
+            # ไม่มี Sub cycle ที่นำมาต่อแล้ว
+            if len(NS20) == 0:
+                Result[C] = [L_M_Sub]
+                print 'ไม่มีซับข้างเคียงแล้ว 1'
+                Node_2 = Change_Shlist_TO_Llist(L_M_Sub)
+                print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+                # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+                C += 1
+                break  # หลุด Loop While A >= 0
+            Node_SMD0 = Node_Sub_Degree(L_M_Sub, NS20, Start_degree)  # List[[]]
+            print 'Sub ที่เพิ่มขึ้น =', Node_SMD0
+            Merge_NE0 = Plus_ListToLost(L_M_Sub, Node_SMD0)  # List[]+[[]]
 
+            # หา กิ่ง ภายในที่มีอยู่ใน Sub ที่รวมกันในข้างต้น
+            Ed_Inside0 = Edges_InsideSub(Merge_NE0, Start_edge1)
+            # นำทั้งหมดที่ได้มาคำนวนหาค่า Difference Density
+            DIFF_DENS0 = Difference_Density(Ed_Inside0)
+            B = DIFF_DENS0
+            print 'DIFF_DENS0 =', DIFF_DENS0
+            # นำค่าที่คำนวนได้มาแสดงผล
+            Compare_DIFFDENS0 = Compare_DIFF(L_M_Sub, Merge_NE0, Ed_Inside0, DIFF_DENS0, DD)
+            # ซ้อนเพื่อหาการซ้ำ
+            Compare_DIFFDENS0 = List_Not_In(Compare_DIFFDENS0)
+            print 'Compare_DIFFDENS0 =', Compare_DIFFDENS0
+            # ถ้าค่า DIFF_DENS0 น้อยกว่า DD
+            if DIFF_DENS0 <= DD:
+                Result[C] = Compare_DIFFDENS0
+                print 'ค่า DD ไม่ถึง 1'
+                Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
+                print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+                # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+                C += 1
+                break
+            if DIFF_DENS1 >= DD:
+                Cut_SUB0 = Start_Sub1  # วน Step 2
+                Compare_DIFFDENS0 = Compare_DIFFDENS1
 
-                print 'aaa'
+            if C <= 1:
+                # List not in
+                Cut_SUB0 = Cut_Sub_3(Start_Sub1, Compare_DIFFDENS0)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
+                print 'Cut_SUB0 =', len(Cut_SUB0)
+            if C >= 2:
+                Cut_SUB0 = Start_Sub1
+            # ถ้าไม่มี Sub cycle เหลืออยู่แล้ว
+            if len(Cut_SUB0) == 0:
+                Result[C] = Compare_DIFFDENS0
+                print 'ไม่มี Sub ต่อไปอีกแล้ว 1'
+                Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
+                print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+                # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+                # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+                C += 1
+                break
+
+            while B >= DD:  # Step 2
+                # หา Sub cycle รอบๆ อีกครั้ง
+                NS21 = Next_Sub_2n2(Compare_DIFFDENS0, Cut_SUB0)  # เลือก SUB มาต่อ
+                # ถ้าไม่มี Sub cycle ข้างเคียงเหลืออยู่แล้ว
+                if len(NS21) == 0:
+                    Result[C] = Compare_DIFFDENS0
+                    print 'ไม่มีซับต่อไปอีกแล้ว 2'
+                    Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
+                    print 'จำนวนโหนดในครัสเตอร์ 2 =', len(set(Node_2))
+                    # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+                    # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                    Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+                    # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                    Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+                    C += 1
+                    break
+                Node_SMD1 = Node_Sub_Degree2(Compare_DIFFDENS0, NS21, Start_degree)  # List[[]]
+                print 'Sub ที่เพิ่มขึ้น =', Node_SMD1
+                Merge_NE1 = Plus_ListToLost2(Compare_DIFFDENS0, Node_SMD1)  # List[]+[[]]
+                # หา กิ่ง ภายใน Sub ทั้งหมด
+                Ed_Inside1 = Edges_InsideSub(Merge_NE1, Start_edge1)
+                # คำนวนค่า Difference Density
+                DIFF_DENS1 = Difference_Density(Ed_Inside1)
+                print 'DIFF_DENS0 =', DIFF_DENS1
+                B = DIFF_DENS1
+                # เปรียบเทียบค่า DD
+                Compare_DIFFDENS1 = Compare_DIFF(Compare_DIFFDENS0, Merge_NE1, Ed_Inside1, DIFF_DENS1, DD)
+                Compare_DIFFDENS1 = List_Not_In(Compare_DIFFDENS1)
+                print 'Compare_DIFFDENS1 =', Compare_DIFFDENS1
+
+                if DIFF_DENS1 >= DD:
+                    Cut_SUB0 = Start_Sub1  # วน Step 2
+                    Compare_DIFFDENS0 = Compare_DIFFDENS1
+
+                else:
+                    if C == 1:
+                        Result[C] = Compare_DIFFDENS1
+                        # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                        Cut_Edges = Cut_Edges_Cluster(Compare_DIFFDENS1, Start_edge1)  # List[(),()]
+                        # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                        Cut_Edges_Start = Cut_Edges_Sub_Cluster(Compare_DIFFDENS1, Start_edge1)  # List[(),()]
+                        # เอา โหนด ในครัสเตอร์ออกมา เพื่อที่จะเอากิ่งมาสร้างเป็นกราฟ == 1
+                        Cut_Nodes = Cut_Nodes_Cluster(Compare_DIFFDENS1, Start_edge1)  # List[[],[]]
+                        print 'โหนดในครัสเตอร์ =', len(Cut_Nodes)
+
+                    if C >= 2:
+                        # ให้ Compare_DIFFDENS1 = Result[1]+Result[2]+,...
+                        Result[C] = Compare_DIFFDENS1
+                        # นับจำนวนโหนด
+                        Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS1)
+                        print 'จำนวนโหนดในครัสเตอร์ 2 =', set(Node_2)
+                        # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
+                        # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
+                        Cut_Edges = Cut_Start_edges(Start_edge1, Result)
+                        # เอา SUB มา Compare กับกิ่ง เอากิ่งที่ไม่มีโหนดในครัสเตอร์ก้อนแรก == 0
+                        Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
+
+                    C += 1
+
 
 
     return Result

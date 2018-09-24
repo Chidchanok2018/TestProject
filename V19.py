@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_450.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_400.txt", "rb")
 G = read_adjlist(fh)
 # draw_networkx(G, edge_color='b')
 # plt.figure(1)
@@ -985,9 +985,6 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 Cut_Edges_Start = Cut_Start_Edges_Sub_Cluster(Start_edge1, Result)  # List[(),()]
                 C += 1
                 break
-            if DIFF_DENS1 >= DD:
-                Cut_SUB0 = Start_Sub1  # วน Step 2
-                Compare_DIFFDENS0 = Compare_DIFFDENS1
 
             if C <= 1:
                 # List not in
@@ -1080,7 +1077,7 @@ Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
 # print'Node_Graph =', Node_Graph
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 # print'Edges_Graph =', Edges_Graph
-DD = float(0.50)
+DD = float(0.70)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]

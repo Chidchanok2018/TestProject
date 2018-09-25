@@ -939,8 +939,8 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # จาก Result_Rest_Node นำมาหากิ่งของโหนดที่เหลือ วาดรูปเช็คซับอีกรอบ
                 Result_Rest_Node_Edge = Check_Edge_Nodes_Rest(Result_Rest_Node, Edges_Graph)
                 Sub3_1 = Create_Graph_Edges(Result_Rest_Node_Edge)
-
                 # Result_Cut_Node_2 = Add_Node_FTorSub(Result_Cut_Node, Result_Sub_TorSub_Node)
+
                 break
             # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
             NS20 = Next_Sub_2n(L_M_Sub, Start_Sub1)  # ค้นหา SUB ที่มีโหนดเหมือนกัน 2 โหนด

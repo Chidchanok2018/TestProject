@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Gen Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gen Graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report 23092018.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/V19.py" beforeDir="false" afterPath="$PROJECT_DIR$/V19.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$port 23092018.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +35,7 @@
     <SUITE FILE_PATH="coverage/TestProject$VeryReal_06062561.coverage" NAME="VeryReal 06062561 Coverage Results" MODIFIED="1529564909654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/TestProject$v10.coverage" NAME="v10 Coverage Results" MODIFIED="1535716650318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$V18.coverage" NAME="V18 Coverage Results" MODIFIED="1537342594758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1537880173501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1537884434032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
     <SUITE FILE_PATH="coverage/TestProject$OpenFileExcelMilk.coverage" NAME="OpenFileExcelMilk Coverage Results" MODIFIED="1530972499968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test_SubGraph.coverage" NAME="Test_SubGraph Coverage Results" MODIFIED="1531994392283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -73,22 +76,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="81205" />
+          <entry key="py" value="81604" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="81205" />
+          <entry key="Python" value="81604" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="41" />
+          <entry key="py" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="41" />
+          <entry key="Python" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -100,31 +103,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Step V6_1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="705" column="9" selection-start-line="705" selection-start-column="9" selection-end-line="705" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/V17.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8160">
-              <caret line="416" selection-start-line="416" selection-end-line="416" />
-              <folding>
-                <element signature="e#24#46#0" expanded="true" />
-                <marker date="1536903211690" expanded="true" signature="4506:4508" ph="..." />
-                <marker date="1536903211690" expanded="true" signature="4528:4533" ph="..." />
-                <marker date="1536903211690" expanded="true" signature="4528:4746" ph="..." />
-                <marker date="1536903211690" expanded="true" signature="10655:10660" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/V18.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -146,12 +124,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/V19.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14471">
-              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="11" />
+            <state relative-caret-position="12529">
+              <caret line="1077" lean-forward="true" selection-start-line="1077" selection-end-line="1077" selection-end-column="34" />
               <folding>
-                <marker date="1537790892241" expanded="true" signature="15956:15976" ph="..." />
-                <marker date="1537790892241" expanded="true" signature="15956:17088" ph="..." />
-                <marker date="1537790892241" expanded="true" signature="18412:18439" ph="..." />
+                <element signature="e#24#46#0" expanded="true" />
+                <marker date="1537881134485" expanded="true" signature="15956:15976" ph="..." />
+                <marker date="1537881134485" expanded="true" signature="15956:17088" ph="..." />
+                <marker date="1537881134485" expanded="true" signature="18412:18439" ph="..." />
               </folding>
             </state>
           </provider>
@@ -160,10 +139,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gen Graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="296">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
+                <element signature="e#925#965#0" />
               </folding>
             </state>
           </provider>
@@ -173,7 +153,19 @@
         <entry file="file://C:/Python27/FileFromMilk.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="158">
-              <caret line="35" column="41" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="41" />
+              <caret line="35" column="18" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_color.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="14" column="173" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="173" />
+              <folding>
+                <element signature="e#24#46#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -258,6 +250,7 @@
         <option value="$PROJECT_DIR$/V16.py" />
         <option value="$PROJECT_DIR$/V17.py" />
         <option value="$PROJECT_DIR$/V18.py" />
+        <option value="$PROJECT_DIR$/node_color.py" />
         <option value="$PROJECT_DIR$/V19.py" />
         <option value="$PROJECT_DIR$/Gen Graph.py" />
       </list>
@@ -269,7 +262,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -280,7 +273,20 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TestProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TestProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Kmutt_Wan/PycharmProjects/TestProject/testFile.py" />
@@ -463,15 +469,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.48421052" weight="0.15885022" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3197279" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.3112245" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.22789116" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.32993197" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32697946" />
@@ -485,7 +490,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.37065053" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.31316188" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -948,7 +953,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gen Graph.py</url>
-          <line>53</line>
+          <line>79</line>
           <option name="timeStamp" value="1697" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1098,8 +1103,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gen Graph.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="1941" />
+          <line>74</line>
+          <option name="timeStamp" value="1951" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1138,13 +1143,18 @@
         <watch expression="Result_Rest_Node" language="Python" />
         <watch expression="Result_Rest_Node_Edge" language="Python" />
         <watch expression="G" language="Python" />
+        <watch expression="K" language="Python" />
         <watch expression="h" language="Python" />
         <watch expression="count" language="Python" />
         <watch expression="i" language="Python" />
         <watch expression="Sub3_1" language="Python" />
         <watch expression="Cut_Edges_Start" />
-        <watch expression="R" language="Python" />
+        <watch expression="u" language="Python" />
+        <watch expression="u[1]" language="Python" />
+        <watch expression="v" language="Python" />
         <watch expression="pos" language="Python" />
+        <watch expression="colorList" language="Python" />
+        <watch expression="Edges_Graph" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -1157,6 +1167,36 @@
       </expression>
     </expressions>
     <expressions id="watch">
+      <expression>
+        <expression-string>K</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u[1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>u</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>v</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Edges_Graph</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>colorList</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>R</expression-string>
         <language-id>Python</language-id>
@@ -1174,36 +1214,6 @@
       </expression>
       <expression>
         <expression-string>Compare_DIFFDENS0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>set(Node_2)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Node_2</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Sub3_1</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>count</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>u[i+1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>u[i]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1234,20 +1244,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/backports/functools_lru_cache.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/networkx/drawing/layout.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="316" selection-start-line="316" selection-end-line="316" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PICYeast_Py.png" />
     <entry file="file://$PROJECT_DIR$/SubCycleYeast_Py.png" />
     <entry file="file://$PROJECT_DIR$/SubCycleFacebook1_Py.png" />
@@ -1624,31 +1620,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/V19.py">
+    <entry file="file://$PROJECT_DIR$/node_color.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14471">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="95">
+          <caret line="14" column="173" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="173" />
           <folding>
-            <marker date="1537790892241" expanded="true" signature="15956:15976" ph="..." />
-            <marker date="1537790892241" expanded="true" signature="15956:17088" ph="..." />
-            <marker date="1537790892241" expanded="true" signature="18412:18439" ph="..." />
+            <element signature="e#24#46#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/networkx/drawing/nx_pylab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="276" selection-start-line="276" selection-end-line="276" />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python27/FileFromMilk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="41" />
+          <caret line="35" column="18" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V19.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12529">
+          <caret line="1077" lean-forward="true" selection-start-line="1077" selection-end-line="1077" selection-end-column="34" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <marker date="1537881134485" expanded="true" signature="15956:15976" ph="..." />
+            <marker date="1537881134485" expanded="true" signature="15956:17088" ph="..." />
+            <marker date="1537881134485" expanded="true" signature="18412:18439" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gen Graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="296">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#925#965#0" />
           </folding>
         </state>
       </provider>

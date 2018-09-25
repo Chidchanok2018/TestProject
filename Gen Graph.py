@@ -19,21 +19,38 @@ G = nx.Graph()
 # G = nx.dense_gnm_random_graph(50,500)
 # nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_1.tsv",delimiter=' ',data=True)
 
-# fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500.txt", "rb")
-# G = read_adjlist(fh)
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500.txt", "rb")
+G = read_adjlist(fh)
 
 # pos = {0: (100, 100), 1: (20, 30), 2: (40, 30), 3: (30, 10)}
-
-Node = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print Node
-N1 = 1
-N2 = 101
-i = range(N1, N2)  # list i [1, 1,...,100]
+print 'aaa'
+# Node = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# print Node
+# N1 = 1
+# N2 = 101
+# i = range(N1, N2)  # list i [1, 1,...,100]
+# random.shuffle(i)
+# i2 = copy.deepcopy(i)
+# random.shuffle(i2)
+# pos = {}
+# R = []
+# p = 0
+# for h in i:
+#     R3 = []
+#     R1 = i[p]
+#     R2 = i2[p]
+#     R3 = [R1,R2]
+#     R3 = tuple(R3)
+#     pos[p] = R3
+#     p += 1
+pos = {}
+l = len(G.node)
+N1 = 0
+N2 = l
+i = range(N1, N2)
 random.shuffle(i)
 i2 = copy.deepcopy(i)
 random.shuffle(i2)
-pos = {}
-R = []
 p = 0
 for h in i:
     R3 = []
@@ -44,13 +61,21 @@ for h in i:
     pos[p] = R3
     p += 1
 
-G.add_nodes_from(pos.keys())
-for n, p in pos.iteritems():
-    G.node[n]['pos'] = p
+Edges_Graph = [i for i in G.edges]
 
-Q = 1
-colorList = ['SeaGreen','yellow','brown','pink','purple','blue','green','Salmon','red','c','magenta','orange','white','black','y','skyblue','GreenYellow','cyan']
-# draw_networkx(G, pos, edge_color='b', node_color="skyblue")
-draw_networkx(G, pos, edge_color='b', node_color=colorList[Q%len(colorList)])
+K = nx.Graph()
+K.add_nodes_from(pos.keys())
+for n, p in pos.iteritems():
+    K.node[n]['pos'] = p
+
+for u in Edges_Graph:
+    u = list(u)
+    K.add_edge(int(u[0]), int(u[1]))
+
+Q = 0
+# colorList = ['red','yellow','brown','purple','skyblue','green','Salmon','c','magenta','orange','white','black','y','GreenYellow','cyan']
+colorList = ['SeaGreen','yellow','brown','pink','purple','blue','green','Salmon','red','c','magenta','orange','white','black','y','skyblue','GreenYellow','cyan','aqua']
+draw_networkx(K, pos, edge_color='skyblue', node_color="red")
+# draw_networkx(G, pos, edge_color='b', node_color=colorList[Q%len(colorList)])
 plt.show()
 

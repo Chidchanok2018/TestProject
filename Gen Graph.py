@@ -5,6 +5,7 @@ import numpy as np
 import random
 import copy
 
+
 G = nx.Graph()
 # k = Graph
 # G = nx.complete_graph(5)  # Fully Graph
@@ -47,6 +48,9 @@ G.add_nodes_from(pos.keys())
 for n, p in pos.iteritems():
     G.node[n]['pos'] = p
 
-draw_networkx(G, pos, edge_color='b')
+Q = 1
+colorList = ['SeaGreen','yellow','brown','pink','purple','blue','green','Salmon','red','c','magenta','orange','white','black','y','skyblue','GreenYellow','cyan']
+# draw_networkx(G, pos, edge_color='b', node_color="skyblue")
+draw_networkx(G, pos, edge_color='b', node_color=colorList[Q%len(colorList)])
 plt.show()
 

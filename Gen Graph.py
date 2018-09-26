@@ -63,19 +63,19 @@ for h in i:
 
 Edges_Graph = [i for i in G.edges]
 
-K = nx.Graph()
-K.add_nodes_from(pos.keys())
+K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
+K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
 for n, p in pos.iteritems():
     K.node[n]['pos'] = p
 
-for u in Edges_Graph:
+for u in Edges_Graph:  # จะเพิ่มกิ่งจากกราฟ G เปลี่ยนเป็น int
     u = list(u)
     K.add_edge(int(u[0]), int(u[1]))
 
-Q = 0
+Q = 0  # ตัวเปลี่ยนสีใน colorList
 # colorList = ['red','yellow','brown','purple','skyblue','green','Salmon','c','magenta','orange','white','black','y','GreenYellow','cyan']
 colorList = ['SeaGreen','yellow','brown','pink','purple','blue','green','Salmon','red','c','magenta','orange','white','black','y','skyblue','GreenYellow','cyan','aqua']
-draw_networkx(K, pos, edge_color='skyblue', node_color="red")
+draw_networkx(K, pos, edge_color='skyblue', node_color='black')
 # draw_networkx(G, pos, edge_color='b', node_color=colorList[Q%len(colorList)])
 plt.show()
 

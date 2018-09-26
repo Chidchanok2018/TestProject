@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_400.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_300_2.txt", "rb")
 G = read_adjlist(fh)
 # draw_networkx(G, edge_color='b')
 # plt.figure(1)
@@ -165,8 +165,8 @@ def draw_Sub(Start):
     SS = Change_Shlist_TO_Llist(Start_L)
     G = nx.Graph()
     G.add_cycle(SS)
-    draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-    plt.show()
+    # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+    # plt.show()
 
 
 def Plus_Result(Result):
@@ -330,7 +330,6 @@ def Compare_DIFF(Start, Start_M, Start_E, DIFF_DENS0, DD):
                 SS = Sub_Inside1
 
         Result = SS
-
     else:
         Result = Start0
         print'aa'
@@ -458,8 +457,8 @@ def Create_Graph_Edges(Start2):  # Dict
             u = list(u)
             for i in range(1):
                 G.add_edge(u[i], u[i + 1])
-                draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
-                plt.show()
+                # draw_networkx(G, edge_color='b')  # ภาพกราฟค่อยๆเพิ่มขึ้น
+                # plt.show()
     Result = [c for c in nx.cycle_basis(G) if len(c) == 3]
     return Result
 
@@ -743,6 +742,102 @@ def Check_Edge_Nodes_Rest(Start, Compare):  # Result_Rest_Node, Edges_Graph
     return Result
 
 
+def Dict_Unicode_Toint(Start):   # Dict {1:[[,,],[,,]..]}
+    Start_D = copy.deepcopy(Start)
+    Result1 = {}
+    for u, v in Start_D.items():
+        keep1 = []
+        for h in v:
+            keep = []
+            for i in h:
+                i = int(i)
+                keep.append(i)
+            keep1.append(keep)
+        Result1[u] = keep1
+    return Result1
+
+def Dict_Unicode_Toint1(Start):   # Dict {1:[[.....],2:[.....]..]}
+    Start_D = copy.deepcopy(Start)
+    Result1 = {}
+    for u, v in Start_D.items():
+        keep1 = []
+        for h in v:
+            h = int(h)
+            keep1.append(h)
+        Result1[u] = keep1
+
+    return Result1
+
+
+def Create_Graph_Cluster(Node, Edge, Gnode):  # Result_Cut_Node, Result_Cut_Edges, G.nodes
+    # Dict {1:[[,,],[,,]..]}  # Dict {1:[[,,],[,,]..]}
+    Result = {}
+    Result1 = {}
+    Node_D = copy.deepcopy(Node)
+    Edge_D = copy.deepcopy(Edge)
+
+    # เปลี่ยน unicode => int
+    Edges_int = Dict_Unicode_Toint(Edge_D)
+    Nodes_int = Dict_Unicode_Toint1(Node_D)
+    l = len(Gnode)
+    pos = {}
+    m = 0
+    Q = 0
+    for p, v in Nodes_int.items():
+        for u in v:
+            N1 = 0
+            N2 = l
+            i = range(N1, N2)
+            random.shuffle(i)
+            i2 = copy.deepcopy(i)
+            random.shuffle(i2)
+            for h in i:
+                R3 = []
+                R1 = i[m]
+                R2 = i2[m]
+                R3 = [R1, R2]
+                R3 = tuple(R3)
+                pos[u] = R3
+                m += 1
+                break
+
+        K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
+        K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
+        for n, p in pos.iteritems():
+            K.node[n]['pos'] = p
+
+        for r, t in Edges_int.items():
+            for w in t:
+                w = list(w)
+                K.add_edge(int(w[0]), int(w[1]))
+
+            colorList = ['red', 'c', 'magenta', 'green', 'GreenYellow', 'Salmon', \
+                         'orange', 'brown', 'purple', 'yellow', 'black']
+            draw_networkx(K, pos, edge_color='skyblue', node_color=colorList[Q%len(colorList)])
+            Q += 1
+            # draw_networkx(K, pos, edge_color='skyblue', node_color='red')
+            plt.show()
+
+    return Result
+
+def Result_CutEdge(Start, Compare):  # Result_Copy, Edges_Graph
+    # Dict {1:[[,,],[,,]..]}  # List [[,,],[,,]....]
+    Result = {}
+
+    Start_D = copy.deepcopy(Start)
+    Compare_D = copy.deepcopy(Compare)
+    for h, i in Start_D.items():
+        keep = []
+        for u in i:
+            u_s = set(u)
+            for v in Compare_D:
+                v_s = set(v)
+                a = u_s & v_s
+                if len(a) == 2:
+                    keep.append(v)
+        Result[h] = keep
+    return Result
+
 def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
     # Sub3_L, Edges_Graph, DD, Node_Degree
     Result = {}
@@ -927,6 +1022,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # ต้องกำจัดโหนดที่แม่งซ้ำในแต่ละครัสเตอร์ออกก่อน
                 Result_Copy = copy.deepcopy(Result)
                 Result_Cut_Node = Result_CutNode(Result_Copy)
+                Result_Cut_Edges = Result_CutEdge(Result_Copy, Edges_Graph)
                 # ได้เฉพาะโหนดล้วนมาแระ
                 # ก่อนต่อต่อเช็คที่เป็นแค่กิ่งระหว่างโหนดออกไปก่อน
                 # Result_Cut_Sub_Edge = Result_CutSubEdge(Result_Cut_Node, Result_Copy)
@@ -940,6 +1036,21 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 Result_Rest_Node_Edge = Check_Edge_Nodes_Rest(Result_Rest_Node, Edges_Graph)
                 Sub3_1 = Create_Graph_Edges(Result_Rest_Node_Edge)
                 # Result_Cut_Node_2 = Add_Node_FTorSub(Result_Cut_Node, Result_Sub_TorSub_Node)
+
+                # จุดจบที่นี่ ที่ต้องใช้คือ
+
+                # Result Dict{[1:[,,],2:[,,]]}  ผลลัพท์ครัสเตอร์
+                # Result_Cut_Node Dict{1:[[,,],2:[,,]]}  ผลลัพท์ครัสเตอร์ โหนด
+
+                # Result_Sub_TorSub Dict{1:[[,,],2:[,,]]}  Sub ที่เหลืออยู่เอาเชื่อมกัยครัสเตอร์
+                # Result_Sub_TorSub_Node Dict{1:[[,,],2:[,,]]} Sub ที่เหลืออยู่เอาเชื่อมกัยครัสเตอร์ โหนด
+
+                # Result_Rest_Node List[] โหนดที่ไม่ได้ถูกจัดอยู่ในครัสเตอร์
+                # Result_Rest_Node_Edge Dict{():[(,),(,)]} กิ่งของโหนดที่เหลืออยู่
+                # Sub3_1 List[[,,],[,,]]
+
+                # สร้ากราฟ 1 Original 2 Cluster ใช้ K = nx.Graph() เปลี่ยนโหนดเป็น int นะ
+                Create_G1 = Create_Graph_Cluster(Result_Cut_Node, Result_Cut_Edges, G.nodes)
 
                 break
             # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
@@ -1077,7 +1188,7 @@ Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
 # print'Node_Graph =', Node_Graph
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 # print'Edges_Graph =', Edges_Graph
-DD = float(0.70)
+DD = float(0.50)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]

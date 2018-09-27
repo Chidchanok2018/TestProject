@@ -791,13 +791,9 @@ def Create_Graph_Cluster(Node, Edge, Gnode):  # Result_Cut_Node, Result_Cut_Edge
             random.shuffle(i)
             i2 = copy.deepcopy(i)
             random.shuffle(i2)
-            for h in i:
-                R3 = []
-                R1 = i[m]
-                R2 = i2[m]
-                R3 = [R1, R2]
-                R3 = tuple(R3)
-                pos[u] = R3
+            c = zip(i,i2)
+            for h in c:
+                pos[u] = h
                 m += 1
                 break
 
@@ -836,6 +832,55 @@ def Result_CutEdge(Start, Compare):  # Result_Copy, Edges_Graph
                 if len(a) == 2:
                     keep.append(v)
         Result[h] = keep
+    return Result
+
+# --------- Measure --------- #
+def Coverage_Cluster(Start, Compare):  # Result_Cut_Edges, Edges_Graph
+    # Dict {1:[(,),(,)],2:[(,),(,)]}  # List [(,),(,)]
+    Result = {}
+    keep = []
+    Start_D = copy.deepcopy(Start)
+    Compare_D = copy.deepcopy(Compare)
+    for h, i in Start_D.items():
+        i_l = float(len(i))
+        Compare_l = float(len(Compare_D))
+        a = i_l / Compare_l
+        Result[h] = a
+    return Result
+
+
+def Conductance_Cluster(Start, Compare, Compare1):  # Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge
+    # Dict {1:[(,),(,)],2:[(,),(,)]}  # Dict {1:[(,),(,)],2:[(,),(,)]}
+    Result = {}
+    Result1 = {}
+    Start_D = copy.deepcopy(Start)  # Sub Cluster
+    Compare_D = copy.deepcopy(Compare)  # Edges inside
+    Compare_D1 = copy.deepcopy(Compare1)  # TOR SUB
+    keep = []
+    for h, i in Start_D.items():  # Cluster
+        i_Long = Change_Shlist_TO_Llist(i)
+        i_s = set(i_Long)
+        inter = []
+        keep1 = []
+        for u, v in Compare_D.items():  # Edges inside
+            if h == u:  # ครัสเตอร์ตรงกับกิ่ง
+                for t in v:  # แต่ละกิ่งในครัสเตอร์นั้น ๆ เพิ่มใน keep1
+                    keep1.append(t)  # ตั้งต้น
+                    intra = len(v)  # กิ่งภายในของก้อนนั้น
+            if len(keep1) >= 1:  # ถ้า keep1 มีค่า
+                if h != u:
+                    for e in v:  # vกิ่ง ที่ไม่เท่ากับครัสเตอร์นั้น
+                        e_s = set(e)
+                        a = i_s & e_s
+                        if len(a) == 1:
+                            if e not in inter:
+                                inter.append(e)
+        # ##### ยังเหลือโหนดล่องลอยนี่หว่าาา !!!!!!!!!!!!!!!
+
+        inter1 = len(inter)  # กิ่งภายนอกทั้งหมดของก้อนนี้
+
+    print 'a'
+
     return Result
 
 def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
@@ -1029,6 +1074,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # ต้องเอาที่เหลือมาต่อ แต่ต้องแยกไว้
                 Result_Sub_TorSub = Tor_Rest_Sub(Result_Cut_Node, Start_Sub1)
                 Result_Sub_TorSub_Node = Result_CutNode(Result_Sub_TorSub)
+                Result_Sub_TorSub_Edge = Result_CutEdge(Result_Sub_TorSub, Edges_Graph)
                 # หาโหนดที่เหลืออยู่ โหนดที่ไม่ถูกนำมาจัด
                 Result_Rest_Node = Check_Nodes_Rest(Result_Cut_Node, Result_Sub_TorSub, Node_Graph)
                 print 'โหนดที่ไม่ถูกจัดอยู่ในครัสเตอร์ =', Result_Rest_Node
@@ -1038,17 +1084,10 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # Result_Cut_Node_2 = Add_Node_FTorSub(Result_Cut_Node, Result_Sub_TorSub_Node)
 
                 # จุดจบที่นี่ ที่ต้องใช้คือ
-
-                # Result Dict{[1:[,,],2:[,,]]}  ผลลัพท์ครัสเตอร์
-                # Result_Cut_Node Dict{1:[[,,],2:[,,]]}  ผลลัพท์ครัสเตอร์ โหนด
-
-                # Result_Sub_TorSub Dict{1:[[,,],2:[,,]]}  Sub ที่เหลืออยู่เอาเชื่อมกัยครัสเตอร์
-                # Result_Sub_TorSub_Node Dict{1:[[,,],2:[,,]]} Sub ที่เหลืออยู่เอาเชื่อมกัยครัสเตอร์ โหนด
-
-                # Result_Rest_Node List[] โหนดที่ไม่ได้ถูกจัดอยู่ในครัสเตอร์
-                # Result_Rest_Node_Edge Dict{():[(,),(,)]} กิ่งของโหนดที่เหลืออยู่
-                # Sub3_1 List[[,,],[,,]]
-
+                # Coverage
+                Coverage_D = Coverage_Cluster(Result_Cut_Edges, Edges_Graph)
+                # Conductance
+                Conductance_D = Conductance_Cluster(Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge)
                 # สร้ากราฟ 1 Original 2 Cluster ใช้ K = nx.Graph() เปลี่ยนโหนดเป็น int นะ
                 Create_G1 = Create_Graph_Cluster(Result_Cut_Node, Result_Cut_Edges, G.nodes)
 

@@ -52,14 +52,18 @@ random.shuffle(i)
 i2 = copy.deepcopy(i)
 random.shuffle(i2)
 p = 0
-for h in i:
-    R3 = []
-    R1 = i[p]
-    R2 = i2[p]
-    R3 = [R1,R2]
-    R3 = tuple(R3)
-    pos[p] = R3
+c = zip(i,i2)
+for h in c:
+    pos[p] = h
     p += 1
+# for h in i:
+#     R3 = []
+#     R1 = i[p]
+#     R2 = i2[p]
+#     R3 = [R1,R2]
+#     R3 = tuple(R3)
+#     pos[p] = R3
+#     p += 1
 
 Edges_Graph = [i for i in G.edges]
 

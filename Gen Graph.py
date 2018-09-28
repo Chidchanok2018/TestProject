@@ -8,7 +8,14 @@ import copy
 
 G = nx.Graph()
 # k = Graph
-# G = nx.complete_graph(5)  # Fully Graph
+G = nx.complete_graph(4)  # Fully Graph
+draw_networkx(G, edge_color='skyblue', node_color='red')
+# plt.show()
+Sub3 = [c for c in nx.minimum_cycle_basis(G)]
+for h in nx.minimum_spanning_tree(G):
+    h
+print Sub3
+
 # G = nx.balanced_tree(2,3)  # Tree 2 คือกิ่ง 3 คือลำต้น
 # G = nx.barbell_graph(3,8)  # 3 คือฟูลลี่ 8 คือสร้อยเชื่อม
 # G = nx.complete_multipartite_graph(10,10,30)  # ตัวเลขคือจำนวนโหนด คู่แรกคือความหนาแน่นตรงกลางยิ่งเยอะยิ่งหนาแน่นมาก
@@ -19,8 +26,8 @@ G = nx.Graph()
 # G = nx.dense_gnm_random_graph(50,500)
 # nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_1.tsv",delimiter=' ',data=True)
 
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500.txt", "rb")
-G = read_adjlist(fh)
+# fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500.txt", "rb")
+# G = read_adjlist(fh)
 
 # pos = {0: (100, 100), 1: (20, 30), 2: (40, 30), 3: (30, 10)}
 print 'aaa'

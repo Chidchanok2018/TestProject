@@ -837,26 +837,27 @@ def Result_CutEdge(Start, Compare):  # Result_Copy, Edges_Graph
 # --------- Measure --------- #
 def Coverage_Cluster(Start, Compare):  # Result_Cut_Edges, Edges_Graph
     # Dict {1:[(,),(,)],2:[(,),(,)]}  # List [(,),(,)]
-    Result = {}
+    Result = float()
     keep = []
     Start_D = copy.deepcopy(Start)
     Compare_D = copy.deepcopy(Compare)
     for h, i in Start_D.items():
         i_l = float(len(i))
-        Compare_l = float(len(Compare_D))
-        a = i_l / Compare_l
-        Result[h] = a
+        keep.append(i_l)
+    sum1 = sum(keep)
+    all_edges = float(len(Compare_D))
+    Result = sum1 / all_edges
     return Result
 
 
 def Conductance_Cluster(Start, Compare, Compare1):  # Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge
     # Dict {1:[(,),(,)],2:[(,),(,)]}  # Dict {1:[(,),(,)],2:[(,),(,)]}
-    Result = {}
+    Result = float()
     Result1 = {}
     Start_D = copy.deepcopy(Start)  # Sub Cluster
     Compare_D = copy.deepcopy(Compare)  # Edges inside
     Compare_D1 = copy.deepcopy(Compare1)  # TOR SUB
-    keep = []
+    keep_K = []
     for h, i in Start_D.items():  # Cluster
         i_Long = Change_Shlist_TO_Llist(i)
         i_s = set(i_Long)
@@ -866,7 +867,7 @@ def Conductance_Cluster(Start, Compare, Compare1):  # Result_Copy, Result_Cut_Ed
             if h == u:  # ครัสเตอร์ตรงกับกิ่ง
                 for t in v:  # แต่ละกิ่งในครัสเตอร์นั้น ๆ เพิ่มใน keep1
                     keep1.append(t)  # ตั้งต้น
-                    intra = len(v)  # กิ่งภายในของก้อนนั้น
+                    intra1 = float(len(v))  # กิ่งภายในของก้อนนั้น
             if len(keep1) >= 1:  # ถ้า keep1 มีค่า
                 if h != u:
                     for e in v:  # vกิ่ง ที่ไม่เท่ากับครัสเตอร์นั้น
@@ -875,12 +876,64 @@ def Conductance_Cluster(Start, Compare, Compare1):  # Result_Copy, Result_Cut_Ed
                         if len(a) == 1:
                             if e not in inter:
                                 inter.append(e)
-        # ##### ยังเหลือโหนดล่องลอยนี่หว่าาา !!!!!!!!!!!!!!!
+        for y, g in Compare_D1.items():
+            for gg in g:
+                gg_s = set(gg)
+                b = i_s & gg_s
+                if len(b) == 1:
+                    if gg not in inter:
+                        inter.append(gg)
+            inter1 = float(len(inter))  # กิ่งภายนอกทั้งหมดของก้อนนี้
+            C1 = inter1 / intra1
+            keep_K.append(C1)
+            break
+    sum1 = sum(keep_K)
+    V_C = len(Start_D)
+    Result = 1.00 - ((1.00 / V_C) * sum1)
+    return Result
 
-        inter1 = len(inter)  # กิ่งภายนอกทั้งหมดของก้อนนี้
-
-    print 'a'
-
+def Modularity_Cluster(Start, Compare, Compare1, Compare2):
+    # Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge, Edges_Graph
+    Result = float()
+    Result1 = {}
+    Start_D = copy.deepcopy(Start)  # Sub Cluster
+    Compare_D = copy.deepcopy(Compare)  # Edges inside
+    Compare_D1 = copy.deepcopy(Compare1)  # TOR SUB
+    Compare_D2 = copy.deepcopy(Compare2)
+    all_edge = float(len(Compare_D2))
+    keep_K = []
+    for h, i in Start_D.items():  # Cluster
+        i_Long = Change_Shlist_TO_Llist(i)
+        i_s = set(i_Long)
+        inter = []
+        keep1 = []
+        for u, v in Compare_D.items():  # Edges inside
+            if h == u:  # ครัสเตอร์ตรงกับกิ่ง
+                for t in v:  # แต่ละกิ่งในครัสเตอร์นั้น ๆ เพิ่มใน keep1
+                    keep1.append(t)  # ตั้งต้น
+                    intra1 = float(len(v))  # กิ่งภายในของก้อนนั้น
+            if len(keep1) >= 1:  # ถ้า keep1 มีค่า
+                if h != u:
+                    for e in v:  # vกิ่ง ที่ไม่เท่ากับครัสเตอร์นั้น
+                        e_s = set(e)
+                        a = i_s & e_s
+                        if len(a) == 1:
+                            if e not in inter:
+                                inter.append(e)
+        for y, g in Compare_D1.items():
+            for gg in g:
+                gg_s = set(gg)
+                b = i_s & gg_s
+                if len(b) == 1:
+                    if gg not in inter:
+                        inter.append(gg)
+            inter1 = float(len(inter))  # กิ่งภายนอกทั้งหมดของก้อนนี้
+            A1 = intra1 / all_edge
+            A2 = (intra1 + inter1) / all_edge
+            A3 = A1 - A2
+            keep_K.append(A3)
+            break
+    Result = sum(keep_K)
     return Result
 
 def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
@@ -1086,8 +1139,13 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # จุดจบที่นี่ ที่ต้องใช้คือ
                 # Coverage
                 Coverage_D = Coverage_Cluster(Result_Cut_Edges, Edges_Graph)
+                print 'ค่า Coverage Matric = ', Coverage_D
                 # Conductance
                 Conductance_D = Conductance_Cluster(Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge)
+                print 'ค่า Conductance Matric = ', Conductance_D
+                # Modularity
+                Modularity_D = Modularity_Cluster(Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge, Edges_Graph)
+                print 'ค่า Mpdularity Matric = ', Modularity_D
                 # สร้ากราฟ 1 Original 2 Cluster ใช้ K = nx.Graph() เปลี่ยนโหนดเป็น int นะ
                 Create_G1 = Create_Graph_Cluster(Result_Cut_Node, Result_Cut_Edges, G.nodes)
 

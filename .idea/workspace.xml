@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/V 20.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/V21.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gen Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gen Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report 23092018.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V19.py" beforeDir="false" afterPath="$PROJECT_DIR$/V19.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_color.py" beforeDir="false" afterPath="$PROJECT_DIR$/node_color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$port 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/~$port 23092018.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/V21.py" beforeDir="false" afterPath="$PROJECT_DIR$/V21.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +36,7 @@
     <SUITE FILE_PATH="coverage/TestProject$V18.coverage" NAME="V18 Coverage Results" MODIFIED="1537342594758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1538223834284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
-    <SUITE FILE_PATH="coverage/TestProject$V21.coverage" NAME="V21 Coverage Results" MODIFIED="1538286258496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V21.coverage" NAME="V21 Coverage Results" MODIFIED="1538290659856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$node_color.coverage" NAME="node_color Coverage Results" MODIFIED="1538233741433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$OpenFileExcelMilk.coverage" NAME="OpenFileExcelMilk Coverage Results" MODIFIED="1530972499968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test_SubGraph.coverage" NAME="Test_SubGraph Coverage Results" MODIFIED="1531994392283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -84,12 +77,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="87777" />
+          <entry key="py" value="87983" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="87777" />
+          <entry key="Python" value="87983" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -140,7 +133,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/V 20.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="551">
               <caret line="954" column="54" selection-start-line="954" selection-start-column="34" selection-end-line="954" selection-end-column="54" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
@@ -154,12 +147,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V21.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="970" selection-start-line="970" selection-end-line="970" />
+            <state relative-caret-position="51">
+              <caret line="965" selection-start-line="965" selection-end-line="965" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#26521#26564#0" />
-                <element signature="e#27497#27526#0" />
+                <element signature="e#27441#27451#0" />
+                <element signature="e#28188#28196#0" />
+                <marker date="1538290662961" expanded="true" signature="29043:29283" ph="..." />
               </folding>
             </state>
           </provider>
@@ -307,7 +302,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -513,15 +508,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Structure" order="0" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
+      <window_info id="Structure" order="0" sideWeight="0.5234375" side_tool="true" weight="0.15885022" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.48421052" weight="0.15885022" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.4765625" weight="0.15885022" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.29591838" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3469388" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3469388" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3265306" />
@@ -535,7 +530,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.2632375" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.33055976" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -1263,48 +1258,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1209</line>
+          <line>1215</line>
           <option name="timeStamp" value="2137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1207</line>
-          <option name="timeStamp" value="2138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1176</line>
+          <line>1182</line>
           <option name="timeStamp" value="2139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1159</line>
+          <line>1165</line>
           <option name="timeStamp" value="2140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1158</line>
+          <line>1164</line>
           <option name="timeStamp" value="2141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>980</line>
-          <option name="timeStamp" value="2143" />
+          <line>979</line>
+          <option name="timeStamp" value="2151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>976</line>
-          <option name="timeStamp" value="2146" />
+          <line>1214</line>
+          <option name="timeStamp" value="2152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>951</line>
-          <option name="timeStamp" value="2147" />
+          <line>965</line>
+          <option name="timeStamp" value="2153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>949</line>
-          <option name="timeStamp" value="2148" />
+          <line>971</line>
+          <option name="timeStamp" value="2154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>966</line>
+          <option name="timeStamp" value="2155" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1329,13 +1324,15 @@
         <watch expression="pos" language="Python" />
         <watch expression="Node_D" language="Python" />
         <watch expression="Edge_D" language="Python" />
-        <watch expression="Edge_D[1]" language="Python" />
-        <watch expression="Node_GL" language="Python" />
-        <watch expression="Edges_GL" language="Python" />
+        <watch expression="Nodes_int" language="Python" />
+        <watch expression="Edges_int" language="Python" />
         <watch expression="u" language="Python" />
         <watch expression="v" language="Python" />
         <watch expression="m" language="Python" />
         <watch expression="G" language="Python" />
+        <watch expression="r" language="Python" />
+        <watch expression="p" language="Python" />
+        <watch expression="ww" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -1348,6 +1345,36 @@
       </expression>
     </expressions>
     <expressions id="watch">
+      <expression>
+        <expression-string>ww</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>w</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Nodes_int</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>r</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Edges_int</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>Edges_GL</expression-string>
         <language-id>Python</language-id>
@@ -1365,36 +1392,6 @@
       </expression>
       <expression>
         <expression-string>G</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Edge_D[1]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>m</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>v</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>u</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Edge_D[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Edge_D</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1870,7 +1867,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/V 20.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="551">
           <caret line="954" column="54" selection-start-line="954" selection-start-column="34" selection-end-line="954" selection-end-column="54" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
@@ -1882,12 +1879,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/V21.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="970" selection-start-line="970" selection-end-line="970" />
+        <state relative-caret-position="51">
+          <caret line="965" selection-start-line="965" selection-end-line="965" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
             <element signature="e#26521#26564#0" />
-            <element signature="e#27497#27526#0" />
+            <element signature="e#27441#27451#0" />
+            <element signature="e#28188#28196#0" />
+            <marker date="1538290662961" expanded="true" signature="29043:29283" ph="..." />
           </folding>
         </state>
       </provider>

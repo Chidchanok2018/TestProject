@@ -901,14 +901,10 @@ def Modularity_Cluster(Start, Compare, Compare1, Compare2):
 
 # ----------- Draw Graph ----------- #
 
-def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Result_Cut_Edges, G.node, G.edges
+def Create_Graph_Cluster_Original(Node, Edge, Node_G):  # Result_Cut_Node, Result_Cut_Edges, G.node, G.edges
     # Dict {1:[[,,],[,,]..]}  # Dict {1:[[,,],[,,]..]}
-    Result = {}
-    Result1 = {}
     Node_D = copy.deepcopy(Node)
     Edge_D = copy.deepcopy(Edge)
-    Node_GL = copy.deepcopy(Node_G)  # G.node
-    Edges_GL = copy.deepcopy(Edges_G)  # G.edges
     # ทำ Original Graph
     l = len(Node_G)
     # Node_GL_int = List_Unicode_Toint(Node_GL)
@@ -920,16 +916,10 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
     # random.shuffle(i)
     # i2 = copy.deepcopy(i)
     # random.shuffle(i2)
-    c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46), (41, 0),
-         (30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15), (47, 37), (37, 6),
-         (16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14), (38, 31), (5, 35), (49, 40),
-         (10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47), (6, 10), (44, 7), (29, 34), (46, 13),
-         (45, 18), (48, 28), (31, 1), (20, 21)]
     colorList = ['c', 'red', 'magenta', 'green', 'GreenYellow', 'Salmon', \
                 'orange', 'brown', 'purple', 'yellow', 'black']
     # pos = {}
     # K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
-
     # for u, v in Node_D.items():
     #     if u == 1:
     #         m = 0
@@ -941,7 +931,6 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
     #                 K.node[n]['pos'] = p
     # draw_networkx(K, pos, edge_color='skyblue', node_color='red')
     # plt.show()
-
     print 'q'
     # เปลี่ยน unicode => int ทั้ง Cluster
     Edges_int = Dict_Unicode_Toint(Edge_D)
@@ -949,19 +938,25 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
 
     pos = {}
     m = 0
+    ww = 1
     for p, v in Nodes_int.items():  # position
+
         for u in v:
-            N1 = 0
-            N2 = l
-            i = range(N1, N2)
-            random.shuffle(i)
-            i2 = copy.deepcopy(i)
-            random.shuffle(i2)
-            c = zip(i,i2)
-            for h in c:
-                pos[u] = h
-                m += 1
-                break
+            # N1 = 0
+            # N2 = l
+            # i = range(N1, N2)
+            # random.shuffle(i)
+            # i2 = copy.deepcopy(i)
+            # random.shuffle(i2)
+            # c = zip(i,i2)
+            c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46),
+                 (41, 0),(30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15),
+                 (47, 37),(37, 6),(16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14),
+                 (38, 31), (5, 35),(49, 40),(10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47),
+                 (6, 10), (44, 7), (29, 34),(46, 13),(45, 18), (48, 28), (31, 1), (20, 21)]
+
+            pos[u] = c[m]
+            m += 1
 
         K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
         K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
@@ -969,16 +964,27 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
             K.node[n]['pos'] = p
 
         for r, t in Edges_int.items():
-            for w in t:
-                w = list(w)
-                K.add_edge(int(w[0]), int(w[1]))
+            if r == ww:
+                for w in t:
+                    w = list(w)
+                    K.add_edge(int(w[0]), int(w[1]))
 
-            draw_networkx(K, pos, edge_color='skyblue', node_color='red')
-            plt.show()
+                draw_networkx(K, pos, edge_color='skyblue', node_color='red')
+                plt.show()
+        ww += 1
 
-    # เริ่มใส่ครัสเตอร์d
 
-    return Result
+
+def Create_Graph_Cluster_Cluster(Cut_node, Cut_edge):  # Result_Cut_Node, Result_Cut_Edges
+    # Dict {1:[[,,],[,,]..]}
+    Cut_Node_C = copy.deepcopy(Cut_node)
+    Cut_Edge_C = copy.deepcopy(Cut_edge)
+
+    colorList = ['c', 'red', 'magenta', 'green', 'GreenYellow', 'Salmon', \
+                 'orange', 'brown', 'purple', 'yellow', 'black']
+
+    Edges_int = Dict_Unicode_Toint(Cut_Edge_C)
+    Nodes_int = Dict_Unicode_Toint1(Cut_Node_C)
 
 
 def List_Unicode_Toint(Node_GL):
@@ -1205,8 +1211,8 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 Modularity_D = Modularity_Cluster(Result_Copy, Result_Cut_Edges, Result_Sub_TorSub_Edge, Edges_Graph)
                 print 'ค่า Mpdularity Matric = ', Modularity_D
                 # สร้ากราฟ 1 Original 2 Cluster ใช้ K = nx.Graph() เปลี่ยนโหนดเป็น int นะ
-                Create_G1 = Create_Graph_Cluster(Result_Cut_Node, Result_Cut_Edges, G.node, G.edges)
-
+                Create_Graph_Cluster_Original(Result_Cut_Node, Result_Cut_Edges, G.node)
+                Create_Graph_Cluster_Cluster(Result_Cut_Node, Result_Cut_Edges)
                 break
             # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
             NS20 = Next_Sub_2n(L_M_Sub, Start_Sub1)  # ค้นหา SUB ที่มีโหนดเหมือนกัน 2 โหนด

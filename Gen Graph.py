@@ -26,7 +26,7 @@ G = nx.Graph()
 # G = nx.dense_gnm_random_graph(50,500)
 # nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_2.tsv",delimiter=' ',data=True)
 
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_550.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_1.txt", "rb")
 G = read_adjlist(fh)
 
 # pos = {0: (100, 100), 1: (20, 30), 2: (40, 30), 3: (30, 10)}
@@ -60,6 +60,7 @@ i2 = copy.deepcopy(i)
 random.shuffle(i2)
 p = 0
 c = zip(i,i2)
+print'c =', c
 for h in c:
     pos[p] = h
     p += 1

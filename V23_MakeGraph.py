@@ -109,6 +109,7 @@ m = 0
 for u in C1:
     pos[u] = c[m]
     m += 1
+
 G.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
 K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
 for n, p in pos.iteritems():

@@ -936,7 +936,7 @@ def Create_Graph_Cluster_Original(Node, Edge, Node_G):  # Result_Cut_Node, Resul
     # เปลี่ยน unicode => int ทั้ง Cluster
     Edges_int = Dict_Unicode_Toint(Edge_D)
     Nodes_int = Dict_Unicode_Toint1(Node_D)
-    print 'EEE', Edges_int[1]
+    # print 'EEE', Edges_int[1]
     # pos = {}
     m = 0
     ww = 1
@@ -1190,9 +1190,9 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # ต้องเอาที่เหลือมาต่อ แต่ต้องแยกไว้
                 Result_Sub_TorSub = Tor_Rest_Sub(Result_Cut_Node, Start_Sub1)
                 Result_Sub_TorSub_Node = Result_CutNode(Result_Sub_TorSub)
-                print'Result_Sub_TorSub_Node =', Result_Sub_TorSub_Node
+                # print'Result_Sub_TorSub_Node =', Result_Sub_TorSub_Node
                 Result_Sub_TorSub_Edge = Result_CutEdge(Result_Sub_TorSub, Edges_Graph)
-                print'Result_Sub_TorSub_Edge =', Result_Sub_TorSub_Edge
+                # print'Result_Sub_TorSub_Edge =', Result_Sub_TorSub_Edge
                 # หาโหนดที่เหลืออยู่ โหนดที่ไม่ถูกนำมาจัด
                 Result_Rest_Node = Check_Nodes_Rest(Result_Cut_Node, Result_Sub_TorSub, Node_Graph)
                 print 'โหนดที่ไม่ถูกจัดอยู่ในครัสเตอร์ =', Result_Rest_Node
@@ -1345,10 +1345,10 @@ print'------เริ่มทำการหาครัสเตอร์---Sn
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
 Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
-# print'Node_Graph =', Node_Graph
+print'Node_Graph =', Node_Graph
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
-# print'Edges_Graph =', Edges_Graph
-DD = float(0.50)
+print'Edges_Graph =', Edges_Graph
+DD = float(0.70)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]

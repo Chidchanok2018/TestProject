@@ -263,10 +263,10 @@ def Difference_Density(Start2):
 
     Number_of_Edges_Out = 0.00  # จำนวนกิ่งภายนอกครัสเตอร์
     Number_of_Edes_All = float(len(G.edges))  # จำนวนกิ่งภายในครัสเตอร์
-    print 'จำนวนกิ่งในกราฟ Inside =', Number_of_Edes_All
+    # print 'จำนวนกิ่งในกราฟ Inside =', Number_of_Edes_All
     N = float(len(G.nodes))  # จำนวนโหนดทั้งหมด
     N_C = float(len(G.nodes))  # จำนวนโหนดภายในครัสเตอร์
-    print 'จำนวนโหนดในกราฟ Inside =', N_C
+    # print 'จำนวนโหนดในกราฟ Inside =', N_C
 
     if (N_C * (N - N_C)) <= 0.00:  # ถ้าส่วนเป็น 0 ให้ inter-edges = 0
         interN4 = 0.00
@@ -462,6 +462,7 @@ def Create_Graph_Edges(Start2):  # Dict
     Result = [c for c in nx.cycle_basis(G) if len(c) == 3]
     return Result
 
+
 def Cut_Start_edges(Compare, Start):  # Start_edge1, Result <= 1
     # List[(),(),....] #Dict []
     Result = []
@@ -564,6 +565,7 @@ def Rest_Sub(Start, Compare):  # Compare_DIFFDENS1, Start_Sub
 
     return Result
 
+
 def Result_CutNode(Start):  # Result_Copy
     # Dict {[]}
     Result = {}
@@ -599,6 +601,7 @@ def Result_CutNode(Start):  # Result_Copy
                 Start_S = set(keep1)
 
     return Result
+
 
 def Tor_Rest_Sub(Start, Compare):  # Result, Start_Sub1
     # Dict {[]}  # List [[],[],....]
@@ -742,7 +745,7 @@ def Check_Edge_Nodes_Rest(Start, Compare):  # Result_Rest_Node, Edges_Graph
     return Result
 
 
-def Dict_Unicode_Toint(Start):   # Dict {1:[[,,],[,,]..]}
+def Dict_Unicode_Toint(Start):  # Dict {1:[[,,],[,,]..]}
     Start_D = copy.deepcopy(Start)
     Result1 = {}
     for u, v in Start_D.items():
@@ -756,7 +759,8 @@ def Dict_Unicode_Toint(Start):   # Dict {1:[[,,],[,,]..]}
         Result1[u] = keep1
     return Result1
 
-def Dict_Unicode_Toint1(Start):   # Dict {1:[[.....],2:[.....]..]}
+
+def Dict_Unicode_Toint1(Start):  # Dict {1:[[.....],2:[.....]..]}
     Start_D = copy.deepcopy(Start)
     Result1 = {}
     for u, v in Start_D.items():
@@ -786,6 +790,7 @@ def Result_CutEdge(Start, Compare):  # Result_Copy, Edges_Graph
                     keep.append(v)
         Result[h] = keep
     return Result
+
 
 # --------- Measure --------- #
 def Coverage_Cluster(Start, Compare):  # Result_Cut_Edges, Edges_Graph
@@ -909,35 +914,47 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
     # Node_GL_int = List_Unicode_Toint(Node_GL)
     # Edges_GL_int = List_Unicode_Toint(Edges_GL)
     # ----- Define position
-    pos = {}
-    l = len(Node_GL)
     # N1 = 0
     # N2 = l
     # i = range(N1, N2)
     # random.shuffle(i)
     # i2 = copy.deepcopy(i)
     # random.shuffle(i2)
-    p = 0
-    c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 26), (4, 8), (14, 24), (1, 32), (9, 4), (33, 30), (11, 46), (41, 0), (30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (0, 16), (2, 17), (3, 20), (22, 15), (47, 37), (37, 6), (16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14), (38, 31), (5, 35), (49, 40), (10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47), (6, 10), (44, 7), (29, 34), (46, 13), (45, 18), (48, 28), (31, 1), (20, 21)]
-    for h in c:
-        pos[p] = h
-        p += 1
-
+    c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46), (41, 0),
+         (30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15), (47, 37), (37, 6),
+         (16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14), (38, 31), (5, 35), (49, 40),
+         (10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47), (6, 10), (44, 7), (29, 34), (46, 13),
+         (45, 18), (48, 28), (31, 1), (20, 21)]
+    colorList = ['c', 'red', 'magenta', 'green', 'GreenYellow', 'Salmon', \
+                'orange', 'brown', 'purple', 'yellow', 'black']
+    pos = {}
     K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
-    K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
-    for n, p in pos.iteritems():
-        K.node[n]['pos'] = p
 
-    Edges_Graph = [i for i in Edges_GL]
-    for u in Edges_Graph:  # จะเพิ่มกิ่งจากกราฟ G เปลี่ยนเป็น int
-        u = list(u)
-        K.add_edge(int(u[0]), int(u[1]))
+    for u, v in Node_D.items():
+        if u == 1:
+            m = 0
+            for r in v:  # r = node , c = position
+                pos[r] = c[m]
+                m += 1
+            K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
+            for n, p in pos.iteritems():
+                    K.node[n]['pos'] = p
 
-    Q = 8  # ตัวเปลี่ยนสีใน colorList
-    colorList = ['SeaGreen', 'yellow', 'brown', 'pink', 'purple', 'blue', 'green', 'Salmon', 'red', 'c', 'magenta',
-                 'orange', 'white', 'black', 'y', 'skyblue', 'GreenYellow', 'cyan', 'aqua']
-    draw_networkx(G, edge_color='skyblue', node_color=colorList[Q % len(colorList)])
-    plt.show()
+
+            draw_networkx(K, pos, node_color='red')
+            plt.show()
+
+        if u == 2:
+            for r in v:  # r = node , c = position
+                pos[r] = c[m]
+                m += 1
+            K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
+            for n, p in pos.iteritems():
+                K.node[n]['pos'] = p
+            Q = u  # ตัวเปลี่ยนสีใน colorList
+            draw_networkx(K, pos, edge_color='skyblue', node_color=colorList[Q % len(colorList)])
+            plt.show()
+    print 'q'
     # เปลี่ยน unicode => int ทั้ง Cluster
     # Edges_int = Dict_Unicode_Toint(Edge_D)
     # Nodes_int = Dict_Unicode_Toint1(Node_D)
@@ -973,11 +990,9 @@ def Create_Graph_Cluster(Node, Edge, Node_G, Edges_G):  # Result_Cut_Node, Resul
     #                      'orange', 'brown', 'purple', 'yellow', 'black']
     #         draw_networkx(K, pos, edge_color='skyblue', node_color=colorList[Q%len(colorList)])
     #         Q += 1
-            # draw_networkx(K, pos, edge_color='skyblue', node_color='red')
-            # plt.show()
-    # เริ่มใส่ครัสเตอร์
-
-
+    # draw_networkx(K, pos, edge_color='skyblue', node_color='red')
+    # plt.show()
+    # เริ่มใส่ครัสเตอร์d
 
     return Result
 
@@ -1012,7 +1027,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             # ทำ Sub graph จาก Cut_Edges_Start
             Start_Sub2 = Create_Graph_another(Cut_Edges_Start)
             if len(Start_Sub2) == 0:  # หากไม่มีซับเหลือจากโหนดที่เหลือที่ไม่เหมือนกับครัสเตอร์ก่อนหน้า
-                print 'กิ่งที่เหลือไม่เจอ Sub 3'
+                # print 'กิ่งที่เหลือไม่เจอ Sub 3'
                 Start_Sub2
                 break
             M_Sub = D_Max_Degree_Sub(Start_Sub2)  # dict
@@ -1027,11 +1042,11 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             M_Sub = D_Max_Degree_Sub(Start_Sub1)  # dict
         if len(M_Sub) >= 1:
             L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List[]
-            print 'SUB เริ่มต้น =', L_M_Sub
+            # print 'SUB เริ่มต้น =', L_M_Sub
         # เจอ M_Sub == 0
         if len(M_Sub) == 0:
             M_Sub = D_Max_Degree_Sub(Start_Sub1)  # dict
-            print 'M_Sub = 0'
+            # print 'M_Sub = 0'
             if len(M_Sub) == 0:
                 M_Sub = Rest_Sub(Compare_DIFFDENS1, Start_Sub)
 
@@ -1040,9 +1055,9 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
         # ไม่มี Sub cycle ที่นำมาต่อแล้ว
         if len(NS20) == 0:
             Result[C] = [L_M_Sub]
-            print 'ไม่มีซับข้างเคียงแล้ว 1'
+            # print 'ไม่มีซับข้างเคียงแล้ว 1'
             Node_2 = Change_Shlist_TO_Llist(L_M_Sub)
-            print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+            # print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
             # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
             # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
             Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -1051,7 +1066,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             C += 1
             break  # หลุด Loop While A >= 0
         Node_SMD0 = Node_Sub_Degree(L_M_Sub, NS20, Start_degree)  # List[[]]
-        print 'Sub ที่เพิ่มขึ้น =', Node_SMD0
+        # print 'Sub ที่เพิ่มขึ้น =', Node_SMD0
         Merge_NE0 = Plus_ListToLost(L_M_Sub, Node_SMD0)  # List[]+[[]]
 
         # หา กิ่ง ภายในที่มีอยู่ใน Sub ที่รวมกันในข้างต้น
@@ -1059,18 +1074,18 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
         # นำทั้งหมดที่ได้มาคำนวนหาค่า Difference Density
         DIFF_DENS0 = Difference_Density(Ed_Inside0)
         B = DIFF_DENS0
-        print 'DIFF_DENS0 =', DIFF_DENS0
+        # print 'DIFF_DENS0 =', DIFF_DENS0
         # นำค่าที่คำนวนได้มาแสดงผล
         Compare_DIFFDENS0 = Compare_DIFF(L_M_Sub, Merge_NE0, Ed_Inside0, DIFF_DENS0, DD)
         # ซ้อนเพื่อหาการซ้ำ
         Compare_DIFFDENS0 = List_Not_In(Compare_DIFFDENS0)
-        print 'Compare_DIFFDENS0 =', Compare_DIFFDENS0
+        # print 'Compare_DIFFDENS0 =', Compare_DIFFDENS0
         # ถ้าค่า DIFF_DENS0 น้อยกว่า DD
         if DIFF_DENS0 <= DD:
             Result[C] = Compare_DIFFDENS0
-            print 'ค่า DD ไม่ถึง 1'
+            # print 'ค่า DD ไม่ถึง 1'
             Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
-            print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+            # print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
             # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
             # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
             Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -1081,15 +1096,15 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
         if C <= 1:
             # List not in
             Cut_SUB0 = Cut_Sub_3(Start_Sub1, Compare_DIFFDENS0)  # ตัด SUB ที่ได้ออกจาก SUB ทั้งหมด
-            print 'Cut_SUB0 =', len(Cut_SUB0)
+            # print 'Cut_SUB0 =', len(Cut_SUB0)
         if C >= 2:
             Cut_SUB0 = Start_Sub1
         # ถ้าไม่มี Sub cycle เหลืออยู่แล้ว
         if len(Cut_SUB0) == 0:
             Result[C] = Compare_DIFFDENS0
-            print 'ไม่มี Sub ต่อไปอีกแล้ว 1'
+            # print 'ไม่มี Sub ต่อไปอีกแล้ว 1'
             Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
-            print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
+            # print 'จำนวนโหนดในครัสเตอร์ 1 =', len(set(Node_2))
             # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
             # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
             Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -1104,9 +1119,9 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             # ถ้าไม่มี Sub cycle ข้างเคียงเหลืออยู่แล้ว
             if len(NS21) == 0:
                 Result[C] = Compare_DIFFDENS0
-                print 'ไม่มีซับต่อไปอีกแล้ว 2'
+                # print 'ไม่มีซับต่อไปอีกแล้ว 2'
                 Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS0)
-                print 'จำนวนโหนดในครัสเตอร์ 2 =', len(set(Node_2))
+                # print 'จำนวนโหนดในครัสเตอร์ 2 =', len(set(Node_2))
                 # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
                 # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
                 Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -1115,18 +1130,18 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 C += 1
                 break
             Node_SMD1 = Node_Sub_Degree2(Compare_DIFFDENS0, NS21, Start_degree)  # List[[]]
-            print 'Sub ที่เพิ่มขึ้น =', Node_SMD1
+            # print 'Sub ที่เพิ่มขึ้น =', Node_SMD1
             Merge_NE1 = Plus_ListToLost2(Compare_DIFFDENS0, Node_SMD1)  # List[]+[[]]
             # หา กิ่ง ภายใน Sub ทั้งหมด
             Ed_Inside1 = Edges_InsideSub(Merge_NE1, Start_edge1)
             # คำนวนค่า Difference Density
             DIFF_DENS1 = Difference_Density(Ed_Inside1)
-            print 'DIFF_DENS0 =', DIFF_DENS1
+            # print 'DIFF_DENS0 =', DIFF_DENS1
             B = DIFF_DENS1
             # เปรียบเทียบค่า DD
             Compare_DIFFDENS1 = Compare_DIFF(Compare_DIFFDENS0, Merge_NE1, Ed_Inside1, DIFF_DENS1, DD)
             Compare_DIFFDENS1 = List_Not_In(Compare_DIFFDENS1)
-            print 'Compare_DIFFDENS1 =', Compare_DIFFDENS1
+            # print 'Compare_DIFFDENS1 =', Compare_DIFFDENS1
 
             if DIFF_DENS1 >= DD:
                 Cut_SUB0 = Start_Sub1  # วน Step 2
@@ -1141,14 +1156,14 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                     Cut_Edges_Start = Cut_Edges_Sub_Cluster(Compare_DIFFDENS1, Start_edge1)  # List[(),()]
                     # เอา โหนด ในครัสเตอร์ออกมา เพื่อที่จะเอากิ่งมาสร้างเป็นกราฟ == 1
                     Cut_Nodes = Cut_Nodes_Cluster(Compare_DIFFDENS1, Start_edge1)  # List[[],[]]
-                    print 'โหนดในครัสเตอร์ =', len(Cut_Nodes)
+                    # print 'โหนดในครัสเตอร์ =', len(Cut_Nodes)
 
                 if C >= 2:
                     # ให้ Compare_DIFFDENS1 = Result[1]+Result[2]+,...
                     Result[C] = Compare_DIFFDENS1
                     # นับจำนวนโหนด
                     Node_2 = Change_Shlist_TO_Llist(Compare_DIFFDENS1)
-                    print 'จำนวนโหนดในครัสเตอร์ 2 =', set(Node_2)
+                    # print 'จำนวนโหนดในครัสเตอร์ 2 =', set(Node_2)
                     # ตัดกิ่งก้อน 1 , 2 ออกจากกิ่งทั้งหมด
                     # เอา SUB มา Compare กับกิ่ง เอากิ่งที่เหมือนกับ SUB 1 index <=1
                     Cut_Edges = Cut_Start_edges(Start_edge1, Result)
@@ -1173,7 +1188,7 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
 
             if len(M_Sub) >= 1:
                 L_M_Sub = L_Max_Degree_Sub(M_Sub)  # List[]
-                print 'SUB เริ่มต้น =', L_M_Sub
+                # print 'SUB เริ่มต้น =', L_M_Sub
 
             if len(M_Sub) == 0:
                 # ต้องกำจัดโหนดที่แม่งซ้ำในแต่ละครัสเตอร์ออกก่อน

@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/V 20.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/V21.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gen Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gen Graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report 23092018.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V19.py" beforeDir="false" afterPath="$PROJECT_DIR$/V19.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_color.py" beforeDir="false" afterPath="$PROJECT_DIR$/node_color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$port 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/~$port 23092018.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +26,8 @@
     <SUITE FILE_PATH="coverage/TestProject$Rewrite_21062561.coverage" NAME="Rewrite_21062561 Coverage Results" MODIFIED="1533203833611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$v12.coverage" NAME="v12 Coverage Results" MODIFIED="1535955261819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Real18052561.coverage" NAME="Real18052561 Coverage Results" MODIFIED="1528302463916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$V19.coverage" NAME="V19 Coverage Results" MODIFIED="1538119898058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V19.coverage" NAME="V19 Coverage Results" MODIFIED="1538202273604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V_20.coverage" NAME="V 20 Coverage Results" MODIFIED="1538251253357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_V7.coverage" NAME="New V7 Coverage Results" MODIFIED="1535207153641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$testFile.coverage" NAME="testFile Coverage Results" MODIFIED="1534049832021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V6_1.coverage" NAME="New_Step V6_1 Coverage Results" MODIFIED="1535186922239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -35,8 +41,10 @@
     <SUITE FILE_PATH="coverage/TestProject$VeryReal_06062561.coverage" NAME="VeryReal 06062561 Coverage Results" MODIFIED="1529564909654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/TestProject$v10.coverage" NAME="v10 Coverage Results" MODIFIED="1535716650318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$V18.coverage" NAME="V18 Coverage Results" MODIFIED="1537342594758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1538063191756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1538223834284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
+    <SUITE FILE_PATH="coverage/TestProject$V21.coverage" NAME="V21 Coverage Results" MODIFIED="1538286258496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$node_color.coverage" NAME="node_color Coverage Results" MODIFIED="1538233741433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$OpenFileExcelMilk.coverage" NAME="OpenFileExcelMilk Coverage Results" MODIFIED="1530972499968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test_SubGraph.coverage" NAME="Test_SubGraph Coverage Results" MODIFIED="1531994392283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_2.coverage" NAME="New_Step V4_2 Coverage Results" MODIFIED="1534672460274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -76,22 +84,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="86229" />
+          <entry key="py" value="87777" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="86229" />
+          <entry key="Python" value="87777" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="44" />
+          <entry key="py" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="44" />
+          <entry key="Python" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -104,42 +112,54 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/V18.py">
+        <entry file="file://$PROJECT_DIR$/V19.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11780">
-              <caret line="12" column="52" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="52" />
+            <state relative-caret-position="520">
+              <caret line="935" column="37" lean-forward="true" selection-start-line="935" selection-start-column="37" selection-end-line="935" selection-end-column="37" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <marker date="1537342846114" expanded="true" signature="2928:2930" ph="..." />
-                <marker date="1537342846114" expanded="true" signature="11260:11265" ph="..." />
-                <marker date="1537342846114" expanded="true" signature="11669:11975" ph="..." />
-                <marker date="1537342846114" expanded="true" signature="12446:12451" ph="..." />
-                <marker date="1537342846114" expanded="true" signature="14614:14651" ph="..." />
-                <marker date="1537342846114" expanded="true" signature="14614:15150" ph="..." />
+                <element signature="e#26501#26544#0" />
+                <element signature="e#27566#27603#0" />
+                <marker date="1538202935690" expanded="true" signature="15963:15983" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="15963:17095" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="18419:18446" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="21599:21600" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="21636:21669" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="22176:22214" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="22597:22599" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="22649:22711" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="24371:24376" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="29427:29432" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="29427:29649" ph="..." />
+                <marker date="1538202935690" expanded="true" signature="29707:29712" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/V 20.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="954" column="54" selection-start-line="954" selection-start-column="34" selection-end-line="954" selection-end-column="54" />
+              <folding>
+                <element signature="e#24#46#0" expanded="true" />
+                <element signature="e#26517#26560#0" />
+                <element signature="e#28691#28728#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/V19.py">
+        <entry file="file://$PROJECT_DIR$/V21.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="1149" selection-start-line="1149" selection-end-line="1149" />
+            <state relative-caret-position="411">
+              <caret line="970" selection-start-line="970" selection-end-line="970" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <marker date="1538119898012" expanded="true" signature="15965:15985" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="15965:17097" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="18421:18448" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="21601:21603" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="21647:21698" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="23124:23157" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="23664:23702" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="24055:24057" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="24107:24169" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="25798:25803" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="25798:27464" ph="..." />
-                <marker date="1538119898012" expanded="true" signature="27522:27527" ph="..." />
+                <element signature="e#26521#26564#0" />
+                <element signature="e#27497#27526#0" />
               </folding>
             </state>
           </provider>
@@ -148,12 +168,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gen Graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-691">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="709">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <element signature="e#193#249#0" />
-                <element signature="e#925#965#0" />
+                <element signature="e#1034#1096#0" />
+                <element signature="e#1629#1642#0" />
               </folding>
             </state>
           </provider>
@@ -162,8 +182,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://C:/Python27/FileFromMilk.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="58">
+              <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -171,8 +191,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_color.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="14" column="173" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="173" />
+            <state relative-caret-position="260">
+              <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
               </folding>
@@ -272,10 +292,12 @@
         <option value="$PROJECT_DIR$/V16.py" />
         <option value="$PROJECT_DIR$/V17.py" />
         <option value="$PROJECT_DIR$/V18.py" />
-        <option value="$PROJECT_DIR$/node_color.py" />
         <option value="$PROJECT_DIR$/Node_color1.py" />
-        <option value="$PROJECT_DIR$/Gen Graph.py" />
         <option value="$PROJECT_DIR$/V19.py" />
+        <option value="$PROJECT_DIR$/Gen Graph.py" />
+        <option value="$PROJECT_DIR$/node_color.py" />
+        <option value="$PROJECT_DIR$/V 20.py" />
+        <option value="$PROJECT_DIR$/V21.py" />
       </list>
     </option>
   </component>
@@ -340,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.V19">
+  <component name="RunManager" selected="Python.V21">
     <configuration name="Gen Graph" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,7 +385,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Node_color1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="V 20" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TestProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -376,51 +398,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Node_color1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="V17" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TestProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/V17.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="V18" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TestProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/V18.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/V 20.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -451,20 +429,64 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="V21" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TestProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/V21.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="node_color" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TestProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/node_color.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.V17" />
-      <item itemvalue="Python.V18" />
       <item itemvalue="Python.Gen Graph" />
       <item itemvalue="Python.V19" />
-      <item itemvalue="Python.Node_color1" />
+      <item itemvalue="Python.V 20" />
+      <item itemvalue="Python.node_color" />
+      <item itemvalue="Python.V21" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.V19" />
+        <item itemvalue="Python.V21" />
+        <item itemvalue="Python.V 20" />
+        <item itemvalue="Python.node_color" />
         <item itemvalue="Python.Gen Graph" />
-        <item itemvalue="Python.Node_color1" />
-        <item itemvalue="Python.V18" />
-        <item itemvalue="Python.V17" />
+        <item itemvalue="Python.V19" />
       </list>
     </recent_temporary>
   </component>
@@ -491,7 +513,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
@@ -499,7 +521,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.29591838" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.44047618" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3469388" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3265306" />
@@ -513,7 +535,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.2806354" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.2632375" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -1006,12 +1028,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1277</line>
+          <line>1334</line>
           <option name="timeStamp" value="1726" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1100</line>
+          <line>1159</line>
           <option name="timeStamp" value="1730" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1066,23 +1088,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1167</line>
+          <line>1226</line>
           <option name="timeStamp" value="1922" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1216</line>
+          <line>1275</line>
           <option name="timeStamp" value="1924" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1250</line>
+          <line>1309</line>
           <option name="timeStamp" value="1929" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1274</line>
-          <option name="timeStamp" value="1930" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gen Graph.py</url>
@@ -1091,53 +1108,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1151</line>
+          <line>1210</line>
           <option name="timeStamp" value="1961" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>816</line>
-          <option name="timeStamp" value="1965" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1101</line>
+          <line>1160</line>
           <option name="timeStamp" value="1966" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1118</line>
+          <line>1177</line>
           <option name="timeStamp" value="1967" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>1149</line>
+          <line>1208</line>
           <option name="timeStamp" value="1968" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>779</line>
-          <option name="timeStamp" value="1969" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>785</line>
-          <option name="timeStamp" value="1970" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Gen Graph.py</url>
-          <line>74</line>
-          <option name="timeStamp" value="1972" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>799</line>
-          <option name="timeStamp" value="1974" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V19.py</url>
-          <line>809</line>
-          <option name="timeStamp" value="1977" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gen Graph.py</url>
@@ -1155,14 +1142,169 @@
           <option name="timeStamp" value="1989" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Gen Graph.py</url>
-          <line>17</line>
-          <option name="timeStamp" value="2005" />
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>1332</line>
+          <option name="timeStamp" value="2031" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>981</line>
+          <option name="timeStamp" value="2037" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>947</line>
+          <option name="timeStamp" value="2038" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>966</line>
+          <option name="timeStamp" value="2039" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>941</line>
+          <option name="timeStamp" value="2047" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gen Graph.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="2006" />
+          <line>76</line>
+          <option name="timeStamp" value="2063" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>911</line>
+          <option name="timeStamp" value="2066" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>925</line>
+          <option name="timeStamp" value="2067" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>935</line>
+          <option name="timeStamp" value="2068" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V19.py</url>
+          <line>920</line>
+          <option name="timeStamp" value="2070" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>996</line>
+          <option name="timeStamp" value="2074" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>1174</line>
+          <option name="timeStamp" value="2075" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>1175</line>
+          <option name="timeStamp" value="2076" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>1192</line>
+          <option name="timeStamp" value="2077" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>1223</line>
+          <option name="timeStamp" value="2078" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>1225</line>
+          <option name="timeStamp" value="2079" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/node_color.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="2120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/node_color.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="2121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>930</line>
+          <option name="timeStamp" value="2122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>946</line>
+          <option name="timeStamp" value="2131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>932</line>
+          <option name="timeStamp" value="2132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>933</line>
+          <option name="timeStamp" value="2133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V 20.py</url>
+          <line>954</line>
+          <option name="timeStamp" value="2135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Gen Graph.py</url>
+          <line>52</line>
+          <option name="timeStamp" value="2136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>1209</line>
+          <option name="timeStamp" value="2137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>1207</line>
+          <option name="timeStamp" value="2138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>1176</line>
+          <option name="timeStamp" value="2139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>1159</line>
+          <option name="timeStamp" value="2140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>1158</line>
+          <option name="timeStamp" value="2141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>980</line>
+          <option name="timeStamp" value="2143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>976</line>
+          <option name="timeStamp" value="2146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>951</line>
+          <option name="timeStamp" value="2147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V21.py</url>
+          <line>949</line>
+          <option name="timeStamp" value="2148" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1183,35 +1325,17 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="G" language="Python" />
-        <watch expression="Edges_Graph" language="Python" />
-        <watch expression="Start_D" language="Python" />
-        <watch expression="h" language="Python" />
-        <watch expression="i" language="Python" />
-        <watch expression="Compare_D" language="Python" />
-        <watch expression="Compare_D1" language="Python" />
+        <watch expression="K" language="Python" />
+        <watch expression="pos" language="Python" />
+        <watch expression="Node_D" language="Python" />
+        <watch expression="Edge_D" language="Python" />
+        <watch expression="Edge_D[1]" language="Python" />
+        <watch expression="Node_GL" language="Python" />
+        <watch expression="Edges_GL" language="Python" />
         <watch expression="u" language="Python" />
         <watch expression="v" language="Python" />
-        <watch expression="keep" language="Python" />
-        <watch expression="keep1" language="Python" />
-        <watch expression="keep_K" language="Python" />
-        <watch expression="g" language="Python" />
-        <watch expression="gg" language="Python" />
-        <watch expression="a" language="Python" />
-        <watch expression="i_s" language="Python" />
-        <watch expression="inter" language="Python" />
-        <watch expression="intra1" language="Python" />
-        <watch expression="inter1" language="Python" />
-        <watch expression="C1" language="Python" />
-        <watch expression="Result" language="Python" />
-        <watch expression="Result1" language="Python" />
-        <watch expression="Result_Copy" language="Python" />
-        <watch expression="Result_Cut_Node" language="Python" />
-        <watch expression="Result_Cut_Edges" language="Python" />
-        <watch expression="Result_Sub_TorSub" language="Python" />
-        <watch expression="Result_Sub_TorSub_Node" language="Python" />
-        <watch expression="Result_Sub_TorSub_Edge" language="Python" />
-        <watch expression="g" />
+        <watch expression="m" language="Python" />
+        <watch expression="G" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -1225,52 +1349,52 @@
     </expressions>
     <expressions id="watch">
       <expression>
-        <expression-string>keep</expression-string>
+        <expression-string>Edges_GL</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Result</expression-string>
+        <expression-string>Node_GL</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>keep_K</expression-string>
+        <expression-string>pos</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>C1</expression-string>
+        <expression-string>G</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>intra1</expression-string>
+        <expression-string>Edge_D[1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Compare_D1</expression-string>
+        <expression-string>m</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>gg</expression-string>
+        <expression-string>v</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>g</expression-string>
+        <expression-string>u</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>inter1</expression-string>
+        <expression-string>Edge_D[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Result_Cut_Edges</expression-string>
+        <expression-string>Edge_D</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1301,8 +1425,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SubCycleYeast_Py.png" />
-    <entry file="file://$PROJECT_DIR$/SubCycleFacebook1_Py.png" />
     <entry file="file://$PROJECT_DIR$/venv/FileFromMilk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -1676,16 +1798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_color.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="14" column="173" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="173" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/networkx/drawing/nx_pylab.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1695,8 +1807,8 @@
     </entry>
     <entry file="file://C:/Python27/FileFromMilk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="18" />
+        <state relative-caret-position="58">
+          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1710,36 +1822,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gen Graph.py">
+    <entry file="file://$PROJECT_DIR$/node_color.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-691">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="260">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#193#249#0" />
-            <element signature="e#925#965#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/V19.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="1149" selection-start-line="1149" selection-end-line="1149" />
+        <state relative-caret-position="520">
+          <caret line="935" column="37" lean-forward="true" selection-start-line="935" selection-start-column="37" selection-end-line="935" selection-end-column="37" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <marker date="1538119898012" expanded="true" signature="15965:15985" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="15965:17097" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="18421:18448" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="21601:21603" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="21647:21698" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="23124:23157" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="23664:23702" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="24055:24057" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="24107:24169" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="25798:25803" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="25798:27464" ph="..." />
-            <marker date="1538119898012" expanded="true" signature="27522:27527" ph="..." />
+            <element signature="e#26501#26544#0" />
+            <element signature="e#27566#27603#0" />
+            <marker date="1538202935690" expanded="true" signature="15963:15983" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="15963:17095" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="18419:18446" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="21599:21600" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="21636:21669" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22176:22214" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22597:22599" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22649:22711" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="24371:24376" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29427:29432" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29427:29649" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29707:29712" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gen Graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#1034#1096#0" />
+            <element signature="e#1629#1642#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V 20.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="954" column="54" selection-start-line="954" selection-start-column="34" selection-end-line="954" selection-end-column="54" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#26517#26560#0" />
+            <element signature="e#28691#28728#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V21.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="970" selection-start-line="970" selection-end-line="970" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#26521#26564#0" />
+            <element signature="e#27497#27526#0" />
           </folding>
         </state>
       </provider>

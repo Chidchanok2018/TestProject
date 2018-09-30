@@ -936,56 +936,42 @@ def Create_Graph_Cluster_Original(Node, Edge, Node_G):  # Result_Cut_Node, Resul
     # เปลี่ยน unicode => int ทั้ง Cluster
     Edges_int = Dict_Unicode_Toint(Edge_D)
     Nodes_int = Dict_Unicode_Toint1(Node_D)
-
+    print 'EEE', Edges_int[1]
     # pos = {}
+    m = 0
     ww = 1
-    Q = 1
-    c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46),
-         (41, 0), (30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15),
-         (47, 37), (37, 6), (16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14),
-         (38, 31), (5, 35), (49, 40), (10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47),
-         (6, 10), (44, 7), (29, 34), (46, 13), (45, 18), (48, 28), (31, 1), (20, 21)]
-
+    # Q = 1
+    pos1 = {}
+    pos = {}
     for o, v in Nodes_int.items():  # position
-        pos = {}
-        m = 0
-        for u in v:
-            # N1 = 0
-            # N2 = l
-            # i = range(N1, N2)
-            # random.shuffle(i)
-            # i2 = copy.deepcopy(i)
-            # random.shuffle(i2)
-            # c = zip(i,i2)
-            # c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46),
-            #      (41, 0),(30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15),
-            #      (47, 37),(37, 6),(16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14),
-            #      (38, 31), (5, 35),(49, 40),(10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47),
-            #      (6, 10), (44, 7), (29, 34),(46, 13),(45, 18), (48, 28), (31, 1), (20, 21)]
-            pos[u] = c[m]
-            keep.append(c[m])
-            m += 1
+        c = [(17, 12), (19, 9), (34, 41), (35, 2), (15, 20), (4, 8), (12, 24), (1, 32), (13, 4), (33, 30), (10, 46),
+             (41, 0), (30, 3), (8, 49), (39, 43), (43, 23), (24, 33), (7, 5), (11, 10), (2, 15), (3, 20), (22, 15),
+             (47, 37), (37, 6), (16, 25), (23, 11), (36, 45), (26, 19), (13, 36), (42, 38), (27, 42), (28, 14),
+             (38, 31), (5, 35), (49, 40), (10, 39), (32, 22), (12, 48), (21, 27), (18, 29), (25, 44), (40, 47),
+             (6, 10), (44, 7), (29, 34), (46, 13), (45, 18), (48, 28), (31, 1), (20, 21)]
+        if o == 1:
+            for u in v:
+                pos1[u] = c[m]
+                m += 1
+                ww = 2
+        if o == 2:
+            for u in v:
+                pos[u] = c[m]
+                m += 1
 
-        K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
-        K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
-        for n, p in pos.iteritems():
-            K.node[n]['pos'] = p
+            K = nx.Graph()  # ไม่ให้ทำกับกราฟเก่า
+            K.add_nodes_from(pos.keys())  # บอกว่าจะเริ่มเพิ่มโหนดตามนี้ โหนดเป็น int
+            for n, p in pos.iteritems():
+                K.node[n]['pos'] = p
 
-        for r, t in Edges_int.items():
-            if r == ww:
-                for w in t:
-                    w = list(w)
-                    K.add_edge(int(w[0]), int(w[1]))
+            for r, t in Edges_int.items():
+                if r == ww:
+                    for w in t:
+                        w = list(w)
+                        K.add_edge(int(w[0]), int(w[1]))
 
-                # draw_networkx(K, pos, edge_color='skyblue', node_color=colorList[Q % len(colorList)])
-                if ww >= 2:
                     draw_networkx(K, pos, edge_color='skyblue', node_color='magenta')
                     plt.show()
-                    # Q += 1
-        ww += 1
-        K.clear()
-        for tt in keep:
-            c.remove(tt)
 
 
 def Create_Graph_Cluster_Cluster(Cut_node, Cut_edge):  # Result_Cut_Node, Result_Cut_Edges
@@ -1204,7 +1190,9 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 # ต้องเอาที่เหลือมาต่อ แต่ต้องแยกไว้
                 Result_Sub_TorSub = Tor_Rest_Sub(Result_Cut_Node, Start_Sub1)
                 Result_Sub_TorSub_Node = Result_CutNode(Result_Sub_TorSub)
+                print'Result_Sub_TorSub_Node =', Result_Sub_TorSub_Node
                 Result_Sub_TorSub_Edge = Result_CutEdge(Result_Sub_TorSub, Edges_Graph)
+                print'Result_Sub_TorSub_Edge =', Result_Sub_TorSub_Edge
                 # หาโหนดที่เหลืออยู่ โหนดที่ไม่ถูกนำมาจัด
                 Result_Rest_Node = Check_Nodes_Rest(Result_Cut_Node, Result_Sub_TorSub, Node_Graph)
                 print 'โหนดที่ไม่ถูกจัดอยู่ในครัสเตอร์ =', Result_Rest_Node

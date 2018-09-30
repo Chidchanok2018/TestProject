@@ -36,7 +36,7 @@
     <SUITE FILE_PATH="coverage/TestProject$V18.coverage" NAME="V18 Coverage Results" MODIFIED="1537342594758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Gen_Graph.coverage" NAME="Gen Graph Coverage Results" MODIFIED="1538223834284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$FileFromMilk.coverage" NAME="FileFromMilk Coverage Results" MODIFIED="1535349322773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python27" />
-    <SUITE FILE_PATH="coverage/TestProject$V21.coverage" NAME="V21 Coverage Results" MODIFIED="1538290659856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V21.coverage" NAME="V21 Coverage Results" MODIFIED="1538293122787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$node_color.coverage" NAME="node_color Coverage Results" MODIFIED="1538233741433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$OpenFileExcelMilk.coverage" NAME="OpenFileExcelMilk Coverage Results" MODIFIED="1530972499968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test_SubGraph.coverage" NAME="Test_SubGraph Coverage Results" MODIFIED="1531994392283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -77,12 +77,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="87983" />
+          <entry key="py" value="88064" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="87983" />
+          <entry key="Python" value="88064" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -107,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/V19.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="935" column="37" lean-forward="true" selection-start-line="935" selection-start-column="37" selection-end-line="935" selection-end-column="37" />
+            <state relative-caret-position="280">
+              <caret line="938" column="83" selection-start-line="938" selection-start-column="54" selection-end-line="938" selection-end-column="83" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#26501#26544#0" />
@@ -147,14 +147,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V21.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="965" selection-start-line="965" selection-end-line="965" />
+            <state relative-caret-position="271">
+              <caret line="978" selection-start-line="978" selection-end-line="978" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
                 <element signature="e#26521#26564#0" />
                 <element signature="e#27441#27451#0" />
                 <element signature="e#28188#28196#0" />
-                <marker date="1538290662961" expanded="true" signature="29043:29283" ph="..." />
+                <element signature="e#27551#27559#0" />
+                <marker date="1538293122724" expanded="true" signature="29670:29910" ph="..." />
               </folding>
             </state>
           </provider>
@@ -516,7 +517,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.29591838" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3469388" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.3469388" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3265306" />
@@ -530,7 +531,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.33055976" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.33055976" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -1258,47 +1259,47 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1215</line>
+          <line>1221</line>
           <option name="timeStamp" value="2137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1182</line>
+          <line>1188</line>
           <option name="timeStamp" value="2139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1165</line>
+          <line>1171</line>
           <option name="timeStamp" value="2140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1164</line>
+          <line>1170</line>
           <option name="timeStamp" value="2141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>979</line>
+          <line>985</line>
           <option name="timeStamp" value="2151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>1214</line>
+          <line>1220</line>
           <option name="timeStamp" value="2152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>965</line>
+          <line>970</line>
           <option name="timeStamp" value="2153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>971</line>
+          <line>976</line>
           <option name="timeStamp" value="2154" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V21.py</url>
-          <line>966</line>
+          <line>971</line>
           <option name="timeStamp" value="2155" />
         </line-breakpoint>
       </breakpoints>
@@ -1829,30 +1830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/V19.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="935" column="37" lean-forward="true" selection-start-line="935" selection-start-column="37" selection-end-line="935" selection-end-column="37" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#26501#26544#0" />
-            <element signature="e#27566#27603#0" />
-            <marker date="1538202935690" expanded="true" signature="15963:15983" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="15963:17095" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="18419:18446" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="21599:21600" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="21636:21669" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="22176:22214" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="22597:22599" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="22649:22711" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="24371:24376" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="29427:29432" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="29427:29649" ph="..." />
-            <marker date="1538202935690" expanded="true" signature="29707:29712" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gen Graph.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="709">
@@ -1877,16 +1854,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/V19.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="938" column="83" selection-start-line="938" selection-start-column="54" selection-end-line="938" selection-end-column="83" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#26501#26544#0" />
+            <element signature="e#27566#27603#0" />
+            <marker date="1538202935690" expanded="true" signature="15963:15983" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="15963:17095" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="18419:18446" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="21599:21600" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="21636:21669" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22176:22214" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22597:22599" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="22649:22711" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="24371:24376" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29427:29432" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29427:29649" ph="..." />
+            <marker date="1538202935690" expanded="true" signature="29707:29712" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/V21.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="965" selection-start-line="965" selection-end-line="965" />
+        <state relative-caret-position="271">
+          <caret line="978" selection-start-line="978" selection-end-line="978" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
             <element signature="e#26521#26564#0" />
             <element signature="e#27441#27451#0" />
             <element signature="e#28188#28196#0" />
-            <marker date="1538290662961" expanded="true" signature="29043:29283" ph="..." />
+            <element signature="e#27551#27559#0" />
+            <marker date="1538293122724" expanded="true" signature="29670:29910" ph="..." />
           </folding>
         </state>
       </provider>

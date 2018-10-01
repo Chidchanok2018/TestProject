@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a80340-a00c-47f9-907b-8617c05481e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/V24_MakeGraph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/V25_MakeGraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gen Graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gen Graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V21.py" beforeDir="false" afterPath="$PROJECT_DIR$/V21.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report 23092018.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report 23092018.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V22.py" beforeDir="false" afterPath="$PROJECT_DIR$/V22.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V23_MakeGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/V23_MakeGraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/V25_MakeGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/V25_MakeGraph.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,9 +50,9 @@
     <SUITE FILE_PATH="coverage/TestProject$V16.coverage" NAME="V16 Coverage Results" MODIFIED="1536399968161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$New_Step_V4_1.coverage" NAME="New_Step V4_1 Coverage Results" MODIFIED="1534672478960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$Test2.coverage" NAME="Test2 Coverage Results" MODIFIED="1534249909574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$V22.coverage" NAME="V22 Coverage Results" MODIFIED="1538338352541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V22.coverage" NAME="V22 Coverage Results" MODIFIED="1538363153856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TestProject$V23_MakeGraph.coverage" NAME="V23_MakeGraph Coverage Results" MODIFIED="1538333410179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TestProject$V25_MakeGraph.coverage" NAME="V25_MakeGraph Coverage Results" MODIFIED="1538340269557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TestProject$V25_MakeGraph.coverage" NAME="V25_MakeGraph Coverage Results" MODIFIED="1538363747575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="107775073">
@@ -87,12 +83,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="90480" />
+          <entry key="py" value="90712" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="90480" />
+          <entry key="Python" value="90712" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -133,7 +129,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/V22.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
+            <state relative-caret-position="113">
               <caret line="945" selection-start-line="945" selection-end-line="945" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
@@ -144,23 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/V24_MakeGraph.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
-              <folding>
-                <element signature="e#24#46#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V25_MakeGraph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="248" selection-start-line="248" selection-end-line="248" />
+            <state relative-caret-position="573">
+              <caret line="245" selection-start-line="245" selection-end-line="245" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
               </folding>
@@ -187,7 +171,7 @@
         <entry file="file://C:/Python27/FileFromMilk.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="58">
-              <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+              <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -279,8 +263,8 @@
         <option value="$PROJECT_DIR$/Gen Graph.py" />
         <option value="$PROJECT_DIR$/V21.py" />
         <option value="$PROJECT_DIR$/V23_MakeGraph.py" />
-        <option value="$PROJECT_DIR$/V22.py" />
         <option value="$PROJECT_DIR$/V24_MakeGraph.py" />
+        <option value="$PROJECT_DIR$/V22.py" />
         <option value="$PROJECT_DIR$/V25_MakeGraph.py" />
       </list>
     </option>
@@ -291,7 +275,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -467,8 +451,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.V25_MakeGraph" />
-        <item itemvalue="Python.V24_MakeGraph" />
         <item itemvalue="Python.V22" />
+        <item itemvalue="Python.V24_MakeGraph" />
         <item itemvalue="Python.V21" />
         <item itemvalue="Python.Gen Graph" />
       </list>
@@ -497,7 +481,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5234375" side_tool="true" weight="0.15885022" />
       <window_info id="Favorites" order="1" sideWeight="0.51578945" side_tool="true" weight="0.32980332" />
@@ -505,7 +489,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.29591838" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.414966" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" visible="true" weight="0.335034" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3265306" />
@@ -1412,58 +1396,58 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>248</line>
+          <line>269</line>
           <option name="timeStamp" value="2254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="2255" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="2256" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>202</line>
+          <line>203</line>
           <option name="timeStamp" value="2258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>87</line>
+          <line>88</line>
           <option name="timeStamp" value="2259" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>110</line>
+          <line>111</line>
           <option name="timeStamp" value="2260" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>225</line>
+          <line>226</line>
           <option name="timeStamp" value="2261" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>133</line>
+          <line>134</line>
           <option name="timeStamp" value="2262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>156</line>
+          <line>157</line>
           <option name="timeStamp" value="2263" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>179</line>
+          <line>180</line>
           <option name="timeStamp" value="2264" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
-          <line>245</line>
+          <line>246</line>
           <option name="timeStamp" value="2265" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="2267" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/V25_MakeGraph.py</url>
+          <line>266</line>
+          <option name="timeStamp" value="2274" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1987,42 +1971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/V24_MakeGraph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/V22.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="945" selection-start-line="945" selection-end-line="945" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#26407#26450#0" />
-            <element signature="e#26800#26810#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/V21.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="910" column="4" selection-start-line="910" selection-start-column="4" selection-end-line="910" selection-end-column="4" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#26521#26564#0" />
-            <element signature="e#27441#27451#0" />
-            <element signature="e#27551#27559#0" />
-            <marker date="1538333996844" expanded="true" signature="29895:30135" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_color.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -2046,14 +1994,50 @@
     <entry file="file://C:/Python27/FileFromMilk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
-          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V24_MakeGraph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V22.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="945" selection-start-line="945" selection-end-line="945" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#26407#26450#0" />
+            <element signature="e#26800#26810#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V21.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="910" column="4" selection-start-line="910" selection-start-column="4" selection-end-line="910" selection-end-column="4" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#26521#26564#0" />
+            <element signature="e#27441#27451#0" />
+            <element signature="e#27551#27559#0" />
+            <marker date="1538333996844" expanded="true" signature="29895:30135" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/V25_MakeGraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="248" selection-start-line="248" selection-end-line="248" />
+        <state relative-caret-position="573">
+          <caret line="245" selection-start-line="245" selection-end-line="245" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
           </folding>

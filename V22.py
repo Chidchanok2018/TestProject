@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 G = nx.Graph()
-fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500.txt", "rb")
+fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_300_1.txt", "rb")
 G = read_adjlist(fh)
 # draw_networkx(G, edge_color='b')
 # plt.figure(1)
@@ -936,7 +936,7 @@ def Create_Graph_Cluster_Original(Node, Edge, Node_G):  # Result_Cut_Node, Resul
     # เปลี่ยน unicode => int ทั้ง Cluster
     Edges_int = Dict_Unicode_Toint(Edge_D)
     Nodes_int = Dict_Unicode_Toint1(Node_D)
-    # print 'EEE', Edges_int[1]
+    print 'Edges_int', Edges_int[1]
     # pos = {}
     m = 0
     ww = 1

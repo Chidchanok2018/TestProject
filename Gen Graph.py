@@ -23,8 +23,8 @@ G = nx.Graph()
 # G = nx.circular_ladder_graph(10)  # วงล้อ 2 วง
 # k = Graph.Erdos_Renyi(n=10, m=10)
 # G = nx.gnm_random_graph(50,200)  # ตัวแรกจำนวนโหนด ตัวหลังจำนวนกิ่ง
-# G = nx.dense_gnm_random_graph(50,500)
-# nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_2.tsv",delimiter=' ',data=True)
+G = nx.dense_gnm_random_graph(50,550)
+nx.write_edgelist(G,"C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_550_1.tsv",delimiter=' ',data=True)
 
 fh = open("C:\Users\Kmutt_Wan\PycharmProjects\Nodes50_500_1.txt", "rb")
 G = read_adjlist(fh)

@@ -787,7 +787,8 @@ def Result_CutEdge(Start, Compare):  # Result_Copy, Edges_Graph
                 v_s = set(v)
                 a = u_s & v_s
                 if len(a) == 2:
-                    keep.append(v)
+                    if v not in keep:
+                        keep.append(v)
         Result[h] = keep
     return Result
 
@@ -974,18 +975,6 @@ def Create_Graph_Cluster_Original(Node, Edge, Node_G):  # Result_Cut_Node, Resul
                     plt.show()
 
 
-def Create_Graph_Cluster_Cluster(Cut_node, Cut_edge):  # Result_Cut_Node, Result_Cut_Edges
-    # Dict {1:[[,,],[,,]..]}
-    Cut_Node_C = copy.deepcopy(Cut_node)
-    Cut_Edge_C = copy.deepcopy(Cut_edge)
-
-    colorList = ['c', 'red', 'magenta', 'green', 'GreenYellow', 'Salmon', \
-                 'orange', 'brown', 'purple', 'yellow', 'black']
-
-    Edges_int = Dict_Unicode_Toint(Cut_Edge_C)
-    Nodes_int = Dict_Unicode_Toint1(Cut_Node_C)
-
-
 def List_Unicode_Toint(Node_GL):
     # List[.......]
     Result = []
@@ -998,6 +987,28 @@ def List_Unicode_Toint(Node_GL):
         Result.append(keep)
     return Result
 
+
+def Result_CutIntra(Result_Node, Cut_Edges):
+    # Result_Cut_Node, Result_Cut_Edges
+    Result_Node_D = copy.deepcopy(Result_Node)
+    Cut_Edges_D = copy.deepcopy(Cut_Edges)
+    keep1 = {}  # intra Edges
+    for h, hh in Result_Node_D.items():  # จากโหนดเฉพาะในครัสเตอร์
+        hh_s = set(hh)
+        keep = []
+        for i, ii in Cut_Edges_D.items():
+            if i == h:
+                for u in ii:
+                    u_s = set(u)
+                    a = hh_s & u_s
+                    if len(a) == 2:  # ถ้ากิ่งเหมือนกับโหนดททั้งหมด
+                        if u not in keep:
+                            keep.append(u)
+                PP = len(keep)
+                keep1[i] = PP
+            keep1
+
+    return keep1
 
 def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
     # Sub3_L, Edges_Graph, DD, Node_Degree
@@ -1182,12 +1193,13 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
             if len(M_Sub) == 0:
                 # ต้องกำจัดโหนดที่แม่งซ้ำในแต่ละครัสเตอร์ออกก่อน
                 Result_Copy = copy.deepcopy(Result)
-                Result_Cut_Node = Result_CutNode(Result_Copy)
+                # กิ่งรวมโหนดเดิมด้วย
                 Result_Cut_Edges = Result_CutEdge(Result_Copy, Edges_Graph)
-                # ได้เฉพาะโหนดล้วนมาแระ
-                # ก่อนต่อต่อเช็คที่เป็นแค่กิ่งระหว่างโหนดออกไปก่อน
-                # Result_Cut_Sub_Edge = Result_CutSubEdge(Result_Cut_Node, Result_Copy)
-                # ต้องเอาที่เหลือมาต่อ แต่ต้องแยกไว้
+                # ตัดโหนด กิ่ง เฉพาะในครัสเตอร์
+                Result_Cut_Node = Result_CutNode(Result_Copy)
+                # print 'Result_Cut_Node = ', Result_Cut_Node
+                Result_Cut_Intra_Edges = Result_CutIntra(Result_Cut_Node, Result_Cut_Edges)
+                print 'Result_Cut_Intra_Edges = ', Result_Cut_Intra_Edges
                 Result_Sub_TorSub = Tor_Rest_Sub(Result_Cut_Node, Start_Sub1)
                 Result_Sub_TorSub_Node = Result_CutNode(Result_Sub_TorSub)
                 # print'Result_Sub_TorSub_Node =', Result_Sub_TorSub_Node
@@ -1213,7 +1225,6 @@ def Make_Cluster(Start_Sub, Start_edge, DD, Start_degree):
                 print 'ค่า Mpdularity Matric = ', Modularity_D
                 # สร้ากราฟ 1 Original 2 Cluster ใช้ K = nx.Graph() เปลี่ยนโหนดเป็น int นะ
                 Create_Graph_Cluster_Original(Result_Cut_Node, Result_Cut_Edges, G.node)
-                Create_Graph_Cluster_Cluster(Result_Cut_Node, Result_Cut_Edges)
                 break
             # หา Sub cycle ที่มีโหนดเหมือนกัน 2 โหนดและโหนดที่เหลือมมีดีกรีโหนดมากที่สุด
             NS20 = Next_Sub_2n(L_M_Sub, Start_Sub1)  # ค้นหา SUB ที่มีโหนดเหมือนกัน 2 โหนด
@@ -1345,10 +1356,10 @@ print'------เริ่มทำการหาครัสเตอร์---Sn
 print'จำนวนโหนดทั้งหมดในกราฟ ', Number_of_nodes, 'โหนด'
 print'จำนวน Sub3 ทั้งหมด', len(Sub3), 'โหนด'
 Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
-print'Node_Graph =', Node_Graph
+# print'Node_Graph =', Node_Graph
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 print'Edges_Graph =', Edges_Graph
-DD = float(0.70)
+DD = float(0.50)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]

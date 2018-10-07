@@ -1360,7 +1360,7 @@ Node_Graph = [i for i in G.nodes]  # ก้อนยาวๆ
 # print'Node_Graph =', Node_Graph
 Edges_Graph = [i for i in G.edges]  # ก้อนสั้นๆ
 # print'Edges_Graph =', Edges_Graph
-DD = float(0.60)
+DD = float(0.70)
 
 # --------------------------------------------------------#
 # หา cycles ข้างเคียงที่มีโหนดเหมือนกันจำนวน 2 โหนด Sub3=list[['23','8','30']]
